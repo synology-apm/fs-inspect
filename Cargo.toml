@@ -1,0 +1,144 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/fs-inspect-io",
+  "crates/fs-inspect-core",
+  "crates/fs-inspect-disk",
+  "crates/fs-inspect-volmgr",
+  "crates/fs-inspect-host",
+  "crates/fs-inspect-codec",
+  "crates/fs-inspect-guest",
+  "crates/fs-inspect-change",
+  "crates/fs-inspect-ntfs",
+  "crates/fs-inspect-fat",
+  "crates/fs-inspect-ext",
+  "crates/fs-inspect-xfs",
+  "crates/fs-inspect-btrfs",
+  "crates/fs-inspect-apfs",
+  "crates/fs-inspect-refs",
+  "crates/fs-inspect-zfs",
+  "crates/fs-inspect",
+  "crates/fs-inspect-cli",
+  "crates/fs-inspect-ffi",
+  "crates/fs-inspect-py",
+  "crates/fs-inspect-testkit",
+  "crates/xtask",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+license = "Apache-2.0"
+repository = "https://github.com/synology-apm/fs-inspect"
+authors = ["Synology Inc."]
+
+[workspace.dependencies]
+fs-inspect-io = { path = "crates/fs-inspect-io" }
+fs-inspect-core = { path = "crates/fs-inspect-core" }
+fs-inspect-disk = { path = "crates/fs-inspect-disk" }
+fs-inspect-volmgr = { path = "crates/fs-inspect-volmgr" }
+fs-inspect-codec = { path = "crates/fs-inspect-codec" }
+fs-inspect-guest = { path = "crates/fs-inspect-guest" }
+fs-inspect-host = { path = "crates/fs-inspect-host" }
+fs-inspect-change = { path = "crates/fs-inspect-change" }
+fs-inspect-ntfs = { path = "crates/fs-inspect-ntfs" }
+fs-inspect-fat = { path = "crates/fs-inspect-fat" }
+fs-inspect-ext = { path = "crates/fs-inspect-ext" }
+fs-inspect-xfs = { path = "crates/fs-inspect-xfs" }
+fs-inspect-btrfs = { path = "crates/fs-inspect-btrfs" }
+fs-inspect-apfs = { path = "crates/fs-inspect-apfs" }
+fs-inspect-refs = { path = "crates/fs-inspect-refs" }
+fs-inspect-zfs = { path = "crates/fs-inspect-zfs" }
+fs-inspect = { path = "crates/fs-inspect", default-features = false }
+fs-inspect-ffi = { path = "crates/fs-inspect-ffi" }
+fs-inspect-testkit = { path = "crates/fs-inspect-testkit" }
+
+thiserror = "2"
+pyo3 = { version = "0.30.1", features = ["abi3-py312", "generate-import-lib"] }
+anyhow = "1"
+ctrlc = "3"
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+xxhash-rust = { version = "0.8", features = ["xxh3", "xxh64"] }
+zstd = { version = "0.14.3", default-features = false }
+lz4_flex = { version = "0.11", default-features = false, features = ["std", "safe-decode"] }
+flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
+lzfse_rust = "0.2.1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+proptest = "1.5"
+tempfile = "3"
+assert_cmd = "2"
+sha2 = "0.10"
+toml = "0.9"
+tar = { version = "0.4.46", default-features = false }
+zip = { version = "9", default-features = false, features = ["deflate-flate2"] }
+smallvec = { version = "1.13", features = ["union", "const_generics"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+libc = "0.2"
+windows-sys = { version = "0.61", features = [
+  "Win32_Foundation",
+  "Win32_Security",
+  "Win32_Security_Authorization",
+  "Win32_Storage_FileSystem",
+  "Win32_System_IO",
+  "Win32_System_Ioctl",
+  "Win32_System_Time",
+] }
+
+# The toolchain and tools of `cargo xtask` (crates/xtask): `cargo xtask setup` installs them; the
+# workflows install the same versions (a test of crates/xtask checks it).
+[workspace.metadata.xtask]
+# The nightly of every nightly step: the nightly lint, the public API listing, branch coverage
+# (pinned so the gate measures the same way from run to run).
+nightly = "nightly-2026-10-17"
+# Beyond the minimal profile: llvm-cov's LLVM tools (coverage).
+nightly-components = ["llvm-tools-preview"]
+# `cargo xtask coverage`'s gate: percent covered of lines and branches counted together (covered
+# lines plus covered branches over all lines plus all branches). One gate for every OS: the lower
+# of the Windows and Linux figures.
+coverage-fail-under = 91.0
+# Not product code, left out of the report beyond what cargo-llvm-cov leaves out itself
+# (`tests/`, `examples/` and `benches/` directories, `tests.rs` and `*_tests.rs`): the task
+# runner, the test kit and the test support of the library crates (the `synth` image builders,
+# `testing`, `test_util`, `testns`). Paths relative to the workspace root:
+# `coverage` anchors the pattern there, so nothing outside the workspace matches. `[/\\]`:
+# llvm-cov reports Windows paths with backslashes.
+coverage-ignore = 'crates[/\\](xtask|fs-inspect-testkit)[/\\]|(.*[/\\])?(synth|testing)[/\\]|(.*[/\\])?(test_util|testns|testing)\.rs$'
+
+[workspace.metadata.xtask.tools]
+cargo-deny = "0.22.1"
+cargo-llvm-cov = "0.9.2"
+cargo-nextest = "0.9.152"
+cargo-public-api = "0.52.0"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+unsafe_op_in_unsafe_fn = "deny"
+missing_debug_implementations = "warn"
+unexpected_cfgs = { level = "warn", check-cfg = ["cfg(fsi_nightly_lint)", "cfg(coverage_nightly)"] }
+
+[workspace.lints.clippy]
+dbg_macro = "warn"
+todo = "warn"
+# Library code reports errors; it does not panic on input. Tests may (see clippy.toml).
+unwrap_used = "warn"
+expect_used = "warn"
+panic = "warn"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+# No symbol table (Linux, macOS) and no .pdb (Windows). To debug a release build:
+# CARGO_PROFILE_RELEASE_DEBUG=true CARGO_PROFILE_RELEASE_STRIP=false.
+strip = true
+
+[profile.dev]
+opt-level = 1
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+opt-level = 2
+debug = false

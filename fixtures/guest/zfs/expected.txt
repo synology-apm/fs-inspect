@@ -1,0 +1,21 @@
+# Made by tools/fsi_tools/fixtures/guest_linux_btrfs_zfs.py: what names each volume in the guest.
+# pool rpool guid 11367710030199559620 (differs per run), bootfs rpool/ROOT/ubuntu
+/boot/efi vfat disk0:part1 uuid=7E8F-9A0B label=EFI partuuid=4d5e6f70-8192-43a4-b5c6-d7e8f90a1b02 fstab=UUID=7E8F-9A0B
+/srv/data zfs rpool/data fstab=rpool/data
+# zfs get -r mountpoint,canmount rpool: <dataset> <property> <value> <source>
+rpool mountpoint / local
+rpool canmount off local
+rpool/ROOT mountpoint none local
+rpool/ROOT canmount off local
+rpool/ROOT/ubuntu mountpoint / local
+rpool/ROOT/ubuntu canmount noauto local
+rpool/data mountpoint legacy local
+rpool/data canmount on default
+rpool/home mountpoint /home local
+rpool/home canmount on default
+rpool/home/user mountpoint /home/user inherited from rpool/home
+rpool/home/user canmount on default
+rpool/var mountpoint /var inherited from rpool
+rpool/var canmount off local
+rpool/var/log mountpoint /var/log inherited from rpool
+rpool/var/log canmount on default

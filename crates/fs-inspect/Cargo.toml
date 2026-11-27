@@ -1,0 +1,64 @@
+[package]
+name = "fs-inspect"
+description = "Disk images and snapshot devices: their containers, partitions, volume managers and file systems, and the used-space map of each volume"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[features]
+# Change tracking (`change`): each file system's tracker.
+change = [
+  "dep:fs-inspect-change",
+  "fs-inspect-ntfs/change",
+  "fs-inspect-fat/change",
+  "fs-inspect-ext/change",
+  "fs-inspect-xfs/change",
+  "fs-inspect-btrfs/change",
+  "fs-inspect-apfs/change",
+  "fs-inspect-refs/change",
+  "fs-inspect-zfs/change",
+]
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+fs-inspect-disk.workspace = true
+fs-inspect-volmgr.workspace = true
+fs-inspect-guest.workspace = true
+fs-inspect-change = { workspace = true, optional = true }
+fs-inspect-host.workspace = true
+fs-inspect-ntfs.workspace = true
+fs-inspect-fat.workspace = true
+fs-inspect-ext.workspace = true
+fs-inspect-xfs.workspace = true
+fs-inspect-btrfs.workspace = true
+fs-inspect-apfs.workspace = true
+fs-inspect-refs.workspace = true
+fs-inspect-zfs.workspace = true
+flate2.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-testkit = { workspace = true, features = ["ntfs", "xfs", "btrfs", "apfs", "refs"] }
+sha2.workspace = true
+tar.workspace = true
+zip.workspace = true
+tempfile.workspace = true
+serde_json.workspace = true
+proptest.workspace = true
+tokio.workspace = true
+
+[lints]
+workspace = true
+
+# One test per image of the fixture manifests (fixtures/<fs>/<dir>/manifest.toml): its own harness.
+[[test]]
+name = "fixture_manifest"
+harness = false

@@ -1,0 +1,15 @@
+# The 4 KiB runs not all zero of the volume once Windows has replayed its log. Made by
+# tools/fsi_tools/fixtures/ntfs_replay.py; one range per line, byte offset and length.
+0 151552
+155648 20480
+2236416 36864
+2543616 16384
+2625536 4096
+2887680 4096
+3940352 69632
+8200192 1806336
+10489856 2859008
+13352960 4202496
+42631168 2121728
+44761088 577536
+134213632 4096

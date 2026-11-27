@@ -1,0 +1,30 @@
+# cargo-nextest (the xtask's test tasks and CI run the tests with it): every test is its own
+# process, scheduled over all CPUs across all test binaries, so a long test in one binary does not
+# hold up the others. Doc tests are not run by nextest; the xtask runs them separately.
+#
+# Profiles (docs/contributing/testing.md):
+#   default  `cargo xtask test-fast` and a plain `cargo nextest run`: every test (none takes
+#            10 s: a slow one is made smaller)
+#   full     `cargo xtask test`: every test, as `default` runs them
+#   ci       CI's tests job (NEXTEST_PROFILE=ci): every test, never stopping at the first
+#            failure, more room before one is hung, a JUnit report
+
+[profile.default]
+test-threads = "num-cpus"
+# Report every failure, not only the first.
+fail-fast = false
+failure-output = "immediate-final"
+# Flag slow tests (in-memory images should not take long: none takes 10 s); stop a hung one
+# after 15 periods.
+slow-timeout = { period = "20s", terminate-after = 15 }
+
+[profile.full]
+
+[profile.ci]
+fail-fast = false
+# CI machines are slower and shared: more room before a test is called hung.
+slow-timeout = { period = "120s", terminate-after = 10 }
+
+[profile.ci.junit]
+path = "junit.xml"
+

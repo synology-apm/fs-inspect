@@ -1,0 +1,34 @@
+[package]
+name = "xtask"
+description = "fs-inspect's cargo xtask tasks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+# record-fixture, the golden-file check and the C programs' fixtures.
+fs-inspect-testkit.workspace = true
+# gen bindings and parity-run: the facade.
+fs-inspect.workspace = true
+# gen bindings: the registry of every enum a caller sees (fs_inspect_ffi::enums).
+fs-inspect-ffi.workspace = true
+serde_json.workspace = true
+# gen header and the header checks.
+cbindgen = { version = "0.29", default-features = false }
+# gen parity and the parity check: api/parity.toml; the metadata of Cargo.toml.
+toml.workspace = true
+# dist: the archives' .sha256 files.
+sha2.workspace = true
+# parity-run: the scenario's tar archives.
+tempfile.workspace = true
+
+[dev-dependencies]
+# The coverage-ignore pattern checked against the paths it must and must not match.
+regex-automata = "0.4"
+
+[lints]
+workspace = true

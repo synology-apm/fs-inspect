@@ -1,0 +1,9 @@
+# Made by tools/fsi_tools/fixtures/apfs_macos.py; read by an independent parser (check/apfs.py).
+# fixture image_bytes
+# fixture container <offset> block_size <n> block_count <n> free <n> xid <n> cibs <n> cabs <n>
+asr-mac image_bytes 2147483648
+asr-mac container 0 block_size 4096 block_count 524288 free 521306 xid 40 cibs 1 cabs 0
+gpt-mac image_bytes 1073741824
+gpt-mac container 20480 block_size 4096 block_count 48829 free 48341 xid 11 cibs 1 cabs 0
+gpt-mac container 200024064 block_size 4096 block_count 146485 free 145339 xid 11 cibs 1 cabs 0
+gpt-mac container 800026624 block_size 4096 block_count 66820 free 66298 xid 11 cibs 1 cabs 0

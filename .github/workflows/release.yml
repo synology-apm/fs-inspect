@@ -1,0 +1,340 @@
+# Release on a pushed `vX.Y.Z` tag:
+# - `verified`: looks for ci.yml's push run on the tagged commit. Passed: CI is not repeated.
+#   Still running: waits for it. Failed: stops the release. Cancelled, absent or unreadable:
+#   `ci` runs.
+# - `ci`: the whole of ci.yml (workflow_call), only when `verified` says so.
+# - `advisories`: cargo-deny every time, so a release that reuses an older CI run still sees
+#   today's advisories.
+# - `gate`: passes only when all three did; everything after it needs it.
+# - `build`: `cargo xtask dist` for each target (the CLI, the C library and its header), on a
+#   runner that builds it natively (x86_64 macOS is cross-built on Apple silicon; Linux in a
+#   manylinux_2_28 job container of the runner's architecture, prepared by
+#   crates/xtask/manylinux.sh; crates/xtask/src/dist.rs says why); where the runner runs the
+#   binary, dist checks its --version.
+# - `wheels`: the Python binding (crates/fs-inspect-py, `synology-fs-inspect`) built by maturin
+#   for each target: one abi3 wheel for CPython 3.12+ and one for free-threaded 3.14t
+#   (manylinux_2_28 on Linux, the static C runtime on Windows); `sdist` the source archive.
+#   Each with its `.sha256`, kept apart: PyPI takes every file it is given.
+# - `verify-wheels`: each wheel installed in a clean environment on its platform, checked to
+#   read a file system (crates/fs-inspect-py/tests/wheel_check.py) at the tag's version.
+# - `pypi`: once every archive, wheel and the sdist is built and every wheel verified, uploads
+#   the wheels and the sdist to PyPI (Trusted Publishing: `id-token: write`, the
+#   `pypi-synology-fs-inspect` environment). A PyPI upload cannot be undone, so nothing reaches
+#   it before the whole release is made.
+# - `release`: last, so a release is announced only once the package is on PyPI; the only job
+#   that may write (`contents: write`). Checks every archive, wheel and the sdist against its
+#   `.sha256` and the tag's version, then makes one GitHub release for the tag with all of them
+#   and no generated notes.
+# A job after one that may be skipped (`ci`) is skipped too unless its `if:` says otherwise,
+# hence `!cancelled() && needs.X.result == 'success'`.
+# Actions are pinned to commit SHAs (.github/CLAUDE.md).
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+# One release at a time, whatever the tag.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+
+jobs:
+  verified:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    outputs:
+      ci: ${{ steps.check.outputs.ci }}
+    steps:
+      - id: check
+        name: Look for a CI run on this commit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          set -u
+          out() { echo "ci=$1" >> "$GITHUB_OUTPUT"; }
+          # Newest first. Pull-request runs test a merge commit, not this one.
+          run=$(gh api "repos/$GH_REPO/actions/workflows/ci.yml/runs?head_sha=$SHA&per_page=100" \
+            --jq '[.workflow_runs[] | select(.event == "push")] | .[0] // empty | "\(.id) \(.status)"') || {
+            echo "::warning::Could not list the CI runs of $SHA; running CI"; out run; exit 0; }
+          if [ -z "$run" ]; then
+            echo "No push CI run on $SHA; running CI"; out run; exit 0
+          fi
+          read -r id status <<< "$run"
+          if [ "$status" != completed ]; then
+            echo "Waiting for CI run $id ($status)"
+            gh run watch "$id" --interval 30 > /dev/null || true
+          fi
+          conclusion=$(gh run view "$id" --json conclusion --jq .conclusion) || {
+            echo "::warning::Could not read CI run $id; running CI"; out run; exit 0; }
+          case "$conclusion" in
+            success) echo "CI run $id passed on $SHA"; out skip ;;
+            cancelled) echo "CI run $id was cancelled; running CI"; out run ;;
+            *) echo "::error::CI run $id on $SHA concluded '$conclusion'"; exit 1 ;;
+          esac
+
+  ci:
+    needs: verified
+    if: needs.verified.outputs.ci == 'run'
+    uses: ./.github/workflows/ci.yml
+
+  advisories:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiki-e/install-action@073e1fd0bc889c9aee68dbaaa927cde1b5653a83 # v2.90.11
+        with:
+          tool: cargo-deny@0.22.1
+      - run: cargo xtask deps
+
+  gate:
+    if: always()
+    needs: [verified, ci, advisories]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verified or tested, and no advisory
+        env:
+          VERIFIED: ${{ needs.verified.result }}
+          DECISION: ${{ needs.verified.outputs.ci }}
+          CI: ${{ needs.ci.result }}
+          ADVISORIES: ${{ needs.advisories.result }}
+        run: |
+          echo "verified=$VERIFIED ($DECISION) ci=$CI advisories=$ADVISORIES"
+          [ "$VERIFIED" = success ] && [ "$ADVISORIES" = success ] || exit 1
+          case "$DECISION/$CI" in
+            skip/skipped | run/success) ;;
+            *) exit 1 ;;
+          esac
+
+  build:
+    needs: gate
+    if: ${{ !cancelled() && needs.gate.result == 'success' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # The manylinux policy of dist.rs's MANYLINUX.
+          - { target: x86_64-unknown-linux-gnu, os: ubuntu-latest, container: quay.io/pypa/manylinux_2_28_x86_64 }
+          - { target: aarch64-unknown-linux-gnu, os: ubuntu-24.04-arm, container: quay.io/pypa/manylinux_2_28_aarch64 }
+          - { target: aarch64-apple-darwin, os: macos-latest }
+          - { target: x86_64-apple-darwin, os: macos-latest }
+          - { target: x86_64-pc-windows-msvc, os: windows-latest }
+    runs-on: ${{ matrix.os }}
+    container: ${{ matrix.container }}
+    timeout-minutes: 60
+    env:
+      # dist writes to target/dist; the upload below reads it there.
+      CARGO_TARGET_DIR: target
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - if: ${{ matrix.container }}
+        run: sh crates/xtask/manylinux.sh
+      - if: ${{ !matrix.container }}
+        run: rustup show
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: dist-${{ matrix.target }}
+      - run: cargo xtask dist --target ${{ matrix.target }}
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist-${{ matrix.target }}
+          path: |
+            target/dist/*.tar.gz
+            target/dist/*.zip
+            target/dist/*.sha256
+          if-no-files-found: error
+          retention-days: 7
+
+  wheels:
+    needs: gate
+    if: ${{ !cancelled() && needs.gate.result == 'success' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { target: x86_64-unknown-linux-gnu, os: ubuntu-latest, manylinux: "2_28" }
+          - { target: aarch64-unknown-linux-gnu, os: ubuntu-24.04-arm, manylinux: "2_28" }
+          - { target: aarch64-apple-darwin, os: macos-latest }
+          # Natively: the 3.14t wheel is not abi3, and links that interpreter's own build.
+          - { target: x86_64-apple-darwin, os: macos-15-intel }
+          - { target: x86_64-pc-windows-msvc, os: windows-latest }
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # The interpreters maturin builds for (the manylinux container has its own).
+      - if: ${{ !matrix.manylinux }}
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: |
+            3.12
+            3.14t
+      - uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1.51.0
+        env:
+          # docs/ffi.md#windows-c-runtime: the static C runtime, as the C library's.
+          RUSTFLAGS: ${{ runner.os == 'Windows' && '-C target-feature=+crt-static' || '' }}
+          MACOSX_DEPLOYMENT_TARGET: "11.0"
+        with:
+          working-directory: crates/fs-inspect-py
+          target: ${{ matrix.target }}
+          manylinux: ${{ matrix.manylinux || 'auto' }}
+          args: --release --out dist --interpreter python3.12 python3.14t
+      - name: Checksums
+        shell: bash
+        working-directory: crates/fs-inspect-py/dist
+        run: |
+          mkdir ../sha256
+          for f in *.whl; do sha256sum -- "$f" > "../sha256/$f.sha256"; done
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: wheels-${{ matrix.target }}
+          path: crates/fs-inspect-py/dist/*.whl
+          if-no-files-found: error
+          retention-days: 7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sha256-wheels-${{ matrix.target }}
+          path: crates/fs-inspect-py/sha256/*.sha256
+          if-no-files-found: error
+          retention-days: 7
+
+  sdist:
+    needs: gate
+    if: ${{ !cancelled() && needs.gate.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: PyO3/maturin-action@e83996d129638aa358a18fbd1dfb82f0b0fb5d3b # v1.51.0
+        with:
+          working-directory: crates/fs-inspect-py
+          command: sdist
+          args: --out dist
+      - name: Checksum
+        working-directory: crates/fs-inspect-py/dist
+        run: |
+          mkdir ../sha256
+          for f in *.tar.gz; do sha256sum -- "$f" > "../sha256/$f.sha256"; done
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: wheels-sdist
+          path: crates/fs-inspect-py/dist/*.tar.gz
+          if-no-files-found: error
+          retention-days: 7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sha256-wheels-sdist
+          path: crates/fs-inspect-py/sha256/*.sha256
+          if-no-files-found: error
+          retention-days: 7
+
+  verify-wheels:
+    needs: wheels
+    if: ${{ !cancelled() && needs.wheels.result == 'success' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { target: x86_64-unknown-linux-gnu, os: ubuntu-latest }
+          - { target: aarch64-unknown-linux-gnu, os: ubuntu-24.04-arm }
+          - { target: aarch64-apple-darwin, os: macos-latest }
+          - { target: x86_64-apple-darwin, os: macos-15-intel }
+          - { target: x86_64-pc-windows-msvc, os: windows-latest }
+        python: ["3.12", "3.14", "3.14t"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: crates/fs-inspect-py/tests/wheel_check.py
+          sparse-checkout-cone-mode: false
+      - id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: wheels-${{ matrix.target }}
+          path: wheels
+      - name: Install in a clean environment and read a file system
+        shell: bash
+        env:
+          PY: ${{ steps.python.outputs.python-path }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          "$PY" -m venv "$RUNNER_TEMP/venv"
+          venv="$RUNNER_TEMP/venv/bin"; [ -d "$venv" ] || venv="$RUNNER_TEMP/venv/Scripts"
+          "$venv/python" -m pip install --quiet --no-index --find-links wheels synology-fs-inspect
+          cd "$RUNNER_TEMP"
+          "$venv/python" "$GITHUB_WORKSPACE/crates/fs-inspect-py/tests/wheel_check.py" "${TAG#v}"
+
+  pypi:
+    needs: [build, verify-wheels, sdist]
+    if: >-
+      ${{ !cancelled() && needs.build.result == 'success' && needs.verify-wheels.result == 'success'
+      && needs.sdist.result == 'success' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi-synology-fs-inspect
+      url: https://pypi.org/p/synology-fs-inspect
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: wheels-*
+          path: dist
+          merge-multiple: true
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # v1.14.3
+
+  release:
+    needs: pypi
+    if: ${{ !cancelled() && needs.pypi.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: dist-*
+          path: dist
+          merge-multiple: true
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: wheels-*
+          path: dist
+          merge-multiple: true
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: sha256-*
+          path: dist
+          merge-multiple: true
+      - name: Check the files
+        working-directory: dist
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          sha256sum -c -- *.sha256
+          for sum in *.sha256; do
+            case "$sum" in
+              fs-inspect-"${TAG#v}"-* | synology_fs_inspect-"${TAG#v}"-* | synology_fs_inspect-"${TAG#v}".tar.gz.sha256) ;;
+              *) echo "::error::$sum is not version ${TAG#v}"; exit 1 ;;
+            esac
+          done
+      - name: Create the release
+        env:
+          TAG: ${{ github.ref_name }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release create "$TAG" --verify-tag --title "$TAG" --notes "" dist/*

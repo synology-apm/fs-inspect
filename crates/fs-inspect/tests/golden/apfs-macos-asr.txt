@@ -1,0 +1,39 @@
+image origin External container Raw scheme None disk_bytes 0x80000000 sector None
+volume 0 offset 0x0 length 0x80000000 fs Some(Apfs)
+volume 0: apfs unit 4096 fs_bytes 0x80000000 label None uuid Some("E232E01A-7039-4F6C-A398-D0F969F0206E") | partition 0x80000000 known true range_bytes 0x80000000
+  Used Volume g=0: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+    0x0 +0x816000
+    0x81c000 +0x80000
+    0x89e000 +0x3000
+    0x8a4000 +0x30d000
+  Used Volume g=4096: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Used Volume g=1048576: 1 ranges, 12582912 bytes, digest 628712fde48dd625
+  Used Image g=0: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Used Image g=4096: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Used Image g=1048576: 1 ranges, 12582912 bytes, digest 628712fde48dd625
+  Data Volume g=0: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+    0x0 +0x816000
+    0x81c000 +0x80000
+    0x89e000 +0x3000
+    0x8a4000 +0x30d000
+  Data Volume g=4096: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Data Volume g=1048576: 1 ranges, 12582912 bytes, digest 628712fde48dd625
+  Data Image g=0: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Data Image g=4096: 4 ranges, 12214272 bytes, digest ef6e8421c90adc66
+  Data Image g=1048576: 1 ranges, 12582912 bytes, digest 628712fde48dd625
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 4 ranges, 2135269376 bytes, digest dd80c1b55b3c292d
+    0x816000 +0x6000
+    0x89c000 +0x2000
+    0x8a1000 +0x3000
+    0xbb1000 +0x7f44f000
+  Unused Volume g=4096: 4 ranges, 2135269376 bytes, digest dd80c1b55b3c292d
+  Unused Volume g=1048576: 1 ranges, 2134900736 bytes, digest 50bc578d0828fcb8
+  Unused Image g=0: 4 ranges, 2135269376 bytes, digest dd80c1b55b3c292d
+  Unused Image g=4096: 4 ranges, 2135269376 bytes, digest dd80c1b55b3c292d
+  Unused Image g=1048576: 1 ranges, 2134900736 bytes, digest 50bc578d0828fcb8

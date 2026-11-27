@@ -1,0 +1,30 @@
+image origin External container Raw scheme None disk_bytes 0x4000000 sector None
+volume 0 offset 0x0 length 0x4000000 fs Some(Ext4)
+volume 0: ext4 unit 4096 fs_bytes 0x4000000 label None uuid Some("3edc2da3-ded5-4520-8bfd-45305166ceed") | partition 0x4000000 known true range_bytes 0x4000000
+  Used Volume g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+    0x0 +0x4000000
+  Used Volume g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Volume g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Volume g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+    0x0 +0x4000000
+  Data Volume g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Volume g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  warning: [counted_as_used] ext group 0: block bitmap checksum mismatch; group reported used

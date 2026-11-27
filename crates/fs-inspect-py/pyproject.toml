@@ -1,0 +1,59 @@
+[build-system]
+requires = ["maturin>=1.16,<2"]
+build-backend = "maturin"
+
+[project]
+name = "synology-fs-inspect"
+description = "Read file systems inside disk images, snapshot devices and backups: NTFS, ReFS, FAT, exFAT, ext, XFS, Btrfs, APFS, ZFS, on LVM, md, LDM"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+readme = "README.md"
+dynamic = ["version"]
+classifiers = [
+  "Programming Language :: Rust",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: Free Threading :: 2 - Beta",
+  "Topic :: System :: Filesystems",
+  "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8", "mypy>=1.15"]
+
+[tool.maturin]
+module-name = "fs_inspect._native"
+python-source = "python"
+features = ["extension-module"]
+# What a local `maturin develop` leaves in the source tree stays out of a wheel.
+exclude = [
+    { path = "python/**/__pycache__/**", format = "wheel" },
+    { path = "python/fs_inspect/*.pdb", format = "wheel" },
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.format]
+# Made by `cargo xtask gen bindings` (lint checks they are current), not formatted by hand.
+exclude = [
+    "python/fs_inspect/__init__.py",
+    "python/fs_inspect/_aio.py",
+    "python/fs_inspect/_errors.py", "python/fs_inspect/_kinds.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"python/fs_inspect/_aio.py" = ["E501"]
+"python/fs_inspect/_errors.py" = ["E501"]
+"python/fs_inspect/_kinds.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["fs_inspect"]

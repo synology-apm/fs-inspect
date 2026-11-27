@@ -1,0 +1,7 @@
+fat12: reads 32 bytes 58288 largest 7168
+fat32: reads 12 bytes 40580 largest 16384
+exfat: reads 33 bytes 42990 largest 12288
+texfat: reads 34 bytes 43142 largest 12288
+exfat-bad-upcase: reads 33 bytes 42990 largest 12288
+exfat-bad-boot-checksum: reads 33 bytes 42990 largest 12288
+exfat-short-bitmap: reads 7 bytes 23714 largest 12288

@@ -1,0 +1,28 @@
+# Made by tools/fsi_tools/fixtures/refs_browse.py: what Windows reports through the mounted
+# volume. Paths are volume-relative, `/` separated, spaces as %20.
+#   file PATH size= attrs= mtime=(ns since 1970) owner=(SID) names=(every hard link name)
+#        streams=(NAME:SIZE:SHA256|..., "" the unnamed one)
+#   link PATH tag= target=(substitute name) print=(print name)
+#   dir PATH NAME/NAME/...
+link /symlink-rel.txt tag=0xA000000C target=small.txt print=small.txt
+link /dir/symlink-abs.bin tag=0xA000000C target=/??/Y:/plain.bin print=Y:/plain.bin
+link /symlink-dir tag=0xA000000C target=/??/Y:/dir print=Y:/dir
+link /junction tag=0xA0000003 target=/??/Y:/dir/deep print=Y:/dir/deep
+file /small.txt size=6 attrs=0x00000020 mtime=1794900758909929500 owner=S-1-5-32-544 names=small.txt streams=:6:4c47b3e816fbe7d40cef9f665ba8f0be1ae68b5e8e7ed70f5b6bab7f70528e8f
+file /empty.bin size=0 attrs=0x00000020 mtime=1794900758913409300 owner=S-1-5-32-544 names=empty.bin streams=:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+file /plain.bin size=307323 attrs=0x00000020 mtime=1794900758915149100 owner=S-1-5-32-544 names=plain.bin streams=:307323:12c898ad5b74016e2944c2588e872b18ec9dae1995c36ee1941b5bdcadfe6f2e
+file /dir/Ünïcödé%20näme.txt size=20 attrs=0x00000020 mtime=1794900758917370700 owner=S-1-5-32-544 names=dir/Ünïcödé%20näme.txt streams=:20:76e068fd921b7a03464b500b0d80ebabdfec3f21b9712b8ea83327ef2b4f0b6f
+file /dir/deep/er/est/leaf.bin size=9000 attrs=0x00000020 mtime=1794900758922660800 owner=S-1-5-32-544 names=dir/deep/er/est/leaf.bin streams=:9000:766b531edce0361f048887d50dbeeae7bbc701aa1857c6c92b94d7bd26772549
+file /ads.bin size=9000 attrs=0x00000020 mtime=1794900758927879100 owner=S-1-5-32-544 names=ads.bin streams=:9000:f28b22ca79a9424626d7f50861b348f5e31bae80cc3e1479a9067c8832f6495d|meta:20000:a68f36a45b338f459a7bf248341806e7078f264cf5e3ce8b60d04cff40001b38|tiny:4:8950abfda7b727630760dd35bcf5c3daa7631aff223a90f7728c0d2521dde10c
+file /ads-large.bin size=19 attrs=0x00000020 mtime=1794900758933155800 owner=S-1-5-32-544 names=ads-large.bin streams=:19:5471f4cb1a8e19d8bca5ec957350077411c74b13647a5180f5aff893c7bd00b4|big:307200:463a7eb2f60f84e7551febd8e072a42199e971f2003fa94e936a9cab70e77e8a
+file /sparse.bin size=1048576 attrs=0x00000220 mtime=1794900758937094300 owner=S-1-5-32-544 names=sparse.bin streams=:1048576:46ba82b1f9f55c31cca72cbb13ecaf8d3f443e3d3f8e5fd28be0e5b2d7578bf8
+file /linked.bin size=5000 attrs=0x00000020 mtime=1794900758937094300 owner=S-1-5-32-544 names=dir/linked-too.bin,linked.bin streams=:5000:ac36da314f59f2152bf1ccb5bc4be60fed2a044a2e288ab4f3e1d99a0f8daa9c
+file /dir/deep/moved.bin size=7000 attrs=0x00000020 mtime=1794900758939350300 owner=S-1-5-32-544 names=dir/deep/moved.bin streams=:7000:7a54a72994ec367d92571df5f8217897fc864105cea8aeef1b6e692f9ccd4337
+file /acl.txt size=18 attrs=0x00000020 mtime=1794900758950180200 owner=S-1-5-32-544 names=acl.txt streams=:18:2efc6ba5dbd3c5891ebfc2e66cc72ee6afc71be2ab4292b052bf60f9456fc5e7
+file /attrs.txt size=21 attrs=0x00000023 mtime=1794900758964922100 owner=S-1-5-32-544 names=attrs.txt streams=:21:e61e79ccda5ce939de7ec9aabec6955c26b82047f8935de9506b6d3f3202a746
+dir / acl.txt/ads-large.bin/ads.bin/attrs.txt/dir/empty%20dir/empty.bin/junction/linked.bin/plain.bin/small.txt/sparse.bin/symlink-dir/symlink-rel.txt
+dir /dir deep/linked-too.bin/symlink-abs.bin/Ünïcödé%20näme.txt
+dir /dir/deep er/moved.bin
+dir /dir/deep/er est
+dir /dir/deep/er/est leaf.bin
+dir /empty%20dir 

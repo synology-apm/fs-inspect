@@ -1,0 +1,35 @@
+[package]
+name = "fs-inspect-fat"
+description = "FAT12/16/32 and exFAT: on-disk format, allocation map, path lookup and change tracking"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[features]
+# Change tracking (`track`): the fs-inspect-change contract.
+change = ["dep:fs-inspect-change"]
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+fs-inspect-change = { workspace = true, optional = true }
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+fs-inspect-change = { workspace = true, features = ["test-util"] }
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-testkit.workspace = true
+proptest.workspace = true
+
+[[test]]
+name = "track_fixtures"
+required-features = ["change"]
+
+[lints]
+workspace = true

@@ -1,0 +1,123 @@
+== crc32c-16m
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  allocated: 9 ranges, 2285568 bytes, digest 7bde4cee81cbfb07
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== crc32c-72m
+btrfs unit 4096 bytes 0x4800000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  allocated: 10 ranges, 2289664 bytes, digest b922ad4b1c7a3f6b
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+    0x4000000 +0x1000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== xxhash-16m
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  allocated: 9 ranges, 2285568 bytes, digest 7bde4cee81cbfb07
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== sha256-16m
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  allocated: 9 ranges, 2285568 bytes, digest 7bde4cee81cbfb07
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== blake2b-unverified
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  info: [unverified] blake2b checksums are not verified
+  allocated: 9 ranges, 2285568 bytes, digest 7bde4cee81cbfb07
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== dup-copy-fallback
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  warning: [backup_used] tree node 0x401000: first copy damaged, using copy 1
+  allocated: 9 ranges, 2285568 bytes, digest 7bde4cee81cbfb07
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== dup-both-copies-bad
+open error Corrupt: corrupt structure: tree node 0x401000: checksum mismatch
+== primary-superblock-bad
+btrfs unit 4096 bytes 0x4800000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  warning: [checksum_mismatch] superblock copy at 0x10000 is damaged (corrupt structure: checksum mismatch)
+  warning: [backup_used] using the superblock copy at 0x4000000 (generation 7)
+  allocated: 10 ranges, 2289664 bytes, digest b922ad4b1c7a3f6b
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x800000 +0x4000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xd00000 +0x100000
+    0x4000000 +0x1000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+== log-tree
+btrfs unit 4096 bytes 0x1000000 label Some("synth") uuid Some("11223344-5566-7788-99aa-bbccddeeff01")
+  allocated: 12 ranges, 2318336 bytes, digest 9a65fbaef35c4627
+    0x0 +0x100000
+    0x200000 +0x1000
+    0x300000 +0x1000
+    0x600000 +0x4000
+    0x605000 +0x2000
+    0x800000 +0x4000
+    0x805000 +0x2000
+    0xa00000 +0x3000
+    0xa08000 +0x1000
+    0xb00000 +0x20000
+    0xc00000 +0x4000
+    0xd00000 +0x100000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325

@@ -1,0 +1,7 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc ed1f89dce6e61a339da731cf7dd4cc2454d3dad350cf3afa7114d47e728bb2e7 # shrinks to which = 2, region = Index(1642193378), edits = [(Index(1230329174), 2), (Index(1140850688), 254)]

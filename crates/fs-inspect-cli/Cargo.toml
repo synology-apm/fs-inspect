@@ -1,0 +1,46 @@
+[package]
+name = "fs-inspect-cli"
+description = "fs-inspect command line: the volumes of disk images and their maps, as JSON Lines"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[lib]
+name = "fs_inspect_cli"
+
+[[bin]]
+name = "fs-inspect"
+path = "src/main.rs"
+# Its rustdoc page would collide with the `fs_inspect` library's (same output name).
+doc = false
+
+[features]
+# FS_INSPECT_FAULT (failing reads, see `fault`): for the fault-check build only.
+fault-injection = ["dep:fs-inspect-io", "fs-inspect-io/test-util"]
+
+[dependencies]
+fs-inspect.workspace = true
+fs-inspect-host.workspace = true
+fs-inspect-io = { workspace = true, optional = true }
+clap.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+anyhow.workspace = true
+ctrlc.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+
+[dev-dependencies]
+fs-inspect-testkit = { workspace = true, features = ["ntfs"] }
+assert_cmd.workspace = true
+tar.workspace = true
+zip.workspace = true
+tempfile.workspace = true
+
+[lints]
+workspace = true

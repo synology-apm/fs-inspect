@@ -1,0 +1,13 @@
+# The tools image plus a full Ubuntu kernel that virtme-ng boots under QEMU, for file systems the
+# Docker Desktop (WSL2) kernel cannot mount: btrfs, XFS v4, ZFS (Ubuntu's kernel ships the zfs
+# module; zfsutils-linux has zpool / zfs / zdb). tools/docker/kernel_run.sh runs in it.
+FROM fsi-tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      qemu-system-x86 virtme-ng linux-image-generic busybox-static zstd \
+    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends zfsutils-linux linux-modules-extra-$(ls /lib/modules | sort -V | tail -1) \
+    && rm -rf /var/lib/apt/lists/*
+# The HWE kernel too (KERNEL_RUN_KERNEL=hwe in kernel_run.sh), for what the GA kernel lacks: md
+# linear, which 6.8 does not have and 6.14 does.
+RUN apt-get update && apt-get install -y --no-install-recommends linux-image-generic-hwe-24.04 \
+    && rm -rf /var/lib/apt/lists/*

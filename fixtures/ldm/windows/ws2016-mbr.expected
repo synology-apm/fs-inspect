@@ -1,0 +1,17 @@
+# Made by tools/fsi_tools/fixtures/ldm_windows.py from a kept ldm case's disks: where Windows
+# put each volume (IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS). <volume> <layout> <disk> <offset> <length>,
+# layout `-`: not mapped.
+Volume1 simple 0 65536 335544320
+Volume2 spanned 0 335609856 134217728
+Volume2 spanned 0 1140916224 100663296
+Volume2 spanned 1 65536 134217728
+Volume3 striped 0 469827584 167772160
+Volume3 striped 1 134283264 167772160
+Volume4 mirror 0 637599744 335544320
+Volume4 mirror 1 302055424 335544320
+Volume5 raid5 0 973144064 167772160
+Volume5 raid5 1 637599744 167772160
+Volume5 raid5 2 65536 167772160
+Volume6 - 1 805371904 67108864
+Volume6 - 1 889257984 33554432
+Volume6 - 2 167837696 100663296

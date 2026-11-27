@@ -1,0 +1,28 @@
+[package]
+name = "fs-inspect-codec"
+description = "Decompression of the formats file systems store data in: LZNT1, XPRESS, LZX, LZO, LZFSE, LZVN, LZBITMAP, LZ4, zstd, zlib, LZJB, ZLE"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+fs-inspect-core.workspace = true
+lzfse_rust.workspace = true
+zstd.workspace = true
+lz4_flex.workspace = true
+flate2.workspace = true
+
+[target.'cfg(windows)'.dev-dependencies]
+# The Windows compressor and decompressor (ntdll) as the oracle of LZNT1 and XPRESS.
+windows-sys = { workspace = true, features = ["Wdk_Storage_FileSystem"] }
+
+[dev-dependencies]
+proptest.workspace = true
+sha2.workspace = true
+
+[lints]
+workspace = true

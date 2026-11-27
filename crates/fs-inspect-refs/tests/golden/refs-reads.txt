@@ -1,0 +1,4 @@
+3.14-4k: reads 13 bytes 135680 largest 16384
+3.1-4k: reads 13 bytes 135680 largest 16384
+3.1-64k: reads 13 bytes 786944 largest 65536
+3.14-4k-deep: reads 29 bytes 430592 largest 32768

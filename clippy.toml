@@ -1,0 +1,9 @@
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+allow-panic-in-tests = true
+allow-indexing-slicing-in-tests = true
+# Scratch files and directories come from tempfile: a TempDir is removed when dropped, a failing
+# test's too (one made by hand under temp_dir() stays behind when the test fails).
+disallowed-methods = [
+  { path = "std::env::temp_dir", reason = "use tempfile (removed when dropped, also on a failure)" },
+]

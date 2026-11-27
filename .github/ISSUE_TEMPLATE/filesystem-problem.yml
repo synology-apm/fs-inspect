@@ -1,0 +1,64 @@
+name: A volume fs-inspect reads wrong
+description: A file system, partition table or volume manager fs-inspect fails to open, maps or lists wrong, or verifies wrong.
+labels: ["filesystem"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. `docs/reporting.md` in the repository says how to capture the
+        volume's metadata with `fs-inspect capture` (file contents left out) and what a capture holds.
+        **Look at a capture before attaching it**: metadata holds file names, sizes, times, the volume
+        label, and small files kept inside metadata; a fallback capture (`"mode": "fallback"`) may
+        hold file contents.
+
+        **Everything in an issue is public, attachments included**: there is no private channel
+        for reports. Attach only a capture you may share.
+  - type: input
+    id: version
+    attributes:
+      label: fs-inspect version
+      description: "`fs-inspect --version`, or the commit you built."
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Where it ran
+      description: "The OS fs-inspect ran on, and the OS and tools that made and wrote the volume (e.g. Windows 11 24H2 format.com; Ubuntu 26.04 mkfs.xfs 6.8)."
+    validations:
+      required: true
+  - type: dropdown
+    id: fs
+    attributes:
+      label: File system
+      options: [NTFS, FAT, exFAT, ext2/3/4, XFS, btrfs, APFS, ReFS, ZFS, a partition table or volume manager, not recognized]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The command you ran, what it printed (its error or the wrong output), and what you expected.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: manifest
+    attributes:
+      label: The capture's manifest.json
+      description: "`fs-inspect capture IMAGE [--volume N] -o DIR` writes it; paste it here (it names the image files, not their directories, and holds the volume's label and UUID, but lists none of the volume's files). Its `mode` says whether the volume opened."
+      render: json
+  - type: textarea
+    id: capture
+    attributes:
+      label: The capture
+      description: |
+        Attach `capture.fsbs` (zipped; the attachment is public), or say where it can be fetched and its SHA-256 (in the manifest).
+        If it cannot be shared, say so: the manifest and the output may be enough.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Before sharing
+      options:
+        - label: I looked at what the capture holds (`fs-inspect tree DIR/capture.fsbs`) and may share it publicly, or I attached none.
+          required: true

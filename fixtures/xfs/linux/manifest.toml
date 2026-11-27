@@ -1,0 +1,27 @@
+# The images of this directory and the checks each gets: one test per image,
+# crates/fs-inspect/tests/fixture_manifest.rs (fs-inspect-testkit's manifest module says the keys).
+# Checks only one image needs stay in the driver's tests/fixtures.rs.
+
+[[image]]
+name = "xfs"
+checks = ["lookup"]
+
+[[image]]
+name = "xfs-rmap"
+checks = ["lookup"]
+
+[[image]]
+name = "xfs-dirblk16k"
+checks = ["lookup"]
+
+[[image]]
+name = "xfs-ci"
+checks = ["lookup"]
+
+[[image]]
+name = "xfs-new"
+checks = ["lookup"]
+
+[[image]]
+name = "xfs-v4"
+checks = ["lookup"]

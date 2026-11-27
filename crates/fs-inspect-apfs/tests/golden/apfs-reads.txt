@@ -1,0 +1,6 @@
+single-level: reads 11 bytes 98304 largest 32768
+full-size-chunks: reads 6 bytes 53248 largest 32768
+cabs: reads 25 bytes 200704 largest 73728
+checkpoint-fallback: reads 12 bytes 102400 largest 32768
+bad-block0: reads 11 bytes 98304 largest 32768
+short-device: reads 10 bytes 90112 largest 32768

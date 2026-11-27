@@ -1,0 +1,55 @@
+== plain
+ntfs unit 4096 bytes 0x2000200 label Some("synthetic") uuid Some("123456789ABCDEF0")
+  allocated: 3 ranges, 352768 bytes, digest 7ae643be478a255b
+    0x0 +0x55000
+    0x1000000 +0x1000
+    0x2000000 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /docs/a.txt: [] head [7a, 48, 21, 9a, e2, b3, 83, 0d]
+  file /docs/b.bin: [[0x47000, 0x4b000)] head [f4, 90, 42, 6e, 7f, 41, 76, 0f]
+  file /c.bin: [[0x4b000, 0x55000)] head [13, 70, fe, 77, a6, c1, b6, 09]
+  consistency: clean
+== streams
+ntfs unit 4096 bytes 0x2000200 label Some("synthetic") uuid Some("123456789ABCDEF0")
+  allocated: 3 ranges, 578048 bytes, digest e97c7a19f132f2ba
+    0x0 +0x8c000
+    0x1000000 +0x1000
+    0x2000000 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /sparse.bin: [[0x47000, 0x4f000), [0x6f000, 0x87000)] head [22, dc, 5e, 07, ad, b8, 3a, 24]
+  file /packed.bin: [[0x4f000, 0x6f000)] head [e2, 10, 89, 3f, 2b, 21, 84, ea]
+  file /ads.txt: [[0x87000, 0x8c000)] head [26, e0, fc, ef, 4c, 83, 3d, e5]
+  file /link.txt: [[0x87000, 0x8c000)] head [26, e0, fc, ef, 4c, 83, 3d, e5]
+  consistency: clean
+== fragmented-mft
+ntfs unit 1024 bytes 0x1000200 label Some("synthetic") uuid Some("123456789ABCDEF0")
+  allocated: 3 ranges, 1446400 bytes, digest 4863dbe8ed7a27c6
+    0x0 +0x160000
+    0x800000 +0x1000
+    0x1000000 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /f00: [[0x31800, 0x32000)] head [c4, 21, 12, 7f, f6, e5, a3, c2]
+  file /f79: [[0x157800, 0x15e000)] head [4a, a2, 27, 2c, 84, 66, 32, 6c]
+  consistency: clean
+== log-not-clean
+ntfs unit 4096 bytes 0x2000200 label Some("synthetic") uuid Some("123456789ABCDEF0")
+  allocated: 3 ranges, 307712 bytes, digest 276aa771bf15281e
+    0x0 +0x4a000
+    0x1000000 +0x1000
+    0x2000000 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /open.bin: [[0x47000, 0x4a000)] head [36, 15, 98, f2, 84, d6, dd, ed]
+  consistency: inconsistent: the $LogFile restart area is not marked clean (or cannot be read)
+== bitmap-short
+ntfs unit 1024 bytes 0x800200 label Some("synthetic") uuid Some("123456789ABCDEF0")
+  allocated: 2 ranges, 4429312 bytes, digest e96d51331c3b6a4c
+    0x0 +0x39400
+    0x400000 +0x400200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  warning after reading: [counted_as_used] $Bitmap holds 512 of 1024 bytes; the clusters it does not cover count as used
+  consistency: clean

@@ -1,0 +1,7 @@
+# The tools image for a host whose own kernel mounts btrfs, XFS v4 and ZFS (FSI_HOST_KERNEL=1,
+# lib.sh): built on the host's Ubuntu release, so zfsutils-linux matches its zfs module.
+# Containers run on that kernel directly; Dockerfile.vm's QEMU is not needed (lib.sh).
+ARG TOOLS=fsi-tools
+FROM ${TOOLS}
+RUN apt-get update && apt-get install -y --no-install-recommends zfsutils-linux busybox-static \
+    && rm -rf /var/lib/apt/lists/*

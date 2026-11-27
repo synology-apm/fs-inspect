@@ -1,0 +1,5 @@
+plain: reads 29 bytes 192016 largest 131072
+streams: reads 30 bytes 261640 largest 131072
+fragmented-mft: reads 19 bytes 176656 largest 131072
+log-not-clean: reads 14 bytes 171528 largest 131072
+bitmap-short: reads 8 bytes 162816 largest 131072

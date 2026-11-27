@@ -1,0 +1,25 @@
+[package]
+name = "fs-inspect-change"
+description = "What changed in a file system since a previous snapshot: the tracker contract the fs-inspect drivers implement"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[features]
+# Test tooling: `ScanOnce`, `scanner::foreign_filesystem`, the `testing` module.
+test-util = []
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+xxhash-rust.workspace = true
+tracing.workspace = true
+
+[lints]
+workspace = true

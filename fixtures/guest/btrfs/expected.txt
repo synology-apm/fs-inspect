@@ -1,0 +1,15 @@
+# Made by tools/fsi_tools/fixtures/guest_linux_btrfs_zfs.py: each volume, what names it in the guest.
+# <image> <mount point> <fs> <where> <identity>
+fedora / btrfs disk0:part3 uuid=f0e1d2c3-b4a5-4697-8879-6a5b4c3d2e71 label=fedora subvol=root id=256 fstab=UUID=f0e1d2c3-b4a5-4697-8879-6a5b4c3d2e71,subvol=root
+fedora /home btrfs disk0:part3 uuid=f0e1d2c3-b4a5-4697-8879-6a5b4c3d2e71 label=fedora subvol=home id=257 fstab=UUID=f0e1d2c3-b4a5-4697-8879-6a5b4c3d2e71,subvol=home
+fedora /boot ext4 disk0:part2 uuid=a1b2c3d4-e5f6-4718-9a0b-1c2d3e4f5a61 label=boot fstab=UUID=a1b2c3d4-e5f6-4718-9a0b-1c2d3e4f5a61
+fedora /boot/efi vfat disk0:part1 uuid=1C2D-3E4F label=EFI fstab=UUID=1C2D-3E4F
+opensuse - btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@ id=256
+opensuse /home btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/home id=257
+opensuse /root btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/root id=258
+opensuse /var btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/var id=259
+opensuse /.snapshots btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/.snapshots id=260
+opensuse / btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/.snapshots/1/snapshot id=261 default
+opensuse - btrfs disk0:part2 uuid=0a1b2c3d-4e5f-4607-8819-2a3b4c5d6e81 subvol=@/.snapshots/2/snapshot id=262 readonly
+opensuse /boot/efi vfat disk0:part1 uuid=5A6B-7C8D label=EFI fstab=UUID=5A6B-7C8D
+opensuse swap linux-swap disk0:part3 uuid=3c4d5e6f-7081-4293-a4b5-c6d7e8f90a91 fstab=UUID=3c4d5e6f-7081-4293-a4b5-c6d7e8f90a91

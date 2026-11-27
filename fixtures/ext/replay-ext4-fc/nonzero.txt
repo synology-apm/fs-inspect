@@ -1,0 +1,8 @@
+# The 4 KiB runs not all zero of the volume once the kernel has replayed its log. Made by
+# tools/fsi_tools/fixtures/ext_xfs_replay.py; one range per line, byte offset and length.
+0 8192
+36864 167936
+4362240 24576
+12656640 8192
+12718080 806912
+14958592 266240

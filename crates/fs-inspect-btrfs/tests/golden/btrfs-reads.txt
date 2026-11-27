@@ -1,0 +1,9 @@
+crc32c-16m: reads 6 bytes 24576 largest 4096
+crc32c-72m: reads 7 bytes 28672 largest 4096
+xxhash-16m: reads 6 bytes 24576 largest 4096
+sha256-16m: reads 6 bytes 24576 largest 4096
+blake2b-unverified: reads 6 bytes 24576 largest 4096
+dup-copy-fallback: reads 7 bytes 28672 largest 4096
+dup-both-copies-bad: reads 5 bytes 20480 largest 4096
+primary-superblock-bad: reads 7 bytes 28672 largest 4096
+log-tree: reads 8 bytes 32768 largest 4096

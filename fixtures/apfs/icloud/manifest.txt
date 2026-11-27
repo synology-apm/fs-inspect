@@ -1,0 +1,8 @@
+# Made by tools/fsi_tools/fixtures/apfs_icloud.py on macOS 27.2 (26B123).
+# Line format: see the generator's docstring.
+file /evicted.txt size=10000 state=dataless flags=0x40000060 header=66706d6301000080102700000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf02000000 sha256=-
+file /evicted-big.bin size=300000 state=dataless flags=0x40000060 header=66706d6301000080e09304000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf02000000 sha256=-
+file /dir/evicted%20in%20dir.txt size=5000 state=dataless flags=0x40000060 header=66706d6301000080881300000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf02000000 sha256=-
+file /downloaded.bin size=200000 state=downloaded flags=0x40 header=66706d6301000080400d03000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf sha256=53b4ab7470980ecfd5a9619a12c48840b3511f4e4422fb9007d4a583c4672bcd
+file /uploaded.txt size=12345 state=uploaded flags=0x40 header=66706d6301000080393000000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf sha256=cf6811c6be59b02f93b0ae5393909505d921b2645013a512b843bc3b0a708b31
+file /empty.txt size=0 state=uploaded flags=0x40 header=66706d6301000080000000000000000006000000a0a1a2a3a4a5a6a7a8a9aaabacadaeaf sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

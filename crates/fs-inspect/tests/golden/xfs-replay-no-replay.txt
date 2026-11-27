@@ -1,0 +1,45 @@
+image origin External container Raw scheme None disk_bytes 0x14000000 sector None
+volume 0 offset 0x0 length 0x14000000 fs Some(Xfs)
+volume 0: xfs unit 4096 fs_bytes 0x14000000 label None uuid Some("0cfbe2c2-a3db-4c69-bf1c-f222191bfc11") | partition 0x14000000 known true range_bytes 0x14000000
+  Used Volume g=0: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+    0x0 +0x5b000
+    0x5000000 +0x48000
+    0xa000000 +0x4034000
+    0xf000000 +0xd000
+  Used Volume g=4096: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Used Volume g=1048576: 4 ranges, 71303168 bytes, digest 26e2a3b7edd78399
+  Used Image g=0: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Used Image g=4096: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Used Image g=1048576: 4 ranges, 71303168 bytes, digest 26e2a3b7edd78399
+  Data Volume g=0: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+    0x0 +0x5b000
+    0x5000000 +0x48000
+    0xa000000 +0x4034000
+    0xf000000 +0xd000
+  Data Volume g=4096: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Data Volume g=1048576: 4 ranges, 71303168 bytes, digest 26e2a3b7edd78399
+  Data Image g=0: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Data Image g=4096: 4 ranges, 68042752 bytes, digest bb13d40e65e73a0f
+  Data Image g=1048576: 4 ranges, 71303168 bytes, digest 26e2a3b7edd78399
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 4 ranges, 267501568 bytes, digest 34c26ab01bc175dd
+    0x5b000 +0x4fa5000
+    0x5048000 +0x4fb8000
+    0xe034000 +0xfcc000
+    0xf00d000 +0x4ff3000
+  Unused Volume g=4096: 4 ranges, 267501568 bytes, digest 34c26ab01bc175dd
+  Unused Volume g=1048576: 4 ranges, 264241152 bytes, digest c1654e4e2dc4b545
+  Unused Image g=0: 4 ranges, 267501568 bytes, digest 34c26ab01bc175dd
+  Unused Image g=4096: 4 ranges, 267501568 bytes, digest 34c26ab01bc175dd
+  Unused Image g=1048576: 4 ranges, 264241152 bytes, digest c1654e4e2dc4b545
+  warning: [journal_recovery] the log holds changes to replay (a log item icreate (0x123f)); read as on disk (replay turned off): blocks allocated only in the journal or log may be reported unused (snapshot a frozen or unmounted volume, or use a VSS snapshot)
+  warning: [exclusion_skipped] /swapfile: cannot look up the file (unsupported: xfs lookup while the log holds changes to replay (a log item icreate (0x123f))); it is kept (not excluded)
+  warning: [exclusion_skipped] /swap.img: cannot look up the file (unsupported: xfs lookup while the log holds changes to replay (a log item icreate (0x123f))); it is kept (not excluded)
+  warning: [exclusion_skipped] /var/swap: cannot look up the file (unsupported: xfs lookup while the log holds changes to replay (a log item icreate (0x123f))); it is kept (not excluded)
+  warning: [exclusion_skipped] /swap/swapfile: cannot look up the file (unsupported: xfs lookup while the log holds changes to replay (a log item icreate (0x123f))); it is kept (not excluded)
+  warning: [exclusion_skipped] /var/swap/swapfile: cannot look up the file (unsupported: xfs lookup while the log holds changes to replay (a log item icreate (0x123f))); it is kept (not excluded)

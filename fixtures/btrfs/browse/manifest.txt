@@ -1,0 +1,76 @@
+# Made by tools/fsi_tools/fixtures/ext_xfs_btrfs_zfs_browse.py (mkfs.btrfs -f -q; mount -o compress=zstd).
+# Line formats: see the generator's docstring.
+dir / acl/dangling/dev/dir/empty/empty%20dir/fast-link/flags/large.bin/modes/slow-link/small.txt/snap/sparse.bin/subvol/xattr/zip
+symlink /dangling target=does/not/exist
+file /empty size=0 mode=100644 uid=0 gid=0 mtime=1793654570093000000 nlink=1 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+symlink /fast-link target=small.txt
+file /large.bin size=3145851 mode=100644 uid=0 gid=0 mtime=1793654570138000000 nlink=1 sha256=0ab2d79142eb4cc2b0ea06b4161f88a042df542a835bf201fcae437e28500bdf
+symlink /slow-link target=/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/end
+file /small.txt size=6 mode=100644 uid=0 gid=0 mtime=1793654570100000000 nlink=2 sha256=4c47b3e816fbe7d40cef9f665ba8f0be1ae68b5e8e7ed70f5b6bab7f70528e8f
+file /sparse.bin size=2097152 mode=100644 uid=0 gid=0 mtime=1793654570237000000 nlink=1 sha256=dd5070acb14be455e530956f5c10781689f2e822ade439e76ff1bf41efb6bdc9
+dir /dir a/hardlink.txt/sub
+file /dir/hardlink.txt size=6 mode=100644 uid=0 gid=0 mtime=1793654570100000000 nlink=2 sha256=4c47b3e816fbe7d40cef9f665ba8f0be1ae68b5e8e7ed70f5b6bab7f70528e8f
+dir /dir/sub Ünïcödé%20name.bin
+file /dir/sub/Ünïcödé%20name.bin size=5000 mode=100644 uid=0 gid=0 mtime=1793654570176000000 nlink=1 sha256=49cb634562ffb33747553d84e5a12ae9413f5005243203bd895bb2e29af7821a
+dir /dir/a b
+dir /dir/a/b c
+dir /dir/a/b/c d
+dir /dir/a/b/c/d deep.txt
+file /dir/a/b/c/d/deep.txt size=5 mode=100644 uid=0 gid=0 mtime=1793654570177000000 nlink=1 sha256=64896f89fd11190013b70103e603a1c5826e56b7fb7d2197ab279b0690043599
+dir /empty%20dir 
+dir /dev fifo/null/sda1/socket
+node /dev/fifo kind=fifo mode=10644 rdev=0:0
+node /dev/null kind=char mode=20644 rdev=1:3
+node /dev/sda1 kind=block mode=60640 rdev=8:1
+node /dev/socket kind=socket mode=140755 rdev=0:0
+dir /modes owned/setuid/sticky
+file /modes/owned size=6 mode=100644 uid=1000 gid=1001 mtime=1793654570248000000 nlink=1 sha256=33bff9108736f23280e9cd50cb1472e3a5b4403ed3f2da1fe67b8487a4fb75c6
+file /modes/setuid size=10 mode=104755 uid=0 gid=0 mtime=1793654570244000000 nlink=1 sha256=a8076d3d28d21e02012b20eaf7dbf75409a6277134439025f282e368e3305abf
+dir /modes/sticky 
+dir /xattr big/small
+xattr /xattr/big user.big sha256=f7b23fdfad20988be4e3989c9f1f6b4eb14cb05729dc9ee8f090000b76663476
+file /xattr/big size=2 mode=100644 uid=0 gid=0 mtime=1793654570251000000 nlink=1 sha256=3bb2abb69ebb27fbfe63c7639624c6ec5e331b841a5bc8c3ebc10b9285e90877
+xattr /xattr/small security.s sha256=5d2d3ceb7abe552344276d47d36a8175b7aeb250a9bf0bf00e850cd23ecf2e43
+xattr /xattr/small trusted.t sha256=a9a089195c68d2adeee23beaa2c3a93b1d4cdf09046e7a9e520b3b166dff3e6a
+xattr /xattr/small user.one sha256=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+xattr /xattr/small user.two sha256=3bc457ef6e502bf1360ad56dba3a64c48dbd2a145bb622215338256817df7031
+file /xattr/small size=2 mode=100644 uid=0 gid=0 mtime=1793654570249000000 nlink=1 sha256=73cb3858a687a8494ca3323053016282f3dad39d42cf62ca4e79dda2aac7d9ac
+dir /acl dir/file
+acl /acl/dir access=0 default=1
+acl /acl/file access=1 default=0
+file /acl/file size=4 mode=100664 uid=0 gid=0 mtime=1793654570283000000 nlink=1 sha256=fd21d510dfabef9b7f7f7836c2af5a8ceb027997482218d482eb07b69bce6bbc
+dir /acl/dir 
+dir /flags append/immutable
+file /flags/append size=2 mode=100644 uid=0 gid=0 mtime=1793654570453000000 nlink=1 sha256=87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7 flags=a
+file /flags/immutable size=2 mode=100644 uid=0 gid=0 mtime=1793654570450000000 nlink=1 sha256=50c393f158c3de2db92fa9661bfb00eda5b67c3a777c88524ed3417509631625 flags=i
+dir /zip lzo/zlib/zstd
+xattr /zip/lzo btrfs.compression sha256=523b065f90e7c5aff8f9b64d62abcc29313fdbc46e7b525091267d223526e609
+xattr /zip/zlib btrfs.compression sha256=0ea55c28f8014d8886b6248fe3da5d588f55c0823847a6b4579f1131b051b5e2
+xattr /zip/zstd btrfs.compression sha256=242daddb4ed79680ac790d9f9c01ca43c8fc3a16f1af137f7cb090c086988782
+dir /zip/zlib inline.txt/mixed.bin/text.bin
+xattr /zip/zlib/inline.txt btrfs.compression sha256=0ea55c28f8014d8886b6248fe3da5d588f55c0823847a6b4579f1131b051b5e2
+file /zip/zlib/inline.txt size=1500 mode=100644 uid=0 gid=0 mtime=1793654570907000000 nlink=1 sha256=caf3b03ef12d68a9565d1e16e51544a217b343be71263b379f910865cefadb2f
+xattr /zip/zlib/mixed.bin btrfs.compression sha256=0ea55c28f8014d8886b6248fe3da5d588f55c0823847a6b4579f1131b051b5e2
+file /zip/zlib/mixed.bin size=512000 mode=100644 uid=0 gid=0 mtime=1793654570975000000 nlink=1 sha256=29f9312e8e71f3c7fe0c1e3e19629b0d90a5c796b0744fce79d702683507365e
+xattr /zip/zlib/text.bin btrfs.compression sha256=0ea55c28f8014d8886b6248fe3da5d588f55c0823847a6b4579f1131b051b5e2
+file /zip/zlib/text.bin size=716800 mode=100644 uid=0 gid=0 mtime=1793654570903000000 nlink=1 sha256=85b9cdc5a70f97f9ae185e065a6e2f4f31bd53adc7492fc1d8b17afcb9840a6c
+dir /zip/lzo inline.txt/mixed.bin/text.bin
+xattr /zip/lzo/inline.txt btrfs.compression sha256=523b065f90e7c5aff8f9b64d62abcc29313fdbc46e7b525091267d223526e609
+file /zip/lzo/inline.txt size=1500 mode=100644 uid=0 gid=0 mtime=1793654571194000000 nlink=1 sha256=caf3b03ef12d68a9565d1e16e51544a217b343be71263b379f910865cefadb2f
+xattr /zip/lzo/mixed.bin btrfs.compression sha256=523b065f90e7c5aff8f9b64d62abcc29313fdbc46e7b525091267d223526e609
+file /zip/lzo/mixed.bin size=512000 mode=100644 uid=0 gid=0 mtime=1793654571266000000 nlink=1 sha256=9a579f5fd83a5d28336b6a4cecd14ffb65fae0d70c3855a3ef2585e31b6fe56d
+xattr /zip/lzo/text.bin btrfs.compression sha256=523b065f90e7c5aff8f9b64d62abcc29313fdbc46e7b525091267d223526e609
+file /zip/lzo/text.bin size=716800 mode=100644 uid=0 gid=0 mtime=1793654571190000000 nlink=1 sha256=85b9cdc5a70f97f9ae185e065a6e2f4f31bd53adc7492fc1d8b17afcb9840a6c
+dir /zip/zstd inline.txt/mixed.bin/text.bin
+xattr /zip/zstd/inline.txt btrfs.compression sha256=242daddb4ed79680ac790d9f9c01ca43c8fc3a16f1af137f7cb090c086988782
+file /zip/zstd/inline.txt size=1500 mode=100644 uid=0 gid=0 mtime=1793654571487000000 nlink=1 sha256=caf3b03ef12d68a9565d1e16e51544a217b343be71263b379f910865cefadb2f
+xattr /zip/zstd/mixed.bin btrfs.compression sha256=242daddb4ed79680ac790d9f9c01ca43c8fc3a16f1af137f7cb090c086988782
+file /zip/zstd/mixed.bin size=512000 mode=100644 uid=0 gid=0 mtime=1793654571559000000 nlink=1 sha256=c06d2a3a9f5638ba1bd556ffa040a62d9258d1b2deb5df3b01cf1f06c8726fcf
+xattr /zip/zstd/text.bin btrfs.compression sha256=242daddb4ed79680ac790d9f9c01ca43c8fc3a16f1af137f7cb090c086988782
+file /zip/zstd/text.bin size=716800 mode=100644 uid=0 gid=0 mtime=1793654571483000000 nlink=1 sha256=85b9cdc5a70f97f9ae185e065a6e2f4f31bd53adc7492fc1d8b17afcb9840a6c
+dir /subvol in-subvol.txt
+file /subvol/in-subvol.txt size=15 mode=100644 uid=0 gid=0 mtime=1793654571686000000 nlink=1 sha256=4b47fac2872481caf11b8492e0d1f80f2bbc38c283ab1b082eeb7b24b39c0137
+dir /snap in-subvol.txt
+file /snap/in-subvol.txt size=15 mode=100644 uid=0 gid=0 mtime=1793654571686000000 nlink=1 sha256=4b47fac2872481caf11b8492e0d1f80f2bbc38c283ab1b082eeb7b24b39c0137
+root subvol kind=subvolume
+root snap kind=snapshot

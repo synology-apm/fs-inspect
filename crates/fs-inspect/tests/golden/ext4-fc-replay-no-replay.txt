@@ -1,0 +1,38 @@
+image origin External container Raw scheme None disk_bytes 0x4000000 sector None
+volume 0 offset 0x0 length 0x4000000 fs Some(Ext4)
+volume 0: ext4 unit 4096 fs_bytes 0x4000000 label None uuid Some("3edc2da3-ded5-4520-8bfd-45305166ceed") | partition 0x4000000 known true range_bytes 0x4000000
+  Used Volume g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+    0x0 +0x4000000
+  Used Volume g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Volume g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Used Image g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Volume g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+    0x0 +0x4000000
+  Data Volume g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Volume g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=0: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=4096: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Data Image g=1048576: 1 ranges, 67108864 bytes, digest 5564930f6bc1bad9
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  info: [journal_recovery] 1 ext group descriptor(s) taken from the journal (replay writes them back)
+  info: [journal_recovery] the file system needs journal recovery: merged 1 logged block bitmap copies from 1 committed transactions and 2 fast-commit ranges
+  info: [journal_recovery] needs_recovery is set: the journal holds transactions to replay; read as on disk (replay turned off)
+  warning: [exclusion_skipped] /swapfile: cannot look up the file (unsupported: ext lookup while the journal needs replay: a fast-commit replay is pending); it is kept (not excluded)
+  warning: [exclusion_skipped] /swap.img: cannot look up the file (unsupported: ext lookup while the journal needs replay: a fast-commit replay is pending); it is kept (not excluded)
+  warning: [exclusion_skipped] /var/swap: cannot look up the file (unsupported: ext lookup while the journal needs replay: a fast-commit replay is pending); it is kept (not excluded)
+  warning: [exclusion_skipped] /swap/swapfile: cannot look up the file (unsupported: ext lookup while the journal needs replay: a fast-commit replay is pending); it is kept (not excluded)
+  warning: [exclusion_skipped] /var/swap/swapfile: cannot look up the file (unsupported: ext lookup while the journal needs replay: a fast-commit replay is pending); it is kept (not excluded)
+  warning: [counted_as_used] ext group 0: block bitmap checksum mismatch; group reported used

@@ -1,0 +1,31 @@
+# The images of this directory and the checks each gets: one test per image,
+# crates/fs-inspect/tests/fixture_manifest.rs (fs-inspect-testkit's manifest module says the keys).
+# Checks only one image needs stay in the driver's tests/fixtures.rs.
+
+[[image]]
+name = "btrfs"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-4k"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-dup"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-compress"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-lzo"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-zlib"
+checks = ["lookup"]
+
+[[image]]
+name = "btrfs-bgt"
+checks = ["lookup"]

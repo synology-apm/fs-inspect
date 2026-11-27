@@ -1,0 +1,7 @@
+# Seeds for failure cases proptest has generated in the past. It is
+# automatically read and these particular cases re-run before any
+# novel cases are generated.
+#
+# It is recommended to check this file in to source control so that
+# everyone who runs the test benefits from these saved cases.
+cc 014a6393b313d17a9a2f156dd6e6058938a92709146d67b2c7e3271c764ab440 # shrinks to (layout, n) = (Striped { chunk: 512, areas: [Area { member: 0, start: 0 }, Area { member: 1, start: 512 }, Area { member: 2, start: 1024 }] }, 3), raw = [(0, 1)]

@@ -1,0 +1,111 @@
+image origin External container Raw scheme Gpt disk_bytes 0x40000000 sector Some(512)
+volume 0 offset 0x5000 length 0xbebd000 fs Some(Apfs) | Gpt #1 mbr_type None logical false type Some("7C3457EF-0000-11AA-AA11-00306543ECAC") guid Some("A720CFE1-D63D-4702-BE43-C9B0966552C1") name None
+volume 1 offset 0xbec2000 length 0x23c35000 fs Some(Apfs) | Gpt #2 mbr_type None logical false type Some("7C3457EF-0000-11AA-AA11-00306543ECAC") guid Some("439E5B34-17F1-4207-896F-1A7DEB489CBB") name None
+volume 2 offset 0x2faf7000 length 0x10504000 fs Some(Apfs) | Gpt #3 mbr_type None logical false type Some("7C3457EF-0000-11AA-AA11-00306543ECAC") guid Some("F84CE47D-4EA9-45C6-9D98-3B127C08F6D0") name None
+volume 0: apfs unit 4096 fs_bytes 0xbebd000 label None uuid Some("EC884F9F-A34F-40CE-8B8F-03B0C481C4B8") | partition 0xbebd000 known true range_bytes 0xbebd000
+  Used Volume g=0: 1 ranges, 1998848 bytes, digest 0a68b3c20ac09c3b
+    0x0 +0x1e8000
+  Used Volume g=4096: 1 ranges, 1998848 bytes, digest 0a68b3c20ac09c3b
+  Used Volume g=1048576: 1 ranges, 2097152 bytes, digest 1aeca6171f382b85
+  Used Image g=0: 1 ranges, 1998848 bytes, digest 327589973753ddab
+  Used Image g=4096: 1 ranges, 1998848 bytes, digest 327589973753ddab
+  Used Image g=1048576: 1 ranges, 2076672 bytes, digest 9383f31cea5db0e2
+  Data Volume g=0: 1 ranges, 1998848 bytes, digest 0a68b3c20ac09c3b
+    0x0 +0x1e8000
+  Data Volume g=4096: 1 ranges, 1998848 bytes, digest 0a68b3c20ac09c3b
+  Data Volume g=1048576: 1 ranges, 2097152 bytes, digest 1aeca6171f382b85
+  Data Image g=0: 1 ranges, 1998848 bytes, digest 327589973753ddab
+  Data Image g=4096: 1 ranges, 1998848 bytes, digest 327589973753ddab
+  Data Image g=1048576: 1 ranges, 2076672 bytes, digest 9383f31cea5db0e2
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 1 ranges, 198004736 bytes, digest cc9e427e90283f23
+    0x1e8000 +0xbcd5000
+  Unused Volume g=4096: 1 ranges, 198004736 bytes, digest cc9e427e90283f23
+  Unused Volume g=1048576: 1 ranges, 197906432 bytes, digest 394782401930d4bb
+  Unused Image g=0: 1 ranges, 198004736 bytes, digest 05ba4e4340cf93b3
+  Unused Image g=4096: 1 ranges, 198004736 bytes, digest 05ba4e4340cf93b3
+  Unused Image g=1048576: 1 ranges, 197926912 bytes, digest 7bd20e475b9bf328
+volume 1: apfs unit 4096 fs_bytes 0x23c35000 label None uuid Some("59F47190-A980-4DC3-99DF-5BD28F42FE1A") | partition 0x23c35000 known true range_bytes 0x23c35000
+  Used Volume g=0: 1 ranges, 4694016 bytes, digest c468c968ef37d71a
+    0x0 +0x47a000
+  Used Volume g=4096: 1 ranges, 4694016 bytes, digest c468c968ef37d71a
+  Used Volume g=1048576: 1 ranges, 5242880 bytes, digest 771f6fa3bc8d5635
+  Used Image g=0: 1 ranges, 4694016 bytes, digest f151cac044b8c7f7
+  Used Image g=4096: 1 ranges, 4694016 bytes, digest f151cac044b8c7f7
+  Used Image g=1048576: 1 ranges, 5496832 bytes, digest 3ef1b405effc7863
+  Data Volume g=0: 1 ranges, 4694016 bytes, digest c468c968ef37d71a
+    0x0 +0x47a000
+  Data Volume g=4096: 1 ranges, 4694016 bytes, digest c468c968ef37d71a
+  Data Volume g=1048576: 1 ranges, 5242880 bytes, digest 771f6fa3bc8d5635
+  Data Image g=0: 1 ranges, 4694016 bytes, digest f151cac044b8c7f7
+  Data Image g=4096: 1 ranges, 4694016 bytes, digest f151cac044b8c7f7
+  Data Image g=1048576: 1 ranges, 5496832 bytes, digest 3ef1b405effc7863
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 1 ranges, 595308544 bytes, digest 6c7df3f33fcfc310
+    0x47a000 +0x237bb000
+  Unused Volume g=4096: 1 ranges, 595308544 bytes, digest 6c7df3f33fcfc310
+  Unused Volume g=1048576: 1 ranges, 594759680 bytes, digest 88fc37238e032ccb
+  Unused Image g=0: 1 ranges, 595308544 bytes, digest 6935c653c3499f28
+  Unused Image g=4096: 1 ranges, 595308544 bytes, digest 6935c653c3499f28
+  Unused Image g=1048576: 1 ranges, 594505728 bytes, digest 225c89a17984c4f3
+volume 2: apfs unit 4096 fs_bytes 0x10504000 label None uuid Some("882EEC27-A84A-4462-881A-407BDC1A9C81") | partition 0x10504000 known true range_bytes 0x10504000
+  Used Volume g=0: 1 ranges, 2138112 bytes, digest a1c662e87e62d465
+    0x0 +0x20a000
+  Used Volume g=4096: 1 ranges, 2138112 bytes, digest a1c662e87e62d465
+  Used Volume g=1048576: 1 ranges, 3145728 bytes, digest e452e945fe548f15
+  Used Image g=0: 1 ranges, 2138112 bytes, digest 49bc22ddf2d07b0b
+  Used Image g=4096: 1 ranges, 2138112 bytes, digest 49bc22ddf2d07b0b
+  Used Image g=1048576: 1 ranges, 3182592 bytes, digest 5b45a9043f8b002b
+  Data Volume g=0: 1 ranges, 2138112 bytes, digest a1c662e87e62d465
+    0x0 +0x20a000
+  Data Volume g=4096: 1 ranges, 2138112 bytes, digest a1c662e87e62d465
+  Data Volume g=1048576: 1 ranges, 3145728 bytes, digest e452e945fe548f15
+  Data Image g=0: 1 ranges, 2138112 bytes, digest 49bc22ddf2d07b0b
+  Data Image g=4096: 1 ranges, 2138112 bytes, digest 49bc22ddf2d07b0b
+  Data Image g=1048576: 1 ranges, 3182592 bytes, digest 5b45a9043f8b002b
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 1 ranges, 271556608 bytes, digest 6a7890694b484b22
+    0x20a000 +0x102fa000
+  Unused Volume g=4096: 1 ranges, 271556608 bytes, digest 6a7890694b484b22
+  Unused Volume g=1048576: 1 ranges, 270548992 bytes, digest fdc8a19a61d184a5
+  Unused Image g=0: 1 ranges, 271556608 bytes, digest 3732c5adbb84f2ff
+  Unused Image g=4096: 1 ranges, 271556608 bytes, digest 3732c5adbb84f2ff
+  Unused Image g=1048576: 1 ranges, 270512128 bytes, digest a1a43a1f3c88447f
+  disk Used g=0: 4 ranges, 8871936 bytes, digest 24cfe576610f4809
+  disk Used g=4096: 4 ranges, 8871936 bytes, digest 24cfe576610f4809
+    0x0 +0x1ed000
+    0xbec2000 +0x47a000
+    0x2faf7000 +0x20a000
+    0x3fffb000 +0x5000
+  disk Used g=1048576: 4 ranges, 13631488 bytes, digest 76815d0b680856c4
+  disk Data g=0: 4 ranges, 8871936 bytes, digest 24cfe576610f4809
+  disk Data g=4096: 4 ranges, 8871936 bytes, digest 24cfe576610f4809
+    0x0 +0x1ed000
+    0xbec2000 +0x47a000
+    0x2faf7000 +0x20a000
+    0x3fffb000 +0x5000
+  disk Data g=1048576: 4 ranges, 13631488 bytes, digest 76815d0b680856c4
+  disk Zero g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Zero g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Zero g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Unused g=0: 3 ranges, 1064869888 bytes, digest cdaf58ed9e6e3e4c
+  disk Unused g=4096: 3 ranges, 1064869888 bytes, digest cdaf58ed9e6e3e4c
+    0x1ed000 +0xbcd5000
+    0xc33c000 +0x237bb000
+    0x2fd01000 +0x102fa000
+  disk Unused g=1048576: 3 ranges, 1060110336 bytes, digest d71da8635c621cf4

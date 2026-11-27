@@ -1,0 +1,8 @@
+# Made by tools/fsi_tools/fixtures/guest_linux_btrfs_zfs.py: each volume, what names it in the guest.
+# <mount point> <fs> <where> <identity>
+/ ext4 lvm:vg0/root uuid=5e7b2c90-1f4d-4a6e-b8c3-9d0e1f2a3b21 label=root fstab=/dev/mapper/vg0-root
+/boot ext4 disk0:part2 uuid=3b1f6f7e-7a52-4b9e-8d55-0b6e4c2a9e11 label=boot fstab=UUID=3b1f6f7e-7a52-4b9e-8d55-0b6e4c2a9e11
+/boot/efi vfat disk0:part1 partuuid=8c2f1d1a-4d0e-4f5b-9a63-1f0e2b7c4d01 uuid=6A3E-91C2 label=EFI fstab=PARTUUID=8c2f1d1a-4d0e-4f5b-9a63-1f0e2b7c4d01
+/home xfs lvm:vg0/home uuid=7a9c1e3f-5b2d-4e8a-9c6f-0d1e2f3a4b31 label=home fstab=/dev/vg0/home
+/srv/my%20data ext4 lvm:vg0/data uuid=9c1e3a5b-7d2f-4a8c-8e6b-1f2a3b4c5d41 label=data fstab=LABEL=data
+swap linux-swap lvm:vg0/swap uuid=2d4f6a8c-0e1b-4c3d-9f5e-6a7b8c9d0e51 label=swap fstab=/dev/mapper/vg0-swap

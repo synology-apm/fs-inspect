@@ -1,0 +1,23 @@
+[package]
+name = "fs-inspect-volmgr"
+description = "Volume managers: LVM2, Linux md RAID and Windows dynamic disks (LDM)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-testkit.workspace = true
+proptest.workspace = true
+
+[lints]
+workspace = true

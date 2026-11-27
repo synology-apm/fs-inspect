@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.img binary
+*.bin binary
+*.fsbs binary
+*.raw binary
+*.dmg binary

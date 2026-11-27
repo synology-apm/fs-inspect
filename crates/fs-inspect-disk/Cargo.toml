@@ -1,0 +1,22 @@
+[package]
+name = "fs-inspect-disk"
+description = "Disk images without external libraries: raw/split, VHD, VHDX containers; MBR/GPT partitions"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+
+[dev-dependencies]
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-testkit.workspace = true
+tempfile.workspace = true
+
+[lints]
+workspace = true

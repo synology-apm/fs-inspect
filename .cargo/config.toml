@@ -1,0 +1,14 @@
+[alias]
+xtask = "run --quiet --package xtask --"
+
+# Windows builds link the C runtime statically, every one (tests and the release archive
+# alike): the CLI and the DLL run where no Visual C++ redistributable is installed, and a C
+# program links the static library with /MT (docs/ffi.md#windows-c-runtime).
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.aarch64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.i686-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

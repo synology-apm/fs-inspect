@@ -1,0 +1,23 @@
+[package]
+name = "fs-inspect-guest"
+description = "How the guest OS names its volumes: a read-only Windows registry hive reader, MountedDevices values, /etc/fstab"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+fs-inspect-core.workspace = true
+
+[dev-dependencies]
+fs-inspect-testkit.workspace = true
+# A GPT partition's GUID as fs-inspect reads it, to compare with MountedDevices.
+fs-inspect-disk.workspace = true
+fs-inspect-io.workspace = true
+proptest.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,11 @@
+# What the file system uses once the kernel has replayed its log: the complement of the
+# free space its own tools read (xfs_db freesp, dumpe2fs), but the blocks free on disk
+# before that recovery wrote (what finishing intents allocates: btree blocks written
+# whole; a copy needs none of their bytes). Made by
+# tools/fsi_tools/fixtures/ext_xfs_replay.py; one range per line, byte offset and length.
+0 12877824
+12914688 163840
+13082624 131072
+13217792 307200
+14958592 102400
+15220736 4096

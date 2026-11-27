@@ -1,0 +1,31 @@
+[package]
+name = "fs-inspect-py"
+description = "Python binding of fs-inspect (the `fs_inspect` package, built with maturin)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[lib]
+name = "fs_inspect_py"
+crate-type = ["cdylib"]
+# Python's tests drive it (pytest); there are no Rust tests to link against libpython.
+test = false
+doctest = false
+
+[features]
+# `fs_inspect._testing`: sources over the repository's `.fsbs` fixtures. Development builds only.
+testkit = ["dep:fs-inspect-testkit"]
+# Set by maturin (pyproject.toml): an extension module does not link libpython.
+extension-module = ["pyo3/extension-module"]
+
+[dependencies]
+fs-inspect.workspace = true
+fs-inspect-testkit = { workspace = true, optional = true }
+pyo3.workspace = true
+
+[lints]
+workspace = true

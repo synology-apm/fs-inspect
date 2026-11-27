@@ -1,0 +1,499 @@
+image origin External container Raw scheme Gpt disk_bytes 0x100000000 sector Some(512)
+volume 0 offset 0x4400 length 0xffbc00 fs None | Gpt #1 mbr_type None logical false type Some("E3C9E316-0B5C-4DB8-817D-F92DF00215AE") guid Some("982D52CA-CBEF-442E-8FC4-CF309E45728B") name Some("Microsoft reserved partition")
+volume 1 offset 0x1000000 length 0x80000000 fs Some(Refs) | Gpt #2 mbr_type None logical false type Some("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7") guid Some("2368266F-B9FD-4C87-A3D9-72CC5CE29F18") name Some("Basic data partition")
+volume 2 offset 0x81000000 length 0x7ef00000 fs Some(Refs) | Gpt #3 mbr_type None logical false type Some("EBD0A0A2-B9E5-4433-87C0-68B6B72699C7") guid Some("CB8C2098-9A14-4D6B-BFC1-05B35A6D9488") name Some("Basic data partition")
+volume 0: raw unit 512 fs_bytes 0xffbc00 label None uuid None | partition 0xffbc00 known true range_bytes 0xffbc00
+  Used Volume g=0: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+    0x0 +0xffbc00
+  Used Volume g=4096: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+  Used Volume g=1048576: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+  Used Image g=0: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Used Image g=4096: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Used Image g=1048576: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Data Volume g=0: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+    0x0 +0xffbc00
+  Data Volume g=4096: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+  Data Volume g=1048576: 1 ranges, 16759808 bytes, digest 43fba2edd40c4736
+  Data Image g=0: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Data Image g=4096: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Data Image g=1048576: 1 ranges, 16759808 bytes, digest 292e738b75c1100a
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+volume 1: refs unit 4096 fs_bytes 0x80000000 label None uuid Some("56C6242BC6240E35") | partition 0x80000000 known true range_bytes 0x80000000
+  Used Volume g=0: 41 ranges, 423129088 bytes, digest bb9fd87dc636c0b4
+    0x0 +0x24000
+    0x30000 +0x8000
+    0x400000 +0x4000
+    0x604000 +0x4000
+    0xe00000 +0x4000
+    0x1000000 +0xc000
+    0x149c000 +0x4000
+    0x1600000 +0x4000
+    0x1a00000 +0x4000
+    0x1a08000 +0x4000
+    0x2004000 +0xc000
+    0x2200000 +0x4000
+    0x2804000 +0x4000
+    0x2a00000 +0x4000
+    0x2e00000 +0x10000
+    0x3000000 +0x4000
+    0x3400000 +0xc000
+    0x3600000 +0x4000
+    0x3a00000 +0x4000
+    0x3c04000 +0x4000
+    0x4c00000 +0x4000
+    0x5400000 +0x4000
+    0x7800000 +0x4000
+    0x8000000 +0x8000
+    0x8010000 +0x4664000
+    0xf5e0000 +0x4000
+    0x10000000 +0x10000000
+    0x20008000 +0x4000
+    0x20800000 +0x4000
+    0x20c00000 +0x4000
+    0x21004000 +0x4000
+    0x21604000 +0x4000
+    0x21e00000 +0x4000
+    0x22404000 +0x4000
+    0x3e879000 +0x2800000
+    0x4a879000 +0x3ff000
+    0x4b478000 +0x400000
+    0x4bc78000 +0x400000
+    0x4e877000 +0x1000000
+    0x50876000 +0x854000
+    0x7fffc000 +0x4000
+  Used Volume g=4096: 41 ranges, 423129088 bytes, digest bb9fd87dc636c0b4
+  Used Volume g=1048576: 37 ranges, 460324864 bytes, digest 6bfb1af436d54ba2
+  Used Image g=0: 41 ranges, 423129088 bytes, digest 28976364d619b411
+  Used Image g=4096: 41 ranges, 423129088 bytes, digest 28976364d619b411
+  Used Image g=1048576: 37 ranges, 460324864 bytes, digest 35c6303ef5f8447d
+  Data Volume g=0: 41 ranges, 423129088 bytes, digest bb9fd87dc636c0b4
+    0x0 +0x24000
+    0x30000 +0x8000
+    0x400000 +0x4000
+    0x604000 +0x4000
+    0xe00000 +0x4000
+    0x1000000 +0xc000
+    0x149c000 +0x4000
+    0x1600000 +0x4000
+    0x1a00000 +0x4000
+    0x1a08000 +0x4000
+    0x2004000 +0xc000
+    0x2200000 +0x4000
+    0x2804000 +0x4000
+    0x2a00000 +0x4000
+    0x2e00000 +0x10000
+    0x3000000 +0x4000
+    0x3400000 +0xc000
+    0x3600000 +0x4000
+    0x3a00000 +0x4000
+    0x3c04000 +0x4000
+    0x4c00000 +0x4000
+    0x5400000 +0x4000
+    0x7800000 +0x4000
+    0x8000000 +0x8000
+    0x8010000 +0x4664000
+    0xf5e0000 +0x4000
+    0x10000000 +0x10000000
+    0x20008000 +0x4000
+    0x20800000 +0x4000
+    0x20c00000 +0x4000
+    0x21004000 +0x4000
+    0x21604000 +0x4000
+    0x21e00000 +0x4000
+    0x22404000 +0x4000
+    0x3e879000 +0x2800000
+    0x4a879000 +0x3ff000
+    0x4b478000 +0x400000
+    0x4bc78000 +0x400000
+    0x4e877000 +0x1000000
+    0x50876000 +0x854000
+    0x7fffc000 +0x4000
+  Data Volume g=4096: 41 ranges, 423129088 bytes, digest bb9fd87dc636c0b4
+  Data Volume g=1048576: 37 ranges, 460324864 bytes, digest 6bfb1af436d54ba2
+  Data Image g=0: 41 ranges, 423129088 bytes, digest 28976364d619b411
+  Data Image g=4096: 41 ranges, 423129088 bytes, digest 28976364d619b411
+  Data Image g=1048576: 37 ranges, 460324864 bytes, digest 35c6303ef5f8447d
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 40 ranges, 1724354560 bytes, digest b1cee5d8a3c28b94
+    0x24000 +0xc000
+    0x38000 +0x3c8000
+    0x404000 +0x200000
+    0x608000 +0x7f8000
+    0xe04000 +0x1fc000
+    0x100c000 +0x490000
+    0x14a0000 +0x160000
+    0x1604000 +0x3fc000
+    0x1a04000 +0x4000
+    0x1a0c000 +0x5f8000
+    0x2010000 +0x1f0000
+    0x2204000 +0x600000
+    0x2808000 +0x1f8000
+    0x2a04000 +0x3fc000
+    0x2e10000 +0x1f0000
+    0x3004000 +0x3fc000
+    0x340c000 +0x1f4000
+    0x3604000 +0x3fc000
+    0x3a04000 +0x200000
+    0x3c08000 +0xff8000
+    0x4c04000 +0x7fc000
+    0x5404000 +0x23fc000
+    0x7804000 +0x7fc000
+    0x8008000 +0x8000
+    0xc674000 +0x2f6c000
+    0xf5e4000 +0xa1c000
+    0x20000000 +0x8000
+    0x2000c000 +0x7f4000
+    0x20804000 +0x3fc000
+    0x20c04000 +0x400000
+    0x21008000 +0x5fc000
+    0x21608000 +0x7f8000
+    0x21e04000 +0x600000
+    0x22408000 +0x1c471000
+    0x41079000 +0x9800000
+    0x4ac78000 +0x800000
+    0x4b878000 +0x400000
+    0x4c078000 +0x27ff000
+    0x4f877000 +0xfff000
+    0x510ca000 +0x2ef32000
+  Unused Volume g=4096: 40 ranges, 1724354560 bytes, digest b1cee5d8a3c28b94
+  Unused Volume g=1048576: 36 ranges, 1687158784 bytes, digest be655e04ff091911
+  Unused Image g=0: 40 ranges, 1724354560 bytes, digest 7c15e1bb9864028c
+  Unused Image g=4096: 40 ranges, 1724354560 bytes, digest 7c15e1bb9864028c
+  Unused Image g=1048576: 36 ranges, 1687158784 bytes, digest 3001d853dfcd601f
+volume 2: refs unit 65536 fs_bytes 0x7c000000 label None uuid Some("946825CB6825ACC4") | partition 0x7ef00000 known true range_bytes 0x7ef00000
+  Used Volume g=0: 27 ranges, 428998656 bytes, digest e2339bcfc51325e9
+    0x0 +0x240000
+    0x270000 +0x50000
+    0x2d0000 +0x20000
+    0x300000 +0x30000
+    0x340000 +0x30000
+    0x380000 +0x10000
+    0x1610000 +0x10000
+    0x2000000 +0x30000
+    0x2050000 +0x20000
+    0x2090000 +0x50000
+    0x4030000 +0x20000
+    0x6000000 +0x10000
+    0x8000000 +0x30000
+    0x8050000 +0x46b0000
+    0xf000000 +0x10000
+    0x10000000 +0x10000000
+    0x20020000 +0x10000
+    0x20040000 +0x10000
+    0x22000000 +0x20000
+    0x3e920000 +0x2800000
+    0x4a920000 +0x3f0000
+    0x4b510000 +0x400000
+    0x4bd10000 +0x400000
+    0x4e900000 +0x1000000
+    0x508f0000 +0x9b0000
+    0x54000000 +0x10000
+    0x7bfc0000 +0x40000
+  Used Volume g=4096: 27 ranges, 428998656 bytes, digest e2339bcfc51325e9
+  Used Volume g=1048576: 17 ranges, 443547648 bytes, digest 3c1ef9db5d7f0e43
+  Used Image g=0: 27 ranges, 428998656 bytes, digest 35bab9cdfe32a550
+  Used Image g=4096: 27 ranges, 428998656 bytes, digest 35bab9cdfe32a550
+  Used Image g=1048576: 17 ranges, 443547648 bytes, digest cd7e0c667a142f8e
+  Data Volume g=0: 27 ranges, 428998656 bytes, digest e2339bcfc51325e9
+    0x0 +0x240000
+    0x270000 +0x50000
+    0x2d0000 +0x20000
+    0x300000 +0x30000
+    0x340000 +0x30000
+    0x380000 +0x10000
+    0x1610000 +0x10000
+    0x2000000 +0x30000
+    0x2050000 +0x20000
+    0x2090000 +0x50000
+    0x4030000 +0x20000
+    0x6000000 +0x10000
+    0x8000000 +0x30000
+    0x8050000 +0x46b0000
+    0xf000000 +0x10000
+    0x10000000 +0x10000000
+    0x20020000 +0x10000
+    0x20040000 +0x10000
+    0x22000000 +0x20000
+    0x3e920000 +0x2800000
+    0x4a920000 +0x3f0000
+    0x4b510000 +0x400000
+    0x4bd10000 +0x400000
+    0x4e900000 +0x1000000
+    0x508f0000 +0x9b0000
+    0x54000000 +0x10000
+    0x7bfc0000 +0x40000
+  Data Volume g=4096: 27 ranges, 428998656 bytes, digest e2339bcfc51325e9
+  Data Volume g=1048576: 17 ranges, 443547648 bytes, digest 3c1ef9db5d7f0e43
+  Data Image g=0: 27 ranges, 428998656 bytes, digest 35bab9cdfe32a550
+  Data Image g=4096: 27 ranges, 428998656 bytes, digest 35bab9cdfe32a550
+  Data Image g=1048576: 17 ranges, 443547648 bytes, digest cd7e0c667a142f8e
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 27 ranges, 1700659200 bytes, digest 80fb93978145ee9a
+    0x240000 +0x30000
+    0x2c0000 +0x10000
+    0x2f0000 +0x10000
+    0x330000 +0x10000
+    0x370000 +0x10000
+    0x390000 +0x1280000
+    0x1620000 +0x9e0000
+    0x2030000 +0x20000
+    0x2070000 +0x20000
+    0x20e0000 +0x1f50000
+    0x4050000 +0x1fb0000
+    0x6010000 +0x1ff0000
+    0x8030000 +0x20000
+    0xc700000 +0x2900000
+    0xf010000 +0xff0000
+    0x20000000 +0x20000
+    0x20030000 +0x10000
+    0x20050000 +0x1fb0000
+    0x22020000 +0x1c900000
+    0x41120000 +0x9800000
+    0x4ad10000 +0x800000
+    0x4b910000 +0x400000
+    0x4c110000 +0x27f0000
+    0x4f900000 +0xff0000
+    0x512a0000 +0x2d60000
+    0x54010000 +0x27fb0000
+    0x7c000000 +0x2f00000
+  Unused Volume g=4096: 27 ranges, 1700659200 bytes, digest 80fb93978145ee9a
+  Unused Volume g=1048576: 17 ranges, 1686110208 bytes, digest 3fe80899888f020a
+  Unused Image g=0: 27 ranges, 1700659200 bytes, digest fe3b31e0d3f14be1
+  Unused Image g=4096: 27 ranges, 1700659200 bytes, digest fe3b31e0d3f14be1
+  Unused Image g=1048576: 17 ranges, 1686110208 bytes, digest 1f74cd3d3ed1d941
+  disk Used g=0: 64 ranges, 871759872 bytes, digest 4ac986222476336c
+  disk Used g=4096: 68 ranges, 869953536 bytes, digest 92420a670f03c6be
+    0x0 +0x1024000
+    0x1030000 +0x8000
+    0x1400000 +0x4000
+    0x1604000 +0x4000
+    0x1e00000 +0x4000
+    0x2000000 +0xc000
+    0x249c000 +0x4000
+    0x2600000 +0x4000
+    0x2a00000 +0x4000
+    0x2a08000 +0x4000
+    0x3004000 +0xc000
+    0x3200000 +0x4000
+    0x3804000 +0x4000
+    0x3a00000 +0x4000
+    0x3e00000 +0x10000
+    0x4000000 +0x4000
+    0x4400000 +0xc000
+    0x4600000 +0x4000
+    0x4a00000 +0x4000
+    0x4c04000 +0x4000
+    0x5c00000 +0x4000
+    0x6400000 +0x4000
+    0x8800000 +0x4000
+    0x9000000 +0x8000
+    0x9010000 +0x4664000
+    0x105e0000 +0x4000
+    0x11000000 +0x10000000
+    0x21008000 +0x4000
+    0x21800000 +0x4000
+    0x21c00000 +0x4000
+    0x22004000 +0x4000
+    0x22604000 +0x4000
+    0x22e00000 +0x4000
+    0x23404000 +0x4000
+    0x3f879000 +0x2800000
+    0x4b879000 +0x3ff000
+    0x4c478000 +0x400000
+    0x4cc78000 +0x400000
+    0x4f877000 +0x1000000
+    0x51876000 +0x854000
+    0x80ffc000 +0x244000
+    0x81270000 +0x50000
+    0x812d0000 +0x20000
+    0x81300000 +0x30000
+    0x81340000 +0x30000
+    0x81380000 +0x10000
+    0x82610000 +0x10000
+    0x83000000 +0x30000
+    0x83050000 +0x20000
+    0x83090000 +0x50000
+    0x85030000 +0x20000
+    0x87000000 +0x10000
+    0x89000000 +0x30000
+    0x89050000 +0x46b0000
+    0x90000000 +0x10000
+    0x91000000 +0x10000000
+    0xa1020000 +0x10000
+    0xa1040000 +0x10000
+    0xa3000000 +0x20000
+    0xbf920000 +0x2800000
+    0xcb920000 +0x3f0000
+    0xcc510000 +0x400000
+    0xccd10000 +0x400000
+    0xcf900000 +0x1000000
+    0xd18f0000 +0x9b0000
+    0xd5000000 +0x10000
+    0xfcfc0000 +0x40000
+    0xfff00000 +0x100000
+  disk Used g=1048576: 54 ranges, 921698304 bytes, digest ce4ef4f954427b64
+  disk Data g=0: 64 ranges, 871759872 bytes, digest 4ac986222476336c
+  disk Data g=4096: 68 ranges, 869953536 bytes, digest 92420a670f03c6be
+    0x0 +0x1024000
+    0x1030000 +0x8000
+    0x1400000 +0x4000
+    0x1604000 +0x4000
+    0x1e00000 +0x4000
+    0x2000000 +0xc000
+    0x249c000 +0x4000
+    0x2600000 +0x4000
+    0x2a00000 +0x4000
+    0x2a08000 +0x4000
+    0x3004000 +0xc000
+    0x3200000 +0x4000
+    0x3804000 +0x4000
+    0x3a00000 +0x4000
+    0x3e00000 +0x10000
+    0x4000000 +0x4000
+    0x4400000 +0xc000
+    0x4600000 +0x4000
+    0x4a00000 +0x4000
+    0x4c04000 +0x4000
+    0x5c00000 +0x4000
+    0x6400000 +0x4000
+    0x8800000 +0x4000
+    0x9000000 +0x8000
+    0x9010000 +0x4664000
+    0x105e0000 +0x4000
+    0x11000000 +0x10000000
+    0x21008000 +0x4000
+    0x21800000 +0x4000
+    0x21c00000 +0x4000
+    0x22004000 +0x4000
+    0x22604000 +0x4000
+    0x22e00000 +0x4000
+    0x23404000 +0x4000
+    0x3f879000 +0x2800000
+    0x4b879000 +0x3ff000
+    0x4c478000 +0x400000
+    0x4cc78000 +0x400000
+    0x4f877000 +0x1000000
+    0x51876000 +0x854000
+    0x80ffc000 +0x244000
+    0x81270000 +0x50000
+    0x812d0000 +0x20000
+    0x81300000 +0x30000
+    0x81340000 +0x30000
+    0x81380000 +0x10000
+    0x82610000 +0x10000
+    0x83000000 +0x30000
+    0x83050000 +0x20000
+    0x83090000 +0x50000
+    0x85030000 +0x20000
+    0x87000000 +0x10000
+    0x89000000 +0x30000
+    0x89050000 +0x46b0000
+    0x90000000 +0x10000
+    0x91000000 +0x10000000
+    0xa1020000 +0x10000
+    0xa1040000 +0x10000
+    0xa3000000 +0x20000
+    0xbf920000 +0x2800000
+    0xcb920000 +0x3f0000
+    0xcc510000 +0x400000
+    0xccd10000 +0x400000
+    0xcf900000 +0x1000000
+    0xd18f0000 +0x9b0000
+    0xd5000000 +0x10000
+    0xfcfc0000 +0x40000
+    0xfff00000 +0x100000
+  disk Data g=1048576: 54 ranges, 921698304 bytes, digest ce4ef4f954427b64
+  disk Zero g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Zero g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Zero g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  disk Unused g=0: 63 ranges, 3423207424 bytes, digest e2fb49ab28bf7c81
+  disk Unused g=4096: 67 ranges, 3425013760 bytes, digest 72876a2051ee6858
+    0x1024000 +0xc000
+    0x1038000 +0x3c8000
+    0x1404000 +0x200000
+    0x1608000 +0x7f8000
+    0x1e04000 +0x1fc000
+    0x200c000 +0x490000
+    0x24a0000 +0x160000
+    0x2604000 +0x3fc000
+    0x2a04000 +0x4000
+    0x2a0c000 +0x5f8000
+    0x3010000 +0x1f0000
+    0x3204000 +0x600000
+    0x3808000 +0x1f8000
+    0x3a04000 +0x3fc000
+    0x3e10000 +0x1f0000
+    0x4004000 +0x3fc000
+    0x440c000 +0x1f4000
+    0x4604000 +0x3fc000
+    0x4a04000 +0x200000
+    0x4c08000 +0xff8000
+    0x5c04000 +0x7fc000
+    0x6404000 +0x23fc000
+    0x8804000 +0x7fc000
+    0x9008000 +0x8000
+    0xd674000 +0x2f6c000
+    0x105e4000 +0xa1c000
+    0x21000000 +0x8000
+    0x2100c000 +0x7f4000
+    0x21804000 +0x3fc000
+    0x21c04000 +0x400000
+    0x22008000 +0x5fc000
+    0x22608000 +0x7f8000
+    0x22e04000 +0x600000
+    0x23408000 +0x1c471000
+    0x42079000 +0x9800000
+    0x4bc78000 +0x800000
+    0x4c878000 +0x400000
+    0x4d078000 +0x27ff000
+    0x50877000 +0xfff000
+    0x520ca000 +0x2ef32000
+    0x81240000 +0x30000
+    0x812c0000 +0x10000
+    0x812f0000 +0x10000
+    0x81330000 +0x10000
+    0x81370000 +0x10000
+    0x81390000 +0x1280000
+    0x82620000 +0x9e0000
+    0x83030000 +0x20000
+    0x83070000 +0x20000
+    0x830e0000 +0x1f50000
+    0x85050000 +0x1fb0000
+    0x87010000 +0x1ff0000
+    0x89030000 +0x20000
+    0x8d700000 +0x2900000
+    0x90010000 +0xff0000
+    0xa1000000 +0x20000
+    0xa1030000 +0x10000
+    0xa1050000 +0x1fb0000
+    0xa3020000 +0x1c900000
+    0xc2120000 +0x9800000
+    0xcbd10000 +0x800000
+    0xcc910000 +0x400000
+    0xcd110000 +0x27f0000
+    0xd0900000 +0xff0000
+    0xd22a0000 +0x2d60000
+    0xd5010000 +0x27fb0000
+    0xfd000000 +0x2f00000
+  disk Unused g=1048576: 53 ranges, 3373268992 bytes, digest b9c7eb747f9b47fb

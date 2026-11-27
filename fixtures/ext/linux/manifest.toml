@@ -1,0 +1,31 @@
+# The images of this directory and the checks each gets: one test per image,
+# crates/fs-inspect/tests/fixture_manifest.rs (fs-inspect-testkit's manifest module says the keys).
+# Checks only one image needs stay in the driver's tests/fixtures.rs.
+
+[[image]]
+name = "ext4"
+checks = ["lookup"]
+
+[[image]]
+name = "ext4-1k"
+checks = ["lookup"]
+
+[[image]]
+name = "ext4-inline"
+checks = ["lookup"]
+
+[[image]]
+name = "ext4-casefold"
+checks = ["lookup"]
+
+[[image]]
+name = "ext4-features"
+checks = ["lookup"]
+
+[[image]]
+name = "ext3"
+checks = ["lookup"]
+
+[[image]]
+name = "ext2"
+checks = ["lookup"]

@@ -1,0 +1,8 @@
+# Made by tools/fsi_tools/fixtures/apfs_encrypted.py; the container read by an independent
+# parser (check/apfs.py), the volume as diskutil reports it.
+# fixture image_bytes
+# fixture container <offset> block_size <n> block_count <n> free <n> xid <n> cibs <n> cabs <n>
+# fixture volume <name> encrypted 1 files <n>
+enc-gpt image_bytes 33554432
+enc-gpt container 20480 block_size 4096 block_count 8182 free 7956 xid 10 cibs 1 cabs 0
+enc-gpt volume Locked encrypted 1 files 3

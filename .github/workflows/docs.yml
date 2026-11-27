@@ -1,0 +1,61 @@
+# API documentation of the stable crate (`fs-inspect`; docs/api-stability.md), all features:
+# built on every pull request, push to main and manual run; a push to main also deploys it to
+# GitHub Pages. The site root redirects to `fs_inspect`.
+# Actions are pinned to commit SHAs (.github/CLAUDE.md).
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup show
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: docs
+      - name: Build the docs
+        run: >-
+          cargo doc --no-deps --all-features
+          -p fs-inspect
+        env:
+          RUSTDOCFLAGS: -D warnings
+      - name: Add the site root
+        run: |
+          echo '<meta http-equiv="refresh" content="0; url=fs_inspect/index.html">' > target/doc/index.html
+          rm -f target/doc/.lock
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          path: target/doc
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    # One deployment at a time; a newer push waits rather than cancelling.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

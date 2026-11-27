@@ -1,0 +1,6 @@
+# The images of this directory and the checks each gets: one test per image,
+# crates/fs-inspect/tests/fixture_manifest.rs (fs-inspect-testkit's manifest module says the keys).
+
+[[image]]
+name = "ext4-metadata"
+checks = ["golden"]

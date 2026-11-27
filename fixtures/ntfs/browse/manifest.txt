@@ -1,0 +1,45 @@
+# Made by tools/fsi_tools/fixtures/ntfs_browse.py: what Windows reports through the mounted
+# volume. Paths are volume-relative, `/` separated, spaces as %20.
+#   file PATH size= attrs= mtime=(ns since 1970) owner=(SID) names=(every hard link name)
+#        streams=(NAME:SIZE:SHA256|..., "" the unnamed one)
+#   link PATH tag= target=(substitute name) print=(print name)
+#   ea PATH NAME:SHA256 ...
+#   dir PATH NAME/NAME/...
+#   cloud PATH size= hydration=full|partial|none tag= attrs= local=(OFFSET+LEN:SHA256,... of
+#         the ranges on the volume)
+#   clouddir PATH attrs=
+ea /ea.txt FS.INSPECT:feadc9eff23b0510e3a0d22c6a0e78a22c6a8d9e6c5f7477139db2fcf49913a1 SECOND:5faa4eec3611556812c2d74b437c8c49add3f910f10063d801441f7d75cd5e3b
+link /symlink-rel.txt tag=0xA000000C target=resident.txt print=resident.txt
+link /dir/symlink-abs.bin tag=0xA000000C target=/??/Y:/plain.bin print=Y:/plain.bin
+link /symlink-dir tag=0xA000000C target=/??/Y:/dir print=Y:/dir
+link /junction tag=0xA0000003 target=/??/Y:/dir/deep print=Y:/dir/deep
+file /resident.txt size=9 attrs=0x00000020 mtime=1794900613194723100 owner=S-1-5-32-544 names=resident.txt streams=:9:256d8e424647b95449377fab9a924f748844533361de11299d80e2ae98f4959d
+file /empty.bin size=0 attrs=0x00000020 mtime=1794900613196545600 owner=S-1-5-32-544 names=empty.bin streams=:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+file /plain.bin size=307323 attrs=0x00000020 mtime=1794900613196545600 owner=S-1-5-32-544 names=plain.bin streams=:307323:932e415f9ef2e36f9c638876b34a22c32d25da2d608c1ae3a2e1c9e7a986d73c
+file /dir/Ünïcödé%20näme.txt size=20 attrs=0x00000020 mtime=1794900613203569400 owner=S-1-5-32-544 names=dir/Ünïcödé%20näme.txt streams=:20:76e068fd921b7a03464b500b0d80ebabdfec3f21b9712b8ea83327ef2b4f0b6f
+file /dir/deep/er/est/leaf.bin size=9000 attrs=0x00000020 mtime=1794900613205257300 owner=S-1-5-32-544 names=dir/deep/er/est/leaf.bin streams=:9000:9bd3239e8959cb88681911dcd6346a1ac4ff3f12c8c118d7e0d0bb2cf8bb6075
+file /lznt1.bin size=261128 attrs=0x00000820 mtime=1794900613208737200 owner=S-1-5-32-544 names=lznt1.bin streams=:261128:e998ec18129a223fe0de0c6d0990c196d6638def5e15be4f81edacad377fafe7
+file /lznt1-tail.bin size=101536 attrs=0x00000820 mtime=1794900613212721200 owner=S-1-5-32-544 names=lznt1-tail.bin streams=:101536:a4fcde91a16bc256babe2bce9a59b9fde4d5ca0864a9099ded8c4b95e902e51d
+file /lznt1-zeros.bin size=362776 attrs=0x00000820 mtime=1794900613218213900 owner=S-1-5-32-544 names=lznt1-zeros.bin streams=:362776:b97711f9faf65c0e10f771a59ca6ee0300e15b3de10828272cbfa1c87f846f53
+file /wof-xpress4k.bin size=103631 attrs=0x00000020 mtime=1794900613221692200 owner=S-1-5-32-544 names=wof-xpress4k.bin streams=:103631:15e5b70d48ceb542e479463663f44a818b87028bd3c1e8867a20acd2f659944e
+file /wof-xpress8k.bin size=153399 attrs=0x00000020 mtime=1794900613244479100 owner=S-1-5-32-544 names=wof-xpress8k.bin streams=:153399:697b2ae7ef69b54a622e77914de5f96529684bd1b61ccc0427e8a78f6aa1af63
+file /wof-xpress16k.bin size=153399 attrs=0x00000020 mtime=1794900613262492800 owner=S-1-5-32-544 names=wof-xpress16k.bin streams=:153399:e2c3c32ea253fa27c6100c67912e3a6407cf34c4a60b9daa3e6c024240a61c61
+file /wof-lzx.bin size=206263 attrs=0x00000020 mtime=1794900613277989500 owner=S-1-5-32-544 names=wof-lzx.bin streams=:206263:f80c6eb7790306716fac80fc965b17583714933e52803fed659d0ab0c9cf785d
+file /ads.bin size=9000 attrs=0x00000020 mtime=1794900613296336600 owner=S-1-5-32-544 names=ads.bin streams=:9000:299f9957651490ee8c9dc0658f0afa20e126ef47fe9785d1d188ba468d52eef7|meta:20000:387f817c14170f49b89087f16dab7aebdbcb732c68c2339398b984c7197f5f69|tiny:4:8950abfda7b727630760dd35bcf5c3daa7631aff223a90f7728c0d2521dde10c
+file /sparse.bin size=1048576 attrs=0x00000220 mtime=1794900613296336600 owner=S-1-5-32-544 names=sparse.bin streams=:1048576:4cd962713b4eb5503da5c67eebc9603bcc500ac90e43cd25fcfa561aefe9e266
+file /linked.bin size=5000 attrs=0x00000020 mtime=1794900613296336600 owner=S-1-5-32-544 names=dir/linked-too.bin,linked.bin streams=:5000:7833e545cbe1b99d7ba9b40fcc5891f5bd8a4b467c33769c680d9e6b51c9f491
+file /ea.txt size=24 attrs=0x00000020 mtime=1794900613307582800 owner=S-1-5-32-544 names=ea.txt streams=:24:de45154db7c9fd32ca32aaa20980bea3bead2567083601b5e1e5a0f8cad37736
+file /acl.txt size=18 attrs=0x00000020 mtime=1794900613307582800 owner=S-1-5-32-544 names=acl.txt streams=:18:2efc6ba5dbd3c5891ebfc2e66cc72ee6afc71be2ab4292b052bf60f9456fc5e7
+file /attrs.txt size=21 attrs=0x00000023 mtime=1794900613328877600 owner=S-1-5-32-544 names=attrs.txt streams=:21:e61e79ccda5ce939de7ec9aabec6955c26b82047f8935de9506b6d3f3202a746
+dir / acl.txt/ads.bin/attrs.txt/cloud/dir/ea.txt/empty%20dir/empty.bin/junction/linked.bin/lznt1-tail.bin/lznt1-zeros.bin/lznt1.bin/plain.bin/resident.txt/sparse.bin/symlink-dir/symlink-rel.txt/wof-lzx.bin/wof-xpress16k.bin/wof-xpress4k.bin/wof-xpress8k.bin
+dir /dir deep/linked-too.bin/symlink-abs.bin/Ünïcödé%20näme.txt
+dir /dir/deep er
+dir /dir/deep/er est
+dir /dir/deep/er/est leaf.bin
+dir /empty%20dir 
+cloud /cloud/full.bin size=262144 hydration=full tag=0x9000601A attrs=0x00000420 local=0+262144:e016440aadebb1794742e27ac7ecb83983f2f05fa5cfe4a478a4613d502bfa3c
+cloud /cloud/partial.bin size=262144 hydration=partial tag=0x9000401A attrs=0x00401620 local=0+65536:7de6a96b0e6d4f8a25f195a34a286e866d38d4e83e74a6a58022e364252e8653,196608+65536:ad0dac5efca37e89074da97aa8ef5cb9a284cf68f26ae44fd5185b8f6a4ca9de
+cloud /cloud/dehydrated.bin size=262144 hydration=none tag=0x9000401A attrs=0x00401620 local=-
+cloud /cloud/pinned.bin size=65536 hydration=full tag=0x9000601A attrs=0x00080420 local=0+65536:d39572ac5babd8918e25c0c61b35f8df6a6342902937279ed7a038988765a873
+cloud /cloud/unpinned.bin size=65536 hydration=none tag=0x9000401A attrs=0x00501620 local=-
+clouddir /cloud/folder attrs=0x00000410

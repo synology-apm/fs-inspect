@@ -1,0 +1,182 @@
+# Quality gate on pushes to main and pull requests. Every job calls the `cargo xtask` task a
+# developer runs locally (docs/contributing/testing.md); this file only provides the machines and
+# the tools, at the versions of `[workspace.metadata.xtask]` in Cargo.toml (an xtask test checks
+# they match):
+# - `lint` (`cargo xtask test --job lint`): rustfmt, clippy (all features), rustdoc, the
+#   generated files (the C header and its conventions, the Python binding's generated modules,
+#   the public API listing, the parity manifest), the Rust API's rules, the dependency rule and
+#   the parity of the bindings, then clippy with the other feature sets and the nightly lint.
+# - `tests` (`cargo xtask test --job tests`): on Linux, macOS and Windows: clippy for that
+#   platform, every test (nextest profile `ci`) under branch coverage with the gate (each OS
+#   measures and gates the code it compiles), the doc tests, the C header and the C programs,
+#   the Python tools and the Markdown links. The coverage report (HTML when the gate fails) and
+#   the JUnit report are uploaded.
+# - `i686` (`cargo xtask test --job i686`): on Windows, the tests again as a 32-bit build, beside
+#   `tests` rather than after it; its JUnit report is uploaded.
+# - `deps` (`cargo xtask test --job deps`): licenses, advisories, bans and sources.
+# - `python`: the Python binding (crates/fs-inspect-py) built and checked (pytest, mypy,
+#   stubtest, ruff) on Linux, macOS and Windows, with CPython 3.12 (the abi3 floor), 3.14 and
+#   free-threaded 3.14t; with 3.12 also `parity-run`, in the environment the binding was built
+#   into.
+# A task fails when a tool it needs is missing. Each job caches the whole target/ (xtask's own
+# build in target/debug, the task's in target/ci or target/i686).
+# `test` aggregates the jobs as the one required status check; keep its name and `if: always()`.
+# It also runs as a reusable workflow (`workflow_call`) from release.yml: keep it free of
+# anything that only makes sense for a push or a pull request.
+# Actions are pinned to commit SHAs (.github/CLAUDE.md).
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # release.yml runs the whole of it on a tag whose commit has no passed CI run.
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  # One build per run: the incremental cache would only cost time and cache space.
+  CARGO_INCREMENTAL: "0"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup show
+      - run: rustup toolchain install nightly-2026-10-17 --profile minimal
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: lint
+          workspaces: . -> target
+      # cargo-public-api has no prebuilt binary: it is built here, against OpenSSL (the hosted
+      # runner has its headers and pkg-config; a smaller image, act's, may not).
+      - run: >-
+          dpkg -s pkg-config libssl-dev > /dev/null 2>&1 ||
+          { sudo apt-get update -q && sudo apt-get install -y -q pkg-config libssl-dev; }
+      # cargo-public-api runs rustdoc with the pinned nightly installed above.
+      - uses: taiki-e/install-action@073e1fd0bc889c9aee68dbaaa927cde1b5653a83 # v2.90.11
+        with:
+          tool: cargo-public-api@0.52.0
+      - run: cargo xtask test --job lint
+
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    env:
+      NEXTEST_PROFILE: ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup show
+      # The pinned nightly with llvm-tools (branch coverage).
+      - run: rustup toolchain install nightly-2026-10-17 --profile minimal --component llvm-tools-preview
+      # The LLVM install on the Windows image is not on PATH.
+      - if: runner.os == 'Windows'
+        shell: bash
+        run: echo "C:\Program Files\LLVM\bin" >> "$GITHUB_PATH"
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - run: pipx install ruff
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: tests
+          workspaces: . -> target
+      - uses: taiki-e/install-action@073e1fd0bc889c9aee68dbaaa927cde1b5653a83 # v2.90.11
+        with:
+          tool: cargo-llvm-cov@0.9.2,cargo-nextest@0.9.152
+      - run: cargo xtask test --job tests
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: coverage-${{ runner.os }}
+          # The HTML report of `coverage` (written when the gate fails), and nextest's JUnit
+          # report, in the store under the workspace's target/ whatever the build directory.
+          path: |
+            target/ci/llvm-cov/html/
+            target/**/nextest/ci/junit.xml
+          retention-days: 14
+          if-no-files-found: ignore
+
+  i686:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    env:
+      NEXTEST_PROFILE: ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup show
+      - run: rustup target add i686-pc-windows-msvc
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: i686
+          workspaces: . -> target
+      - uses: taiki-e/install-action@073e1fd0bc889c9aee68dbaaa927cde1b5653a83 # v2.90.11
+        with:
+          tool: cargo-nextest@0.9.152
+      - run: cargo xtask test --job i686
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: junit-i686
+          path: target/i686/nextest/ci/junit.xml
+          retention-days: 14
+          if-no-files-found: ignore
+
+  deps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: taiki-e/install-action@073e1fd0bc889c9aee68dbaaa927cde1b5653a83 # v2.90.11
+        with:
+          tool: cargo-deny@0.22.1
+      - run: cargo xtask test --job deps
+
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ["3.12", "3.14", "3.14t"]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: rustup show
+      - id: python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+        with:
+          key: python-${{ matrix.python }}
+          workspaces: . -> target
+      - run: cargo xtask python-binding --python "${{ steps.python.outputs.python-path }}"
+        shell: bash
+      # parity-run's C program: the LLVM install on the Windows image is not on PATH.
+      - if: matrix.python == '3.12' && runner.os == 'Windows'
+        shell: bash
+        run: echo "C:\Program Files\LLVM\bin" >> "$GITHUB_PATH"
+      - if: matrix.python == '3.12'
+        run: cargo xtask parity-run
+
+  test:
+    if: always()
+    needs: [lint, tests, i686, deps, python]
+    runs-on: ubuntu-latest
+    steps:
+      - run: '[ "${{ contains(needs.*.result, ''failure'') || contains(needs.*.result, ''cancelled'') || contains(needs.*.result, ''skipped'') }}" = false ]'

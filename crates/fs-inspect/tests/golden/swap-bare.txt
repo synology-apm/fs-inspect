@@ -1,0 +1,30 @@
+image origin External container Raw scheme None disk_bytes 0x20000 sector None
+volume 0 offset 0x0 length 0x20000 fs Some(LinuxSwap)
+volume 0: linux_swap unit 4096 fs_bytes 0x20000 label Some("swap-1") uuid Some("5a5a5a5a-5a5a-5a5a-5a5a-5a5a5a5a5a5a") | partition 0x20000 known true range_bytes 0x20000
+  Used Volume g=0: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+    0x0 +0x1000
+  Used Volume g=4096: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Used Volume g=1048576: 1 ranges, 131072 bytes, digest 414ce81f3ce2f0d7
+  Used Image g=0: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Used Image g=4096: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Used Image g=1048576: 1 ranges, 131072 bytes, digest 414ce81f3ce2f0d7
+  Data Volume g=0: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+    0x0 +0x1000
+  Data Volume g=4096: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Data Volume g=1048576: 1 ranges, 131072 bytes, digest 414ce81f3ce2f0d7
+  Data Image g=0: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Data Image g=4096: 1 ranges, 4096 bytes, digest 32f8671443c236b5
+  Data Image g=1048576: 1 ranges, 131072 bytes, digest 414ce81f3ce2f0d7
+  Zero Volume g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=0: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=4096: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Zero Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Volume g=0: 1 ranges, 126976 bytes, digest e36f7d79e573f60c
+    0x1000 +0x1f000
+  Unused Volume g=4096: 1 ranges, 126976 bytes, digest e36f7d79e573f60c
+  Unused Volume g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325
+  Unused Image g=0: 1 ranges, 126976 bytes, digest e36f7d79e573f60c
+  Unused Image g=4096: 1 ranges, 126976 bytes, digest e36f7d79e573f60c
+  Unused Image g=1048576: 0 ranges, 0 bytes, digest cbf29ce484222325

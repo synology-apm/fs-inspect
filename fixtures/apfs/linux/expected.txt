@@ -1,0 +1,7 @@
+# Made by tools/fsi_tools/fixtures/apfs_linux.py; read by an independent parser (check/apfs.py).
+# fixture image_bytes
+# fixture container <offset> block_size <n> block_count <n> free <n> xid <n> cibs <n> cabs <n>
+mkapfs-bare image_bytes 536870912
+mkapfs-bare container 0 block_size 4096 block_count 131072 free 130632 xid 1 cibs 1 cabs 0
+mkapfs-gpt image_bytes 734003200
+mkapfs-gpt container 35651584 block_size 4096 block_count 153600 free 152881 xid 1 cibs 1 cabs 0

@@ -1,0 +1,38 @@
+[package]
+name = "fs-inspect-testkit"
+description = "Test tooling: disk and volume manager image builders, golden files, sparse fixtures and images, synthetic ext4 volumes, registry hives, synthetic NTFS volumes (feature ntfs)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[dependencies]
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-core.workspace = true
+sha2.workspace = true
+serde.workspace = true
+toml.workspace = true
+tempfile.workspace = true
+fs-inspect-ntfs = { workspace = true, features = ["synth"], optional = true }
+fs-inspect-xfs = { workspace = true, features = ["synth"], optional = true }
+fs-inspect-btrfs = { workspace = true, features = ["synth"], optional = true }
+fs-inspect-apfs = { workspace = true, features = ["synth"], optional = true }
+fs-inspect-refs = { workspace = true, features = ["synth"], optional = true }
+
+[features]
+# The synthetic NTFS volumes of fs-inspect-ntfs, and `disk::layouts` (NTFS boot sectors).
+ntfs = ["dep:fs-inspect-ntfs"]
+# The synthetic images of these file systems (their crates' `synth`), as `xfs`, `btrfs`, `apfs`, `refs`.
+xfs = ["dep:fs-inspect-xfs"]
+btrfs = ["dep:fs-inspect-btrfs"]
+apfs = ["dep:fs-inspect-apfs"]
+refs = ["dep:fs-inspect-refs"]
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true

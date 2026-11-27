@@ -1,0 +1,68 @@
+# Made by tools/fsi_tools/fixtures/apfs_browse.py (newfs_apfs -v Browse).
+# Line formats: see the generator's docstring.
+dir / .fseventsd/.metadata_never_index/clone-src.bin/clone.bin/dangling/dev/dir/empty/empty%20dir/flags/large.bin/long-link/modes/short-link/small.txt/sparse.bin/xattr/zip
+file /.metadata_never_index size=0 mode=100644 uid=99 gid=99 mtime=1793720075038715590 nlink=1 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+file /clone-src.bin size=262144 mode=100644 uid=0 gid=0 mtime=1793720075105678673 nlink=1 sha256=9f3e299ca5f28402da27c00ca7a22baac65725ed886f1e29f17be01d2da37ba2
+file /clone.bin size=262144 mode=100644 uid=0 gid=0 mtime=1793720075112882126 nlink=1 sha256=0d2a39753d2422adf2620c1b639dc7650484aa88d17e1212b08700429babd23b
+symlink /dangling target=does/not/exist
+file /empty size=0 mode=100644 uid=0 gid=0 mtime=1793720075089327467 nlink=1 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+file /large.bin size=3145851 mode=100644 uid=0 gid=0 mtime=1793720075094560326 nlink=1 sha256=0ab2d79142eb4cc2b0ea06b4161f88a042df542a835bf201fcae437e28500bdf
+symlink /long-link target=/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/long-target/end
+symlink /short-link target=small.txt
+file /small.txt size=6 mode=100644 uid=0 gid=0 mtime=1793720075089812678 nlink=2 sha256=4c47b3e816fbe7d40cef9f665ba8f0be1ae68b5e8e7ed70f5b6bab7f70528e8f
+file /sparse.bin size=2097152 mode=100644 uid=0 gid=0 mtime=1793720075103549038 nlink=1 sha256=dd5070acb14be455e530956f5c10781689f2e822ade439e76ff1bf41efb6bdc9
+dir /flags append/immutable
+file /flags/append size=2 mode=100644 uid=0 gid=0 mtime=1793720075129654501 nlink=1 sha256=87428fc522803d31065e7bce3cf03fe475096631e5e07bbd7a0fde60c4cf25c7 flags=a
+file /flags/immutable size=2 mode=100644 uid=0 gid=0 mtime=1793720075129454875 nlink=1 sha256=50c393f158c3de2db92fa9661bfb00eda5b67c3a777c88524ed3417509631625 flags=i
+dir /modes other/owned/setuid/sticky
+file /modes/other size=6 mode=100644 uid=1234 gid=5678 mtime=1793720075114431675 nlink=1 sha256=7e4fa2eb8c7ac089739d5defc4489fad68a100d92082ca35c6b40a4524821f87
+file /modes/owned size=6 mode=100644 uid=501 gid=20 mtime=1793720075114349258 nlink=1 sha256=33bff9108736f23280e9cd50cb1472e3a5b4403ed3f2da1fe67b8487a4fb75c6
+file /modes/setuid size=10 mode=104755 uid=0 gid=0 mtime=1793720075114174174 nlink=1 sha256=a8076d3d28d21e02012b20eaf7dbf75409a6277134439025f282e368e3305abf
+dir /modes/sticky 
+dir /zip empty-compressed/type01-none-attr.txt/type03-zlib-attr-stored.bin/type03-zlib-attr.txt/type04-zlib-fork.bin/type07-lzvn-attr-stored.bin/type07-lzvn-attr.txt/type08-lzvn-fork.bin/type09-stored-attr.txt/type10-stored-fork.bin/type11-lzfse-attr-stored.bin/type11-lzfse-attr.txt/type12-lzfse-fork.bin/type13-lzbitmap-attr-stored.bin/type13-lzbitmap-attr.txt/type14-lzbitmap-fork.bin/type15-lz4-attr-stored.bin/type15-lz4-attr.txt/type16-lz4-fork.bin
+file /zip/empty-compressed size=0 mode=100644 uid=0 gid=0 mtime=1793720075151519859 nlink=1 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+file /zip/type01-none-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075130223670 nlink=1 sha256=9d43d79311163f9ad56ee7e56457d5010c1cba9940e231ba864fa7fd3879918d
+file /zip/type03-zlib-attr-stored.bin size=2000 mode=100644 uid=0 gid=0 mtime=1793720075131398259 nlink=1 sha256=091ee5bc9c4d5cf120ba2eb46df74420ea9e64f19ce67712367fc2bb5d791013
+file /zip/type03-zlib-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075131056216 nlink=1 sha256=767e79e2b376b7a5fc8b886d7831e0cd7eeef4828fb617159e470b34fb39c66a
+file /zip/type04-zlib-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075135683906 nlink=1 sha256=4b49b5d3accb0b06752b404968cd1044cb0026e81aa6883d953cae4e8d61de9b
+file /zip/type07-lzvn-attr-stored.bin size=2000 mode=100644 uid=0 gid=0 mtime=1793720075136718244 nlink=1 sha256=58cf632dd5e1721774685beac424c477fe71cf33fa90dd570dc33292660ee589
+file /zip/type07-lzvn-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075136450951 nlink=1 sha256=87a49b0b7baf3eec5758c5aae50dccc98b8995825db0d0f44f98cb859b20a522
+file /zip/type08-lzvn-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075139344507 nlink=1 sha256=9440eb6b05d16084ed0054dcf7305bab275a0c0104daa02395df50eebe01aff4
+file /zip/type09-stored-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075139983594 nlink=1 sha256=67e78d7d48bd985d03970f1bf9eef5015405b28ccf999a09b3fe5afc8e326482
+file /zip/type10-stored-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075141434726 nlink=1 sha256=b9e5209ef0fb40391918ad63f5fcb9b57d62fe8e12fc416fc414099ed0caffaa
+file /zip/type11-lzfse-attr-stored.bin size=2000 mode=100644 uid=0 gid=0 mtime=1793720075143817946 nlink=1 sha256=9e863c20f8b5a0b1c5e84295a68cdfb0d61bf3bd70e1a1acc855b6120742e298
+file /zip/type11-lzfse-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075143437986 nlink=1 sha256=7b870d5246b6d107b42a7f306b96f24ba2ef62b67660245074d20992544e2276
+file /zip/type12-lzfse-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075146176666 nlink=1 sha256=7e699668cc9ceeb24525d631d563c543e2d30e8fc1ef0b8e63381f4bffc29a54
+file /zip/type13-lzbitmap-attr-stored.bin size=2000 mode=100644 uid=0 gid=0 mtime=1793720075147058421 nlink=1 sha256=b8a394d49e5dfbc0ae0ab353a1b3cb37befa93104cc01ac608bd5e9dda19af4b
+file /zip/type13-lzbitmap-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075146736419 nlink=1 sha256=4c76c1c95cf15603a4988c4023b4a06fb6dc1e6f4e6afc777d4374efc8b6ce39
+file /zip/type14-lzbitmap-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075149209265 nlink=1 sha256=9093dba2eec5732fa65b5cba44089da541bb026a1be698d72334c9ebd20363b4
+file /zip/type15-lz4-attr-stored.bin size=2000 mode=100644 uid=0 gid=0 mtime=1793720075149889018 nlink=1 sha256=3f18577a2ecc835cee3deb2136460c29d18e2f2916d74c66faa4d493ee69c83b
+file /zip/type15-lz4-attr.txt size=3000 mode=100644 uid=0 gid=0 mtime=1793720075149637433 nlink=1 sha256=3a3195b544225223f244677bd877a6d3fbfcfe6b6f27530c8f0aa86bb0b20da9
+file /zip/type16-lz4-fork.bin size=235520 mode=100644 uid=0 gid=0 mtime=1793720075151212650 nlink=1 sha256=fa2ad99a1164b4ade61236856766981ebd0d0da2f6f819dbe2ad3175b9e46da7
+dir /dir a/hardlink.txt/sub
+file /dir/hardlink.txt size=6 mode=100644 uid=0 gid=0 mtime=1793720075089812678 nlink=2 sha256=4c47b3e816fbe7d40cef9f665ba8f0be1ae68b5e8e7ed70f5b6bab7f70528e8f
+dir /dir/a b
+dir /dir/a/b c
+dir /dir/a/b/c d
+dir /dir/a/b/c/d deep.txt
+file /dir/a/b/c/d/deep.txt size=5 mode=100644 uid=0 gid=0 mtime=1793720075098534471 nlink=1 sha256=64896f89fd11190013b70103e603a1c5826e56b7fb7d2197ab279b0690043599
+dir /dir/sub café.txt/Ünïcödé%20name.bin
+file /dir/sub/café.txt size=11 mode=100644 uid=0 gid=0 mtime=1793720075098335137 nlink=1 sha256=a95c16aa568fee306afb42ea729e98485a3eac4d970e755f829ba7140f17d024
+file /dir/sub/Ünïcödé%20name.bin size=5000 mode=100644 uid=0 gid=0 mtime=1793720075097594550 nlink=1 sha256=49cb634562ffb33747553d84e5a12ae9413f5005243203bd895bb2e29af7821a
+dir /dev disk9s1/fifo/null/socket
+node /dev/disk9s1 kind=block mode=60640 rdev=1:9437185
+node /dev/fifo kind=fifo mode=10644 rdev=0:0
+node /dev/null kind=char mode=20644 rdev=3:2
+node /dev/socket kind=socket mode=140755 rdev=0:0
+dir /empty%20dir 
+dir /xattr acl/big/dir/rsrc/small
+file /xattr/acl size=4 mode=100644 uid=0 gid=0 mtime=1793720075117572149 nlink=1 sha256=fd21d510dfabef9b7f7f7836c2af5a8ceb027997482218d482eb07b69bce6bbc
+xattr /xattr/big com.example.big sha256=c6e4ec842b18d7bb35770e612c9968467eda6e73d6366062216ec4248b3df892
+file /xattr/big size=2 mode=100644 uid=0 gid=0 mtime=1793720075114785760 nlink=1 sha256=3bb2abb69ebb27fbfe63c7639624c6ec5e331b841a5bc8c3ebc10b9285e90877
+xattr /xattr/dir com.example.on-dir sha256=251ec6c377b68ceb226b2e8606ae38a6af83d885fd934ba2cb27e4826304ad59
+xattr /xattr/rsrc com.apple.ResourceFork sha256=0a36f1f42b7f6303b8ef2942d8e1b5206aeb87471357f7dc978b9f3182a9d925
+file /xattr/rsrc size=21 mode=100644 uid=0 gid=0 mtime=1793720075129255290 nlink=1 sha256=034017364262abe21066a1020812b1f0657f96996ead378d22fd6d5d4bcf3a66
+xattr /xattr/small com.example.two sha256=3bc457ef6e502bf1360ad56dba3a64c48dbd2a145bb622215338256817df7031
+xattr /xattr/small user.one sha256=6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b
+file /xattr/small size=2 mode=100644 uid=0 gid=0 mtime=1793720075114536134 nlink=1 sha256=73cb3858a687a8494ca3323053016282f3dad39d42cf62ca4e79dda2aac7d9ac
+dir /xattr/dir 

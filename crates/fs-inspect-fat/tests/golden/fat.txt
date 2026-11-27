@@ -1,0 +1,120 @@
+== fat12
+fat12 unit 512 bytes 0xfa000 label Some("MYDISK") uuid Some("1234-ABCD")
+  allocated: 6 ranges, 18944 bytes, digest c5940d944aafc7b4
+    0x0 +0x3a00
+    0x3c00 +0x600
+    0x4600 +0x200
+    0x5a00 +0x400
+    0x6e00 +0x200
+    0xf9e00 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /Long File Name.txt: [[0x3c00, 0x4200), [0x4600, 0x4800)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /SHORT.TXT: [[0x3800, 0x3a00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /sub/inner.bin: [[0x5a00, 0x5e00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /LAST.BIN: [[0xf9e00, 0xfa000)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /empty: [] head []
+  file /Orphan name.txt: none
+== fat32
+fat32 unit 512 bytes 0x200000 label Some("MYDISK") uuid Some("1234-ABCD")
+  allocated: 4 ranges, 53248 bytes, digest b88f7439b6cd6222
+    0x0 +0xc600
+    0xd000 +0x600
+    0x12000 +0x200
+    0x24c00 +0x200
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /Long File Name.txt: none
+  file /SHORT.TXT: none
+  file /sub/inner.bin: none
+  file /LAST.BIN: none
+  file /empty: none
+  file /Orphan name.txt: none
+== exfat
+exfat unit 512 bytes 0x200000 label Some("Vol1") uuid Some("DEAD-BEEF")
+  allocated: 7 ranges, 80896 bytes, digest 5ae199433722bea2
+    0x0 +0x11000
+    0x12000 +0x1000
+    0x14800 +0xc00
+    0x17000 +0x400
+    0x19800 +0x400
+    0x1e800 +0x400
+    0x1ffc00 +0x400
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /contig.BIN: [[0x12000, 0x13000)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /FRAG.bin: [[0x14800, 0x15400)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /dir é/INNER.txt: [[0x19800, 0x19c00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /empty: [] head []
+  file /bad.bin: none
+  file /missing: none
+== texfat
+exfat unit 512 bytes 0x200000 label Some("Vol1") uuid Some("DEAD-BEEF")
+  allocated: 8 ranges, 83968 bytes, digest da6a04dc19057d9e
+    0x0 +0x11400
+    0x12000 +0x1000
+    0x14800 +0xc00
+    0x17000 +0x400
+    0x19800 +0x400
+    0x1e800 +0x400
+    0x109800 +0x800
+    0x1ffc00 +0x400
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /contig.BIN: [[0x12000, 0x13000)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /FRAG.bin: [[0x14800, 0x15400)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /dir é/INNER.txt: [[0x19800, 0x19c00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /empty: [] head []
+  file /bad.bin: none
+  file /missing: none
+== exfat-bad-upcase
+exfat unit 512 bytes 0x200000 label Some("Vol1") uuid Some("DEAD-BEEF")
+  warning: [fallback] exfat: Up-case Table unusable (corrupt structure: Up-case Table checksum mismatch); names compared with simple uppercase
+  allocated: 7 ranges, 80896 bytes, digest 5ae199433722bea2
+    0x0 +0x11000
+    0x12000 +0x1000
+    0x14800 +0xc00
+    0x17000 +0x400
+    0x19800 +0x400
+    0x1e800 +0x400
+    0x1ffc00 +0x400
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /contig.BIN: [[0x12000, 0x13000)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /FRAG.bin: [[0x14800, 0x15400)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /dir é/INNER.txt: [[0x19800, 0x19c00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /empty: [] head []
+  file /bad.bin: none
+  file /missing: none
+== exfat-bad-boot-checksum
+exfat unit 512 bytes 0x200000 label Some("Vol1") uuid Some("DEAD-BEEF")
+  warning: [backup_used] exfat: main boot region damaged; using the backup
+  allocated: 7 ranges, 80896 bytes, digest 5ae199433722bea2
+    0x0 +0x11000
+    0x12000 +0x1000
+    0x14800 +0xc00
+    0x17000 +0x400
+    0x19800 +0x400
+    0x1e800 +0x400
+    0x1ffc00 +0x400
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  file /contig.BIN: [[0x12000, 0x13000)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /FRAG.bin: [[0x14800, 0x15400)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /dir é/INNER.txt: [[0x19800, 0x19c00)] head [00, 00, 00, 00, 00, 00, 00, 00]
+  file /empty: [] head []
+  file /bad.bin: none
+  file /missing: none
+== exfat-short-bitmap
+exfat unit 512 bytes 0x200000 label Some("Vol1") uuid Some("DEAD-BEEF")
+  allocated: 7 ranges, 1292288 bytes, digest 26b2826428852222
+    0x0 +0x11000
+    0x12000 +0x1000
+    0x14800 +0xc00
+    0x17000 +0x400
+    0x19800 +0x400
+    0x1e800 +0x400
+    0xd8000 +0x128000
+  zero: 0 ranges, 0 bytes, digest cbf29ce484222325
+  implicit exclusions: 0 ranges, 0 bytes, digest cbf29ce484222325
+  warning after reading: [counted_as_used] exfat: Allocation Bitmap of 100 bytes for 248 bytes of clusters; the rest counts as used

@@ -1,0 +1,882 @@
+# The facade's public items in the Python binding and the C API: `cargo xtask lint` checks both
+# ways; `cargo xtask gen parity` rewrites this file, keeping its names and reasons and setting
+# `pending` to what a binding lacks. Rules and defaults:
+# crates/xtask/src/parity.rs.
+#
+#   [modules]               a module of Rust's only = why
+#   [types."path"]          py = class, c = function prefix, c-struct = struct,
+#                           rust-only = why, pending = ["py"] (no class yet)
+#   items.name = { py = .., c = .., rust-only = .., pending = [..] }   ("-" or "- why": not bound there)
+#
+# A Python "-" is bare: what Python leaves out is a Rust idiom its own protocols already give
+# (a conversion, bits, an inner writer, an emptiness test: bytes, len(), an IntFlag), or a field
+# its value holds another way, so the reason would be the same each time. A C "- why" says
+# why, as what C leaves out differs item by item.
+#   [functions]             "path" = { py = .., c = .., rust-only = .., pending = [..] }
+#   [python-extra], [c-extra]   what binds no Rust item = why ("TODO": pending)
+strict = true
+
+[modules]
+"fs_inspect::change" = "change tracking: Rust's extension point"
+"fs_inspect::range" = "range tools for Rust implementers"
+"fs_inspect::unstable" = "extension points for Rust drivers and sources: no stability promise"
+fs_inspect_change = "change tracking: Rust's extension point"
+"fs_inspect_core::range" = "range tools for Rust implementers"
+"fs_inspect_core::windows" = "change tracking (USN positions): Rust's extension point"
+"fs_inspect_io::batch" = "source tools for Rust implementers"
+"fs_inspect_io::sparse" = "source tools for Rust implementers"
+
+[types."fs_inspect::Bitmap"]
+c-struct = "fs_inspect_bitmap_shape"
+items.bits = { c = "fs_inspect_map_bitmap_into" }
+items.count = { c = "- counting set bits of the caller's own buffer: the class's bytes are fs_inspect_map_bytes" }
+items.get = { c = "- a bit of the caller's own buffer (byte i / 8, bit i % 8)" }
+items.into_bits = { py = "-", c = "- C's bits are already the caller's own buffer (fs_inspect_map_bitmap_into)" }
+items.shape = { c = "fs_inspect_map_bitmap_into" }
+
+[types."fs_inspect::BitmapShape"]
+c-struct = "fs_inspect_bitmap_shape"
+
+[types."fs_inspect::Blocks"]
+c = "fs_inspect_ranges"
+items.class = { py = "block_class", c = "fs_inspect_ranges_get_info" }
+items.unit = { c = "fs_inspect_ranges_get_info" }
+
+[types."fs_inspect::ContainerInfo"]
+c-struct = "fs_inspect_container"
+items.id = { c = "id" }
+items.logical_id = { c = "fs_inspect_containers_lvs" }
+items.lvs = { c = "fs_inspect_containers_lvs" }
+items.members = { c = "fs_inspect_containers_members" }
+
+[types."fs_inspect::Device"]
+items.info = { c = "fs_inspect_disks_device_info" }
+
+[types."fs_inspect::DeviceInfo"]
+c-struct = "fs_inspect_device_info"
+items.container = { c = "format" }
+
+[types."fs_inspect::DeviceMapOptions"]
+c-struct = "fs_inspect_map_options"
+items.map = { c = "- one fs_inspect_map_options serves both maps: its excludes and flags are this part" }
+
+[types."fs_inspect::DiskExtent"]
+c-struct = "fs_inspect_disk_extent"
+items.range = { c = "offset" }
+
+[types."fs_inspect::DiskSet"]
+c = "fs_inspect_disks"
+items.cancel_token = { c = "- the set's token is the caller's own fs_inspect_open_options.cancel" }
+items.containers = { c = "fs_inspect_disks_containers" }
+items.device = { c = "fs_inspect_disks_device_info" }
+items.diagnostics_dropped = { c = "fs_inspect_diagnostics_get_info" }
+items.disks = { c = "fs_inspect_disks_disk_get" }
+items.reader = { c = "fs_inspect_disks_read_at" }
+items.volumes = { c = "fs_inspect_disks_volumes" }
+
+[types."fs_inspect::DiskSpec"]
+c-struct = "fs_inspect_disk_spec"
+items.absent = { c = "absent" }
+items.path = { c = "paths" }
+items.raw = { c = "flags" }
+items.source = { c = "source" }
+items.split = { c = "paths" }
+
+[types."fs_inspect::ExcludePattern"]
+items.is_pattern = { c = "- a pattern is a string, parsed at the call (fs_inspect_map_options.excludes, fs_inspect_volume_file_ranges)" }
+
+[types."fs_inspect::ExtentInfo"]
+c-struct = "fs_inspect_member_area"
+items.range = { c = "offset" }
+
+[types."fs_inspect::FileContent"]
+c-struct = "fs_inspect_ranges_info"
+items.files = { c = "items" }
+items.ranges = { c = "fs_inspect_ranges_read" }
+
+[types."fs_inspect::LogicalInfo"]
+c-struct = "fs_inspect_logical_volume"
+items.extents = { c = "fs_inspect_logical_volumes_extents_read" }
+items.readable = { py = "readability" }
+items.volumes = { c = "fs_inspect_logical_volumes_volumes_read" }
+
+[types."fs_inspect::Map"]
+c = "fs_inspect_map"
+items.bitmap = { c = "fs_inspect_map_bitmap_into" }
+items.extent = { c = "fs_inspect_map_get_extent" }
+items.ranges = { c = "fs_inspect_map_blocks" }
+items.unit = { c = "fs_inspect_map_get_unit" }
+
+[types."fs_inspect::MemberInfo"]
+c-struct = "fs_inspect_member"
+items.location = { c = "found" }
+items.unsynced = { c = "fs_inspect_members_unsynced_read" }
+
+[types."fs_inspect::MemberLocation"]
+c-struct = "fs_inspect_member"
+items.range = { c = "offset" }
+
+[types."fs_inspect::OpenOptions"]
+c-struct = "fs_inspect_open_options"
+items.max_cache_bytes = { c = "limits" }
+items.replay = { c = "flags" }
+
+[types."fs_inspect::Partition"]
+c-struct = "fs_inspect_partition"
+items.partition = { c = "scheme" }
+items.range = { c = "offset" }
+
+[types."fs_inspect::PartitionInfo"]
+c-struct = "fs_inspect_partition"
+items.partition_type = { c = "partition_type" }
+items.scheme = { c = "scheme" }
+
+[types."fs_inspect::PartitionTable"]
+items.partitions = { py = "-" }
+items.problem = { py = "-" }
+
+[types."fs_inspect::Reach"]
+c-struct = "fs_inspect_volume_info"
+items.bound = { c = "reach_bound" }
+items.length = { c = "reach_length" }
+
+[types."fs_inspect::SetDisk"]
+items.device = { py = "-" }
+
+[types."fs_inspect::Volume"]
+c = "fs_inspect_volume"
+items.device = { c = "fs_inspect_volume_device_info" }
+items.info = { c = "fs_inspect_volume_get_info" }
+items.members = { c = "fs_inspect_volume_members" }
+items.state = { c = "fs_inspect_volume_state" }
+
+[types."fs_inspect::VolumeEntry"]
+c-struct = "fs_inspect_volume_entry"
+items.device_range = { c = "device" }
+items.disk_extents = { c = "fs_inspect_volumes_extents_read" }
+items.partition = { c = "scheme" }
+items.readable = { py = "readability" }
+
+[types."fs_inspect::VolumeInfo"]
+c-struct = "fs_inspect_volume_info"
+items.fs = { c = "fs_kind" }
+items.logical = { c = "logical_kind" }
+items.reach = { c = "reach_length" }
+
+[types."fs_inspect::VolumeMapOptions"]
+c-struct = "fs_inspect_map_options"
+items.default_excludes = { c = "flags" }
+items.file_zero = { c = "flags" }
+
+[types."fs_inspect::VolumeState"]
+c-struct = "fs_inspect_volume_state_info"
+
+[types."fs_inspect::catalog::Catalog"]
+c = "fs_inspect_catalog"
+items.disks = { c = "fs_inspect_catalog_disk_get" }
+items.groups = { c = "fs_inspect_catalog_group_get" }
+items.problems = { c = "fs_inspect_catalog_problem_get" }
+items.volumes = { c = "fs_inspect_catalog_volume_get" }
+
+[types."fs_inspect::catalog::CatalogDisk"]
+c = "fs_inspect_catalog_disk"
+c-struct = "fs_inspect_catalog_disk"
+
+[types."fs_inspect::catalog::CatalogGroup"]
+c = "fs_inspect_catalog_group"
+c-struct = "fs_inspect_catalog_group"
+items.disks = { c = "fs_inspect_catalog_group_disks_read" }
+items.of = { c = "kind" }
+items.volumes = { c = "fs_inspect_catalog_group_volumes_read" }
+
+[types."fs_inspect::catalog::CatalogMount"]
+c-struct = "fs_inspect_catalog_volume"
+items.at = { c = "mount_at" }
+items.by = { c = "mount_by" }
+
+[types."fs_inspect::catalog::CatalogRoot"]
+c-struct = "fs_inspect_catalog_volume"
+items.fs = { c = "fs_inspect_catalog_volume_fs" }
+items.node = { c = "root_node" }
+
+[types."fs_inspect::catalog::CatalogVolume"]
+c = "fs_inspect_catalog_volume"
+c-struct = "fs_inspect_catalog_volume"
+items.disks = { c = "fs_inspect_catalog_volume_disks_read" }
+items.mount = { c = "mount_at" }
+
+[types."fs_inspect::catalog::CatalogVolumeId"]
+rust-only = "a catalog volume's identity as a type: the bindings give its text (CatalogVolume.id)"
+
+[types."fs_inspect::export::CloudFile"]
+c-struct = "fs_inspect_cloud_file"
+
+[types."fs_inspect::export::Content"]
+c = "- a sink's input: the ExportSink trait, Rust's extension point for new destinations"
+rust-only = "what a sink is handed: a sink of your own is Rust's (the Sink trait)"
+
+[types."fs_inspect::export::DirSink"]
+items.new = { c = "fs_inspect_fs_export_dir" }
+
+[types."fs_inspect::export::Entry"]
+c = "- a sink's input: the ExportSink trait, Rust's extension point for new destinations"
+rust-only = "what a sink is handed: a sink of your own is Rust's (the Sink trait)"
+
+[types."fs_inspect::export::ExportOptions"]
+c-struct = "fs_inspect_export_options"
+items.hard_links = { c = "hardlinks" }
+items.metadata = { c = "flags" }
+items.security = { c = "flags" }
+items.system = { c = "flags" }
+items.xattrs = { c = "flags" }
+
+[types."fs_inspect::export::ExportReport"]
+c = "fs_inspect_export_report"
+items.bytes = { c = "fs_inspect_export_report_get_summary" }
+items.cloud = { c = "fs_inspect_export_report_cloud_get" }
+items.dirs = { c = "fs_inspect_export_report_get_summary" }
+items.files = { c = "fs_inspect_export_report_get_summary" }
+items.notes = { c = "fs_inspect_export_report_note_get" }
+items.skipped = { c = "fs_inspect_export_report_skipped_get" }
+
+[types."fs_inspect::export::MetaFacets"]
+items.bits = { py = "-", c = "- C reads and passes the bits themselves" }
+items.contains = { c = "- bit-set helper; C tests the FS_INSPECT_META_FLAG_* bits itself" }
+items.from_bits_truncate = { py = "-", c = "- C reads and passes the bits themselves" }
+items.is_empty = { py = "-", c = "- bit-set helper; C tests the bits against 0 itself" }
+items.without = { c = "- bit-set helper; C clears the FS_INSPECT_META_FLAG_* bits itself" }
+
+[types."fs_inspect::export::MetadataReport"]
+c = "fs_inspect_metadata_report"
+items.skipped = { c = "fs_inspect_metadata_report_skipped_get" }
+
+[types."fs_inspect::export::NamePolicy"]
+items.apply = { rust-only = "for a sink of your own (the Sink trait): the sinks apply it" }
+
+[types."fs_inspect::export::Note"]
+c-struct = "fs_inspect_note"
+items.new = { py = "-", c = "- constructor for Rust sinks; C reads notes from a report" }
+
+[types."fs_inspect::export::Progress"]
+c-struct = "fs_inspect_progress"
+
+[types."fs_inspect::export::SinkCaps"]
+c = "- what a sink keeps: the ExportSink trait, Rust's extension point for new destinations"
+rust-only = "what a sink says it keeps: a sink of your own is Rust's (the Sink trait)"
+
+[types."fs_inspect::export::Skipped"]
+c-struct = "fs_inspect_skipped"
+items.error = { c = "status" }
+
+[types."fs_inspect::export::SkippedFacet"]
+c-struct = "fs_inspect_skipped_facet"
+
+[types."fs_inspect::export::TarSink"]
+items.into_inner = { py = "-", c = "- C's bytes already went through its write callbacks; there is no writer to take back" }
+items.new = { c = "fs_inspect_fs_export_archive" }
+
+[types."fs_inspect::export::ZipSink"]
+items.into_inner = { py = "-", c = "- C's bytes already went through its write callbacks; there is no writer to take back" }
+items.new = { c = "fs_inspect_fs_export_archive" }
+
+[types."fs_inspect::fs::BrowseOptions"]
+c-struct = "fs_inspect_browse_options"
+
+[types."fs_inspect::fs::DirCursor"]
+c = "fs_inspect_dir"
+items.batches = { py = "-", c = "fs_inspect_dir_read" }
+items.dir = { c = "fs_inspect_dir_get_node" }
+items.position = { c = "fs_inspect_dir_get_position" }
+
+[types."fs_inspect::fs::DirOptions"]
+c-struct = "fs_inspect_dir_options"
+items.want = { c = "flags" }
+
+[types."fs_inspect::fs::File"]
+c = "fs_inspect_file"
+items.copy_range = { py = "copy_into" }
+items.extents = { c = "fs_inspect_file_extents_new" }
+items.size = { c = "fs_inspect_file_get_size" }
+items.stat = { c = "fs_inspect_file_get_stat" }
+
+[types."fs_inspect::fs::FileExtent"]
+c-struct = "fs_inspect_file_extent"
+items.range = { c = "offset" }
+
+[types."fs_inspect::fs::FsHandle"]
+py = "Fs"
+c = "fs_inspect_fs"
+items.dir = { c = "fs_inspect_dir_open" }
+items.export = { c = "fs_inspect_fs_export_archive" }
+items.info = { c = "fs_inspect_fs_stat" }
+items.read_ahead = { c = "fs_inspect_fs_read_ahead_new" }
+items.walker = { c = "fs_inspect_fs_walk" }
+
+[types."fs_inspect::fs::Listed"]
+c-struct = "fs_inspect_dir_entry"
+items.entry = { c = "node" }
+items.id = { c = "occurrence" }
+items.info = { c = "stat" }
+items.kind = { c = "kind" }
+
+[types."fs_inspect::fs::Listing"]
+c = "fs_inspect_listing"
+items.dir = { c = "fs_inspect_listing_get_info" }
+items.entries = { py = "__iter__", c = "fs_inspect_listing_read" }
+items.is_empty = { py = "__len__", c = "fs_inspect_listing_count" }
+items.is_whole = { c = "fs_inspect_listing_get_info" }
+items.len = { py = "__len__", c = "fs_inspect_listing_count" }
+items.memory_bytes = { c = "fs_inspect_listing_get_info" }
+items.order = { c = "fs_inspect_listing_order_read" }
+items.siblings = { c = "fs_inspect_listing_siblings_read" }
+
+[types."fs_inspect::fs::ReadAhead"]
+c = "fs_inspect_read_ahead"
+items.stats = { c = "fs_inspect_read_ahead_get_stats" }
+
+[types."fs_inspect::fs::ReadAheadOptions"]
+c-struct = "fs_inspect_read_ahead_options"
+
+[types."fs_inspect::fs::ReadAheadStats"]
+c-struct = "fs_inspect_read_ahead_stats"
+
+[types."fs_inspect::fs::Sibling"]
+c-struct = "fs_inspect_sibling"
+
+[types."fs_inspect::fs::Usage"]
+c-struct = "fs_inspect_usage"
+
+[types."fs_inspect::fs::WalkEntry"]
+c-struct = "fs_inspect_walk_entry"
+items.entry = { c = "node" }
+items.info = { c = "stat" }
+
+[types."fs_inspect::fs::WalkOptions"]
+c-struct = "fs_inspect_walk_options"
+items.on_error = { c = "flags" }
+items.want = { c = "flags" }
+
+[types."fs_inspect::fs::Walker"]
+c = "fs_inspect_walk"
+items.close = { c = "fs_inspect_walk_free" }
+
+[types."fs_inspect::guest::Guest"]
+c = "fs_inspect_guest"
+items.mounts = { c = "fs_inspect_guest_mount_get" }
+items.systems = { c = "fs_inspect_guest_system_get" }
+
+[types."fs_inspect::guest::GuestMount"]
+c = "fs_inspect_guest_mount"
+c-struct = "fs_inspect_guest_mount"
+
+[types."fs_inspect::guest::GuestSystem"]
+c = "fs_inspect_guest_system"
+c-struct = "fs_inspect_guest_system"
+
+[types."fs_inspect::layout::Area"]
+c-struct = "fs_inspect_area"
+items.range = { c = "offset" }
+
+[types."fs_inspect::layout::AreaContent"]
+items.volume = { py = "-" }
+
+[types."fs_inspect::layout::DiskLayout"]
+c = "fs_inspect_layout"
+items.areas = { c = "fs_inspect_layout_areas_read" }
+items.device = { c = "fs_inspect_layout_get_info" }
+items.problem = { c = "fs_inspect_layout_get_info" }
+items.size = { c = "fs_inspect_layout_get_info" }
+
+[types."fs_inspect::verify::Counts"]
+c-struct = "fs_inspect_verify_checked"
+
+[types."fs_inspect::verify::Stopped"]
+c-struct = "fs_inspect_verify_summary"
+items.error = { c = "stopped_status" }
+
+[types."fs_inspect::verify::VerifyOptions"]
+c-struct = "fs_inspect_verify_options"
+items.data = { c = "flags" }
+
+[types."fs_inspect::verify::VerifyReport"]
+c = "fs_inspect_verify_report"
+items.checked = { c = "fs_inspect_verify_report_checked_get" }
+items.damaged = { c = "fs_inspect_verify_report_get_summary" }
+items.dropped = { c = "fs_inspect_verify_report_get_summary" }
+items.findings = { c = "fs_inspect_verify_report_finding_get" }
+items.not_covered = { c = "fs_inspect_verify_report_not_covered_get" }
+items.passed = { c = "fs_inspect_verify_report_get_summary" }
+items.recovered = { c = "fs_inspect_verify_report_get_summary" }
+items.stopped = { c = "fs_inspect_verify_report_get_summary" }
+
+[types."fs_inspect_core::acl::Entry"]
+py = "AclEntry"
+c-struct = "fs_inspect_acl_entry"
+
+[types."fs_inspect_core::diag::Diagnostic"]
+c-struct = "fs_inspect_diagnostic"
+
+[types."fs_inspect_core::fs::Driver"]
+rust-only = "driver registry: Rust's extension point"
+
+[types."fs_inspect_core::fs::DriverContext"]
+rust-only = "driver registry: Rust's extension point"
+
+[types."fs_inspect_core::fs::FsInfo"]
+c-struct = "fs_inspect_volume_info"
+items.kind = { c = "fs_kind" }
+
+[types."fs_inspect_core::fs::ReplaySummary"]
+c-struct = "fs_inspect_volume_state_info"
+
+[types."fs_inspect_core::fs::Sniff"]
+rust-only = "driver probing: Rust's extension point"
+
+[types."fs_inspect_core::integrity::Finding"]
+c-struct = "fs_inspect_finding"
+items.site = { c = "site_kind" }
+
+[types."fs_inspect_core::limits::Limits"]
+c-struct = "fs_inspect_limits"
+
+[types."fs_inspect_core::name::EntryId"]
+rust-only = "an entry's identity as a type: the bindings give its text (Listed.id) and take it back (find)"
+
+[types."fs_inspect_core::name::Name"]
+items.as_bytes = { py = "-" }
+items.eq_str = { py = "__eq__" }
+items.is_dot = { py = "-" }
+items.is_empty = { py = "-" }
+items.to_string_lossy = { py = "__str__" }
+items.to_utf8 = { py = "-" }
+
+[types."fs_inspect_core::ns::CloudInfo"]
+c-struct = "fs_inspect_cloud_info"
+items.provider_data = { c = "fs_inspect_fs_read_cloud_data" }
+
+[types."fs_inspect_core::ns::DirEntry"]
+c-struct = "fs_inspect_dir_entry"
+items.unnamed = { py = "-", c = "- C names an export's items by node (fs_inspect_node) alone" }
+
+[types."fs_inspect_core::ns::NodeFlags"]
+items.bits = { py = "-", c = "- C reads and passes the bits themselves" }
+items.contains = { c = "- bit-set helper; C tests FS_INSPECT_NODE_FLAG_* bits" }
+items.from_bits_truncate = { py = "-", c = "- C reads and passes the bits themselves" }
+
+[types."fs_inspect_core::ns::NodeId"]
+c-struct = "fs_inspect_node"
+items.new = { c = "- constructor; C fills fs_inspect_node itself" }
+
+[types."fs_inspect_core::ns::NodeInfo"]
+items.link = { c = "fs_inspect_fs_read_link" }
+items.names = { c = "fs_inspect_fs_names" }
+items.security = { c = "fs_inspect_fs_security" }
+items.stat = { c = "fs_inspect_fs_stat" }
+items.streams = { c = "fs_inspect_fs_streams" }
+items.streams_to_open = { c = "- a convenience over streams for Rust readers; C filters fs_inspect_fs_streams itself" }
+items.xattrs = { c = "fs_inspect_fs_xattrs" }
+
+[types."fs_inspect_core::ns::RecallFlags"]
+items.bits = { py = "-", c = "- C reads and passes the bits themselves" }
+items.contains = { c = "- C tests the FS_INSPECT_RECALL_FLAG_* bits of the field itself" }
+items.from_bits_truncate = { py = "-", c = "- C reads and passes the bits themselves" }
+
+[types."fs_inspect_core::ns::RootInfo"]
+c-struct = "fs_inspect_root_info"
+items.default = { c = "is_default" }
+
+[types."fs_inspect_core::ns::Stat"]
+c-struct = "fs_inspect_stat"
+items.presence = { c = "presence" }
+items.unix = { c = "unix_mode" }
+
+[types."fs_inspect_core::ns::StreamId"]
+rust-only = "a stream's number: C and Python pass the plain integer"
+
+[types."fs_inspect_core::ns::StreamInfo"]
+c-struct = "fs_inspect_stream_info"
+
+[types."fs_inspect_core::ns::Times"]
+c-struct = "fs_inspect_times"
+
+[types."fs_inspect_core::ns::Timestamp"]
+c-struct = "fs_inspect_timestamp"
+
+[types."fs_inspect_core::ns::UnixMode"]
+c-struct = "fs_inspect_unix_mode"
+
+[types."fs_inspect_core::ns::Want"]
+items.bits = { py = "-", c = "- C reads and passes the bits themselves" }
+items.contains = { c = "- bit-set helper; C passes FS_INSPECT_DIR_FLAG_STAT flags" }
+items.from_bits_truncate = { py = "-", c = "- C reads and passes the bits themselves" }
+items.without = { c = "- bit-set helper; C passes FS_INSPECT_DIR_FLAG_STAT flags" }
+
+[types."fs_inspect_core::ns::WinAttrs"]
+c-struct = "fs_inspect_win_attrs"
+
+[types."fs_inspect_core::ns::Xattr"]
+c-struct = "fs_inspect_xattr"
+items.namespace = { c = "namespace_" }
+
+[types."fs_inspect_core::path::VolumePath"]
+rust-only = "a driver's path parser (fs_inspect::unstable::driver): paths are strings"
+
+[types."fs_inspect_core::place::LogicalId"]
+c-struct = "fs_inspect_volume_info"
+items.container = { c = "logical_container" }
+items.container_id = { c = "- `<kind>:<container>` of logical_kind and logical_container (fs_inspect_container.id has it too)" }
+items.container_of = { py = "-", c = "- constructor: C callers never build one" }
+items.kind = { c = "logical_kind" }
+items.new = { py = "-", c = "- constructor: C callers never build one" }
+items.volume = { c = "logical_volume" }
+
+[types."fs_inspect_io::AlignedSource"]
+c = "- a source tool for Rust implementers: a C caller's reader is fs_inspect_source_ops"
+rust-only = "source tools for Rust implementers"
+
+[types."fs_inspect_io::ByteRange"]
+c-struct = "fs_inspect_range"
+items.contains = { py = "__contains__", c = "- range arithmetic on two plain fields, written in C directly" }
+items.end = { c = "- range arithmetic on two plain fields, written in C directly" }
+items.from_bounds = { c = "- range arithmetic on two plain fields, written in C directly" }
+items.is_empty = { c = "- range arithmetic on two plain fields, written in C directly" }
+items.new = { c = "- range arithmetic on two plain fields, written in C directly" }
+items.shifted = { c = "- range arithmetic on two plain fields, written in C directly" }
+
+[types."fs_inspect_io::CountingSource"]
+rust-only = "internal to IoStats"
+
+[types."fs_inspect_io::FileSource"]
+rust-only = "a source of a file: each binding opens paths with DiskSpec"
+
+[types."fs_inspect_io::IoCounts"]
+c-struct = "fs_inspect_io_counts"
+items.since = { c = "- field-wise subtraction of two fs_inspect_io_counts, written in C directly" }
+
+[types."fs_inspect_io::IoStats"]
+c = "fs_inspect_io_stats"
+items.counts = { c = "fs_inspect_io_stats_get_counts" }
+items.epoch = { c = "- a process-local Instant; fs_inspect_read_event.start_ns is already relative to it", rust-only = "a std::time::Instant, which means nothing outside Rust: ReadEvent.start is relative to it" }
+items.new = { c = "fs_inspect_io_stats_new" }
+items.reads_traced = { c = "fs_inspect_io_stats_get_events" }
+items.traced = { c = "fs_inspect_io_stats_new" }
+
+[types."fs_inspect_io::MemSource"]
+rust-only = "a source in memory: Rust's source tools"
+
+[types."fs_inspect_io::OffsetSource"]
+c = "- a source tool for Rust implementers: a C caller's reader is fs_inspect_source_ops"
+rust-only = "source tools for Rust implementers"
+
+[types."fs_inspect_io::ReadEvent"]
+c-struct = "fs_inspect_read_event"
+items.start = { c = "start_ns" }
+items.took = { c = "took_ns" }
+
+[types."fs_inspect_io::cancel::CancelSource"]
+c = "- a source tool for Rust implementers: cancel reaches a C caller's reader through the call's fs_inspect_cancel"
+rust-only = "source tools for Rust implementers"
+
+[types."fs_inspect_io::cancel::CancelToken"]
+c = "fs_inspect_cancel"
+items.cancel = { c = "fs_inspect_cancel_trigger" }
+
+[types."fs_inspect_io::error::Error"]
+py = "FsInspectError"
+items.at = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.at_device = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.cancelled = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.caused_by = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.content_unavailable = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.context = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.corrupt = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.file = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.format = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.invalid_argument = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.io = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.is_a_directory = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.is_cancelled = { py = "-", c = "- the status is FS_INSPECT_E_CANCELLED" }
+items.kind = { c = "- the kind is the status a call returns (FS_INSPECT_E_*)" }
+items.limit = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.location = { c = "fs_inspect_last_error_location" }
+items.message = { c = "fs_inspect_last_error_message" }
+items.new = { c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.not_found = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.scope = { c = "fs_inspect_status_scope" }
+items.source_error = { py = "-", c = "- a Rust error chain; the cause's text is in the last error's message" }
+items.unavailable = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.unsupported = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+items.used_past_end = { py = "-", c = "- constructors for Rust implementers: errors reach C as status codes" }
+
+[types."fs_inspect_io::error::ErrorKind"]
+items.of_io = { rust-only = "maps a std::io::Error: Rust's" }
+
+[types."fs_inspect_io::error::Location"]
+items.offset = { c = "fs_inspect_last_error_location" }
+items.space = { c = "fs_inspect_last_error_location" }
+items.structure = { c = "fs_inspect_last_error_location" }
+
+[types."fs_inspect_io::error::OutOfRange"]
+rust-only = "a source's bounds check: Rust's source tools"
+
+[types."fs_inspect_io::error::SourceError"]
+rust-only = "a Rust source's error: a source written in Python raises FsInspectError's subclasses"
+
+[functions]
+"fs_inspect_core::acl::parse" = { py = "acl_parse", c = "- C gets POSIX ACLs already parsed (fs_inspect_security_info.access / default_acl)" }
+"fs_inspect_core::acl::to_xattr" = { py = "acl_to_xattr", c = "- the Linux xattr encoding a Rust sink writes; C gets the entries (fs_inspect_acl_entry) to encode as its target needs" }
+"fs_inspect_disk::disk_id" = { c = "- reads a disk id from a Rust source; C gets it from fs_inspect_device_info.disk_id" }
+"fs_inspect_disk::partition::disk_id" = { c = "- reads a disk id from a Rust source; C gets it from fs_inspect_device_info.disk_id" }
+"fs_inspect_io::checked" = { rust-only = "where a Rust source composer's source enters: a binding's source is a set's (DiskSpec, replace_disk_source, replace_volume_source), which applies it" }
+"fs_inspect_io::parts_of" = { rust-only = "source tools for Rust implementers" }
+"fs_inspect_io::thread_slot" = { rust-only = "source tools for Rust implementers" }
+"fs_inspect_io::cancel::check_call" = { rust-only = "for Rust implementers: a binding checks its own call" }
+
+[python-extra]
+"AclEntry.replace" = "a copy with some fields changed"
+Answer = "the Rust enum Answer as a class: its kind (AnswerKind) and its variants' fields"
+AnswerKind = "the tags of the Rust enum Answer (the registry's kind())"
+"AreaContent.kind" = "the enum's tag (the registry's kind(), AreaContentKind)"
+AreaContentKind = "the tags of the Rust enum AreaContent (the registry's kind())"
+BlockClass = "the Rust enum BlockClass (the registry's members): it has no methods of its own"
+BlockSource = "a source the library gives (a DynSource, Arc<dyn BlockSource>): read it or pass it back"
+"Blocks.count" = "the Sequence protocol of the ranges Blocks derefs to"
+"Blocks.index" = "the Sequence protocol of the ranges Blocks derefs to"
+Bound = "the Rust enum Bound (the registry's members): it has no methods of its own"
+"BrowseOptions.replace" = "a copy with some fields changed"
+"ByteRange.replace" = "a copy with some fields changed"
+CancelledError = "the exception of ErrorKind::CANCELLED: raised and caught by its class"
+CatalogProblem = "the Rust enum CatalogProblem as a class: its kind (CatalogProblemKind) and its variants' fields"
+CatalogProblemKind = "the tags of the Rust enum CatalogProblem (the registry's kind())"
+CatalogState = "the Rust enum CatalogState as a class: its kind (CatalogStateKind) and its variants' fields"
+CatalogStateKind = "the tags of the Rust enum CatalogState (the registry's kind())"
+Checksums = "the Rust enum Checksums (the registry's members): it has no methods of its own"
+CloudPolicy = "the Rust enum CloudPolicy (the registry's members): it has no methods of its own"
+CloudProvider = "the Rust enum CloudProvider as a class: its kind (CloudProviderKind) and its variants' fields"
+CloudProviderKind = "the tags of the Rust enum CloudProvider (the registry's kind())"
+ContainerFormat = "the Rust enum ContainerFormat (the registry's members): it has no methods of its own"
+ContainerKind = "the Rust enum ContainerKind (the registry's members): it has no methods of its own"
+ContainerStatus = "the Rust enum ContainerStatus (the registry's members): it has no methods of its own"
+ContentUnavailableError = "the exception of ErrorKind::CONTENT_UNAVAILABLE: raised and caught by its class"
+CorruptError = "the exception of ErrorKind::CORRUPT: raised and caught by its class"
+DataMissingError = "the exception of ErrorKind::DATA_MISSING: raised and caught by its class"
+"Device.close" = "lets the device go now (a context manager), where Rust drops it"
+"DeviceMapOptions.replace" = "a copy with some fields changed"
+DeviceRef = "the Rust enum DeviceRef as a class: its kind (DeviceRefKind) and its variants' fields"
+DeviceRefKind = "the tags of the Rust enum DeviceRef (the registry's kind())"
+DiagCode = "the Rust enum DiagCode (the registry's members): it has no methods of its own"
+"DirCursor.close" = "lets the cursor go now (a context manager), where Rust drops it"
+"DirOptions.replace" = "a copy with some fields changed"
+DirOrder = "the Rust enum DirOrder (the registry's members): it has no methods of its own"
+"DirSink.close" = "lets the sink go unused (a context manager); an export takes it"
+DiskId = "the Rust enum DiskId as a class: its kind (DiskIdKind) and its variants' fields"
+DiskIdKind = "the tags of the Rust enum DiskId (the registry's kind())"
+"DiskSet.close" = "lets the disks go now, where Rust drops the set"
+"DiskSpec.replace" = "a copy with raw changed"
+"ExportOptions.replace" = "a copy with some fields changed"
+ExtentKind = "the Rust enum ExtentKind (the registry's members): it has no methods of its own"
+"File.close" = "lets the stream go now (io.RawIOBase), where Rust drops it"
+"File.copy_to" = "copy_range into a file at a path, written without passing the bytes through Python, its zeros left as holes"
+"File.readable" = "io.RawIOBase: a stream of a file is a binary stream"
+"File.readinto" = "io.RawIOBase: reads at the stream's position (read_at reads at an offset)"
+"File.seek" = "io.RawIOBase: the position readinto reads at"
+"File.seekable" = "io.RawIOBase: a stream of a file is a binary stream"
+"File.tell" = "io.RawIOBase: the position readinto reads at"
+FindingKind = "the Rust enum FindingKind (the registry's members): it has no methods of its own"
+FindingSite = "the Rust enum FindingSite as a class: its kind (FindingSiteKind) and its variants' fields"
+FindingSiteKind = "the tags of the Rust enum FindingSite (the registry's kind())"
+FormatError = "the exception of ErrorKind::FORMAT: raised and caught by its class"
+"Fs.close" = "lets the file system go now (a context manager), where Rust drops it"
+"Fs.names" = "info with Want.NAMES alone, its names facet unwrapped"
+"Fs.read_link" = "info with Want.LINK alone, its link facet unwrapped"
+"Fs.security" = "info with Want.SECURITY alone, its security facet unwrapped"
+"Fs.streams" = "info with Want.STREAMS alone, its streams facet unwrapped"
+"Fs.xattrs" = "info with Want.XATTRS alone, its xattrs facet unwrapped"
+FsFamily = "the Rust enum FsFamily (the registry's members): it has no methods of its own"
+GroupOf = "the Rust enum GroupOf as a class: its kind (GroupOfKind) and its variants' fields"
+GroupOfKind = "the tags of the Rust enum GroupOf (the registry's kind())"
+GuestOs = "the Rust enum GuestOs (the registry's members): it has no methods of its own"
+HardLinks = "the Rust enum HardLinks (the registry's members): it has no methods of its own"
+Hydration = "the Rust enum Hydration (the registry's members): it has no methods of its own"
+InvalidArgumentError = "the exception of ErrorKind::INVALID_ARGUMENT: raised and caught by its class"
+IoError = "the exception of ErrorKind::IO: raised and caught by its class"
+IsADirectoryError = "the exception of ErrorKind::IS_A_DIRECTORY: raised and caught by its class"
+LimitError = "the exception of ErrorKind::LIMIT: raised and caught by its class"
+"Limits.replace" = "a copy with some fields changed"
+LinkTarget = "the Rust enum LinkTarget as a class: its kind (LinkTargetKind) and its variants' fields"
+LinkTargetKind = "the tags of the Rust enum LinkTarget (the registry's kind())"
+"Listing.count" = "the Sequence protocol of a listing's entries"
+"Listing.ids" = "every entry's id in one call, without an object per entry"
+"Listing.index" = "the Sequence protocol of a listing's entries"
+MemberRole = "the Rust enum MemberRole as a class: its kind (MemberRoleKind) and its variants' fields"
+MemberRoleKind = "the tags of the Rust enum MemberRole (the registry's kind())"
+MountBy = "the Rust enum MountBy as a class: its kind (MountByKind) and its variants' fields"
+MountByKind = "the tags of the Rust enum MountBy (the registry's kind())"
+MountPoint = "the Rust enum MountPoint as a class: its kind (MountPointKind) and its variants' fields"
+MountPointKind = "the tags of the Rust enum MountPoint (the registry's kind())"
+"Name.raw" = "the bytes as stored (the Name enum's Bytes or UTF-16 units)"
+"Name.text" = "the name as a lossless str (surrogateescape / surrogatepass) for os functions"
+NoSpaceError = "the exception of ErrorKind::NO_SPACE: raised and caught by its class"
+"NodeId.replace" = "a copy with some fields changed"
+NodeKind = "the Rust enum NodeKind (the registry's members): it has no methods of its own"
+NotFoundError = "the exception of ErrorKind::NOT_FOUND: raised and caught by its class"
+NotReplayed = "the Rust enum NotReplayed as a class: its kind (NotReplayedKind) and its variants' fields"
+NotReplayedKind = "the tags of the Rust enum NotReplayed (the registry's kind())"
+OnError = "the Rust enum OnError (the registry's members): it has no methods of its own"
+"OpenOptions.replace" = "a copy with some fields changed"
+Order = "the Rust enum Order (the registry's members): it has no methods of its own"
+Outcome = "the Rust enum Outcome (the registry's members): it has no methods of its own"
+PartitionEntry = "the Rust enum PartitionEntry as a class: its kind (PartitionEntryKind) and its variants' fields"
+PartitionEntryKind = "the tags of the Rust enum PartitionEntry (the registry's kind())"
+PartitionRole = "the Rust enum PartitionRole as a class: its kind (PartitionRoleKind) and its variants' fields"
+PartitionRoleKind = "the tags of the Rust enum PartitionRole (the registry's kind())"
+PartitionScheme = "the Rust enum PartitionScheme (the registry's members): it has no methods of its own"
+"PartitionTable.kind" = "the enum's tag (the registry's kind(), PartitionTableKind)"
+PartitionTableKind = "the tags of the Rust enum PartitionTable (the registry's kind())"
+PartitionType = "the Rust enum PartitionType (the registry's members): it has no methods of its own"
+PermissionDeniedError = "the exception of ErrorKind::PERMISSION_DENIED: raised and caught by its class"
+PinState = "the Rust enum PinState (the registry's members): it has no methods of its own"
+Presence = "the Rust enum Presence (the registry's members): it has no methods of its own"
+Projection = "the Rust enum Projection (the registry's members): it has no methods of its own"
+"ReadAhead.close" = "lets what it keeps go now (a context manager), where Rust drops it"
+"ReadAheadOptions.replace" = "a copy with some fields changed"
+Readability = "the Rust enum Readability (the registry's members): it has no methods of its own"
+"RootAccess.kind" = "the enum's tag (the registry's kind(), RootAccessKind)"
+RootAccessKind = "the tags of the Rust enum RootAccess (the registry's kind())"
+RootKind = "the Rust enum RootKind (the registry's members): it has no methods of its own"
+Scope = "the Rust enum Scope (the registry's members): it has no methods of its own"
+Security = "the Rust enum Security as a class: its kind (SecurityKind) and its variants' fields"
+SecurityKind = "the tags of the Rust enum Security (the registry's kind())"
+"SetDisk.kind" = "the enum's tag (the registry's kind(), SetDiskKind)"
+SetDiskKind = "the tags of the Rust enum SetDisk (the registry's kind())"
+Severity = "the Rust enum Severity (the registry's members): it has no methods of its own"
+Siblings = "a listing's siblings (Listing::siblings's slice) held on the library's side"
+SourceOrigin = "the Rust enum SourceOrigin (the registry's members): it has no methods of its own"
+Space = "the Rust enum Space (the registry's members): it has no methods of its own"
+Sparse = "the Rust enum Sparse (the registry's members): it has no methods of its own"
+StoreKind = "the Rust enum StoreKind (the registry's members): it has no methods of its own"
+Streams = "the Rust enum Streams (the registry's members): it has no methods of its own"
+StructureKind = "the Rust enum StructureKind (the registry's members): it has no methods of its own"
+Symlinks = "the Rust enum Symlinks (the registry's members): it has no methods of its own"
+"TarSink.close" = "lets the sink go unused (a context manager); an export takes it"
+"Timestamp.from_filetime" = "a Windows FILETIME as a Timestamp, for a caller's own times (the drivers' conversion is unstable)"
+"Timestamp.from_unix_nanos" = "nanoseconds since 1970 as a Timestamp, for a caller's own times (the drivers' conversion is unstable)"
+"Timestamp.replace" = "a copy with some fields changed"
+"Timestamp.to_datetime" = "the time as Python's datetime"
+UnavailableError = "the exception of ErrorKind::UNAVAILABLE: raised and caught by its class"
+UnsupportedError = "the exception of ErrorKind::UNSUPPORTED: raised and caught by its class"
+"VerifyOptions.replace" = "a copy with some fields changed"
+"Volume.close" = "lets the volume go now (a context manager), where Rust drops it"
+"Volume.source" = "the volume's bytes as the driver layer reads them (unstable::volume_source)"
+VolumeLocation = "the Rust enum VolumeLocation as a class: its kind (VolumeLocationKind) and its variants' fields"
+VolumeLocationKind = "the tags of the Rust enum VolumeLocation (the registry's kind())"
+"VolumeMapOptions.replace" = "a copy with some fields changed"
+VolumeRole = "the Rust enum VolumeRole (the registry's members): it has no methods of its own"
+"VolumeState.kind" = "the enum's tag (the registry's kind(), VolumeStateKind)"
+VolumeStateKind = "the tags of the Rust enum VolumeState (the registry's kind())"
+VolumeTail = "the Rust enum VolumeTail (the registry's members): it has no methods of its own"
+"WalkOptions.replace" = "a copy with some fields changed"
+"Want.info" = "the facets read when any info is wanted, None for NONE (unstable::WantExt::info)"
+Writable = "the protocol of what File.copy_into writes to (a binary stream's write)"
+XattrNs = "the Rust enum XattrNs (the registry's members): it has no methods of its own"
+ZipCompression = "the Rust enum ZipCompression (the registry's members): it has no methods of its own"
+"ZipSink.close" = "lets the sink go unused (a context manager); an export takes it"
+
+[c-extra]
+fs_inspect_api_version = "the C API's own version, checked before any other call (FS_INSPECT_API_COMPATIBLE)"
+fs_inspect_areas_count = "the length of a split's areas"
+fs_inspect_areas_free = "frees a split's areas"
+fs_inspect_areas_read = "a split's areas, copied into the caller's buffer"
+fs_inspect_buf_free = "frees a library-made buffer"
+fs_inspect_buf_get_bytes = "the bytes of a library-made buffer (attribute values, JSON)"
+fs_inspect_cancel_free = "frees a cancel token"
+fs_inspect_catalog_disk_count = "how many disks fs_inspect_catalog_disk_get takes"
+fs_inspect_catalog_free = "frees a catalog"
+fs_inspect_catalog_group_count = "how many groups fs_inspect_catalog_group_get takes"
+fs_inspect_catalog_problem_count = "how many problems fs_inspect_catalog_problem_get takes"
+fs_inspect_catalog_volume_count = "how many volumes fs_inspect_catalog_volume_get takes"
+fs_inspect_containers_count = "the length of a containers snapshot"
+fs_inspect_containers_free = "frees a containers snapshot"
+fs_inspect_containers_get = "one container of a snapshot"
+fs_inspect_diagnostics_count = "the length of a diagnostics snapshot"
+fs_inspect_diagnostics_free = "frees a diagnostics snapshot"
+fs_inspect_diagnostics_get = "one diagnostic of a snapshot"
+fs_inspect_dir_free = "frees a directory cursor"
+fs_inspect_disk_extents_count = "the length of a disk extent list"
+fs_inspect_disk_extents_free = "frees a disk extent list"
+fs_inspect_disk_extents_read = "a disk extent list, copied into the caller's buffer"
+fs_inspect_disks_disk_count = "how many places fs_inspect_disks_disk_get takes"
+fs_inspect_disks_free = "frees a set handle"
+fs_inspect_export_report_cloud_count = "how many cloud files fs_inspect_export_report_cloud_get takes"
+fs_inspect_export_report_free = "frees the report handle"
+fs_inspect_export_report_json = "the report as the JSON `fs-inspect export` prints, for callers that log or forward it whole"
+fs_inspect_export_report_note_count = "how many notes fs_inspect_export_report_note_get takes"
+fs_inspect_export_report_skipped_count = "how many skipped items fs_inspect_export_report_skipped_get takes"
+fs_inspect_file_extents_count = "the length of a file's extent list"
+fs_inspect_file_extents_free = "frees a file's extent list"
+fs_inspect_file_extents_read = "a file's extent list, copied into the caller's buffer"
+fs_inspect_file_free = "frees an open file"
+fs_inspect_fs_free = "frees a file system handle"
+fs_inspect_guest_free = "frees what fs_inspect_disks_guest found"
+fs_inspect_guest_mount_count = "how many mounts fs_inspect_guest_mount_get takes"
+fs_inspect_guest_system_count = "how many systems fs_inspect_guest_system_get takes"
+fs_inspect_io_stats_free = "frees read counters"
+fs_inspect_item_errors_count = "the length of a call's item errors"
+fs_inspect_item_errors_free = "frees a call's item errors"
+fs_inspect_item_errors_get = "one item error of a call: its index, status and location"
+fs_inspect_layout_areas_count = "the length of DiskLayout::areas"
+fs_inspect_layout_free = "frees a layout handle"
+fs_inspect_limits_default = "the values 0 fields of fs_inspect_limits stand for"
+fs_inspect_link_free = "frees the link handle"
+fs_inspect_link_get_info = "what a link handle holds, its strings owned by the handle"
+fs_inspect_listing_free = "frees a listing"
+fs_inspect_logical_volumes_count = "the length of a logical volume snapshot"
+fs_inspect_logical_volumes_free = "frees a logical volume snapshot"
+fs_inspect_logical_volumes_get = "one logical volume of a snapshot"
+fs_inspect_map_free = "frees a map handle"
+fs_inspect_members_count = "the length of a member snapshot"
+fs_inspect_members_free = "frees a member snapshot"
+fs_inspect_members_get = "one member of a snapshot"
+fs_inspect_metadata_report_free = "frees the metadata report handle"
+fs_inspect_metadata_report_skipped_count = "how many skipped facets fs_inspect_metadata_report_skipped_get takes"
+fs_inspect_names_count = "count of the snapshot of a node's names"
+fs_inspect_names_free = "frees the snapshot"
+fs_inspect_names_get = "name i of the snapshot"
+fs_inspect_partition_table_count = "the length of a partition table handle"
+fs_inspect_partition_table_free = "frees a partition table handle"
+fs_inspect_partition_table_get = "one partition of a partition table handle"
+fs_inspect_partition_table_get_info = "what a partition table handle is (kind, problem, count)"
+fs_inspect_pool_members_count = "the length of a pool's leaves snapshot"
+fs_inspect_pool_members_free = "frees a pool's leaves snapshot"
+fs_inspect_pool_members_get = "one leaf of a pool's snapshot: its member index"
+fs_inspect_pool_members_open = "one leaf of a pool's snapshot opened as a volume"
+fs_inspect_ranges_count = "the length of a list of ranges"
+fs_inspect_ranges_free = "frees a list of ranges"
+fs_inspect_read_ahead_free = "frees the read-ahead handle"
+fs_inspect_read_events_count = "the length of a snapshot of traced reads"
+fs_inspect_read_events_free = "frees a snapshot of traced reads"
+fs_inspect_read_events_get = "one read of a snapshot of traced reads, O(1)"
+fs_inspect_roots_count = "count of a snapshot of roots (C form of the Vec fs_inspect_fs_roots returns)"
+fs_inspect_roots_free = "frees a snapshot of roots"
+fs_inspect_roots_get = "one root of a snapshot of roots"
+fs_inspect_security_free = "frees the security handle"
+fs_inspect_security_get_info = "what a security handle holds, its ACL arrays owned by the handle"
+fs_inspect_source_free = "frees a source handle; the caller's context is released once no set reads it"
+fs_inspect_source_new = "a caller's reader made a source a set can read (DiskSpec::source of Rust's own sources)"
+fs_inspect_streams_count = "count of the snapshot of a node's streams"
+fs_inspect_streams_free = "frees the snapshot"
+fs_inspect_streams_get = "stream i of the snapshot"
+fs_inspect_verify_report_checked_count = "how many kinds of structure fs_inspect_verify_report_checked_get takes"
+fs_inspect_verify_report_finding_count = "how many findings fs_inspect_verify_report_finding_get takes"
+fs_inspect_verify_report_free = "frees a verification's report"
+fs_inspect_verify_report_json = "the whole report as the CLI's JSON, for a caller that logs or forwards it"
+fs_inspect_verify_report_not_covered_count = "how many structures fs_inspect_verify_report_not_covered_get takes"
+fs_inspect_version = "the library's version string"
+fs_inspect_volume_free = "frees a volume handle"
+fs_inspect_volume_read_at = "the volume's bytes as the driver layer reads them (unstable::volume_source)"
+fs_inspect_volumes_count = "the length of a volumes snapshot"
+fs_inspect_volumes_free = "frees a volumes snapshot"
+fs_inspect_volumes_get = "one volume of a snapshot"
+fs_inspect_xattrs_count = "count of the snapshot of a node's extended attributes"
+fs_inspect_xattrs_free = "frees the snapshot"
+fs_inspect_xattrs_get = "attribute i of the snapshot"

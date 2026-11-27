@@ -1,0 +1,830 @@
+ext4 unit 4096 bytes 0x2000000 label None uuid Some("bdd723d4-8f10-424d-b862-56ba93ba2d35")
+  allocated: 10 ranges, 2539520 bytes, digest 760a68bdf95c3056
+root 0 "" path "" Main
+  /.sig: File size 8192 alloc Some(8192) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x2000@0x67a000
+  /big: Dir size 28672 alloc Some(28672) nlink Some(2) flags NodeFlags(0)
+  /dir: Dir size 4096 alloc Some(4096) nlink Some(3) flags NodeFlags(0)
+  /hardlink.txt: File size 6 alloc Some(4096) nlink Some(2) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x6@0x67e000
+  /lost+found: Dir size 16384 alloc Some(16384) nlink Some(2) flags NodeFlags(0)
+  /sparse.bin: File size 1052672 alloc Some(8192) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1000@0xe79000 0x1000+0xff000hole 0x100000+0x1000@0xf79000
+  /swap.img: File size 65536 alloc Some(65536) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x10000@0x66a000
+  /swapfile: File size 262144 alloc Some(262144) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x40000@0x60d000
+  /var: Dir size 4096 alloc Some(4096) nlink Some(2) flags NodeFlags(0)
+  /big/entry-0000-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x67f000
+  /big/entry-0001-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x680000
+  /big/entry-0002-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x681000
+  /big/entry-0003-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x682000
+  /big/entry-0004-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x683000
+  /big/entry-0005-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x684000
+  /big/entry-0006-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x685000
+  /big/entry-0007-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x686000
+  /big/entry-0008-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x687000
+  /big/entry-0009-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x688000
+  /big/entry-0010-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x689000
+  /big/entry-0011-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68a000
+  /big/entry-0012-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68b000
+  /big/entry-0013-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68c000
+  /big/entry-0014-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68d000
+  /big/entry-0015-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68e000
+  /big/entry-0016-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x68f000
+  /big/entry-0017-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x690000
+  /big/entry-0018-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x691000
+  /big/entry-0019-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x692000
+  /big/entry-0020-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x693000
+  /big/entry-0021-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x694000
+  /big/entry-0022-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x695000
+  /big/entry-0023-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x696000
+  /big/entry-0024-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x697000
+  /big/entry-0025-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x698000
+  /big/entry-0026-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x699000
+  /big/entry-0027-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69a000
+  /big/entry-0028-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x86b000
+  /big/entry-0029-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x86c000
+  /big/entry-0030-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x86d000
+  /big/entry-0031-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x86e000
+  /big/entry-0032-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69b000
+  /big/entry-0033-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69c000
+  /big/entry-0034-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69d000
+  /big/entry-0035-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69e000
+  /big/entry-0036-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x69f000
+  /big/entry-0037-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a0000
+  /big/entry-0038-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a1000
+  /big/entry-0039-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a2000
+  /big/entry-0040-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a3000
+  /big/entry-0041-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a4000
+  /big/entry-0042-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a5000
+  /big/entry-0043-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a6000
+  /big/entry-0044-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a7000
+  /big/entry-0045-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a8000
+  /big/entry-0046-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6a9000
+  /big/entry-0047-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6aa000
+  /big/entry-0048-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ab000
+  /big/entry-0049-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ac000
+  /big/entry-0050-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ad000
+  /big/entry-0051-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ae000
+  /big/entry-0052-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6af000
+  /big/entry-0053-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b0000
+  /big/entry-0054-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b1000
+  /big/entry-0055-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b2000
+  /big/entry-0056-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b3000
+  /big/entry-0057-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b4000
+  /big/entry-0058-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b5000
+  /big/entry-0059-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b6000
+  /big/entry-0060-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b7000
+  /big/entry-0061-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b8000
+  /big/entry-0062-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6b9000
+  /big/entry-0063-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ba000
+  /big/entry-0064-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6bb000
+  /big/entry-0065-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6bc000
+  /big/entry-0066-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6bd000
+  /big/entry-0067-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6be000
+  /big/entry-0068-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6bf000
+  /big/entry-0069-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c0000
+  /big/entry-0070-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c1000
+  /big/entry-0071-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c2000
+  /big/entry-0072-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c3000
+  /big/entry-0073-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c4000
+  /big/entry-0074-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c5000
+  /big/entry-0075-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c6000
+  /big/entry-0076-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c7000
+  /big/entry-0077-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c8000
+  /big/entry-0078-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6c9000
+  /big/entry-0079-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ca000
+  /big/entry-0080-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6cb000
+  /big/entry-0081-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6cc000
+  /big/entry-0082-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6cd000
+  /big/entry-0083-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ce000
+  /big/entry-0084-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6cf000
+  /big/entry-0085-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d0000
+  /big/entry-0086-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d1000
+  /big/entry-0087-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d2000
+  /big/entry-0088-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d3000
+  /big/entry-0089-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d4000
+  /big/entry-0090-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d5000
+  /big/entry-0091-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d6000
+  /big/entry-0092-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d7000
+  /big/entry-0093-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d8000
+  /big/entry-0094-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6d9000
+  /big/entry-0095-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6da000
+  /big/entry-0096-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa79000
+  /big/entry-0097-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7a000
+  /big/entry-0098-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7b000
+  /big/entry-0099-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7c000
+  /big/entry-0100-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7d000
+  /big/entry-0101-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7e000
+  /big/entry-0102-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa7f000
+  /big/entry-0103-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa80000
+  /big/entry-0104-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa81000
+  /big/entry-0105-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa82000
+  /big/entry-0106-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa83000
+  /big/entry-0107-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa84000
+  /big/entry-0108-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa85000
+  /big/entry-0109-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa86000
+  /big/entry-0110-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa87000
+  /big/entry-0111-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa88000
+  /big/entry-0112-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa89000
+  /big/entry-0113-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8a000
+  /big/entry-0114-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8b000
+  /big/entry-0115-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8c000
+  /big/entry-0116-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8d000
+  /big/entry-0117-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8e000
+  /big/entry-0118-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa8f000
+  /big/entry-0119-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa90000
+  /big/entry-0120-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa91000
+  /big/entry-0121-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa92000
+  /big/entry-0122-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa93000
+  /big/entry-0123-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa94000
+  /big/entry-0124-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa95000
+  /big/entry-0125-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa96000
+  /big/entry-0126-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa97000
+  /big/entry-0127-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa98000
+  /big/entry-0128-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa99000
+  /big/entry-0129-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9a000
+  /big/entry-0130-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9b000
+  /big/entry-0131-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9c000
+  /big/entry-0132-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6db000
+  /big/entry-0133-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6dc000
+  /big/entry-0134-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6dd000
+  /big/entry-0135-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6de000
+  /big/entry-0136-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6df000
+  /big/entry-0137-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e0000
+  /big/entry-0138-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e1000
+  /big/entry-0139-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e2000
+  /big/entry-0140-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e3000
+  /big/entry-0141-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e4000
+  /big/entry-0142-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e5000
+  /big/entry-0143-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e6000
+  /big/entry-0144-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e7000
+  /big/entry-0145-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e8000
+  /big/entry-0146-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6e9000
+  /big/entry-0147-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ea000
+  /big/entry-0148-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6eb000
+  /big/entry-0149-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ec000
+  /big/entry-0150-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ed000
+  /big/entry-0151-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ee000
+  /big/entry-0152-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ef000
+  /big/entry-0153-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f0000
+  /big/entry-0154-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f1000
+  /big/entry-0155-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f2000
+  /big/entry-0156-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f3000
+  /big/entry-0157-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f4000
+  /big/entry-0158-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f5000
+  /big/entry-0159-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f6000
+  /big/entry-0160-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f7000
+  /big/entry-0161-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f8000
+  /big/entry-0162-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6f9000
+  /big/entry-0163-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6fa000
+  /big/entry-0164-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6fb000
+  /big/entry-0165-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6fc000
+  /big/entry-0166-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6fd000
+  /big/entry-0167-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6fe000
+  /big/entry-0168-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x6ff000
+  /big/entry-0169-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x700000
+  /big/entry-0170-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x701000
+  /big/entry-0171-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x702000
+  /big/entry-0172-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x703000
+  /big/entry-0173-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x704000
+  /big/entry-0174-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x705000
+  /big/entry-0175-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x706000
+  /big/entry-0176-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x707000
+  /big/entry-0177-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x708000
+  /big/entry-0178-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x709000
+  /big/entry-0179-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70a000
+  /big/entry-0180-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70b000
+  /big/entry-0181-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70c000
+  /big/entry-0182-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70d000
+  /big/entry-0183-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70e000
+  /big/entry-0184-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9d000
+  /big/entry-0185-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9e000
+  /big/entry-0186-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xa9f000
+  /big/entry-0187-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa0000
+  /big/entry-0188-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa1000
+  /big/entry-0189-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa2000
+  /big/entry-0190-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa3000
+  /big/entry-0191-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa4000
+  /big/entry-0192-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa5000
+  /big/entry-0193-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa6000
+  /big/entry-0194-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa7000
+  /big/entry-0195-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa8000
+  /big/entry-0196-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaa9000
+  /big/entry-0197-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaaa000
+  /big/entry-0198-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaab000
+  /big/entry-0199-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaac000
+  /big/entry-0200-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaad000
+  /big/entry-0201-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaae000
+  /big/entry-0202-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaaf000
+  /big/entry-0203-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab0000
+  /big/entry-0204-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab1000
+  /big/entry-0205-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab2000
+  /big/entry-0206-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab3000
+  /big/entry-0207-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab4000
+  /big/entry-0208-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab5000
+  /big/entry-0209-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab6000
+  /big/entry-0210-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab7000
+  /big/entry-0211-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab8000
+  /big/entry-0212-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xab9000
+  /big/entry-0213-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaba000
+  /big/entry-0214-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xabb000
+  /big/entry-0215-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xabc000
+  /big/entry-0216-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xabd000
+  /big/entry-0217-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xabe000
+  /big/entry-0218-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xabf000
+  /big/entry-0219-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac0000
+  /big/entry-0220-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac1000
+  /big/entry-0221-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac2000
+  /big/entry-0222-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac3000
+  /big/entry-0223-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac4000
+  /big/entry-0224-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac5000
+  /big/entry-0225-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac6000
+  /big/entry-0226-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac7000
+  /big/entry-0227-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac8000
+  /big/entry-0228-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc79000
+  /big/entry-0229-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7a000
+  /big/entry-0230-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7b000
+  /big/entry-0231-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7c000
+  /big/entry-0232-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7d000
+  /big/entry-0233-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7e000
+  /big/entry-0234-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc7f000
+  /big/entry-0235-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc80000
+  /big/entry-0236-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc81000
+  /big/entry-0237-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc82000
+  /big/entry-0238-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc83000
+  /big/entry-0239-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc84000
+  /big/entry-0240-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc85000
+  /big/entry-0241-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc86000
+  /big/entry-0242-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc87000
+  /big/entry-0243-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc88000
+  /big/entry-0244-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc89000
+  /big/entry-0245-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8a000
+  /big/entry-0246-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8b000
+  /big/entry-0247-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8c000
+  /big/entry-0248-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8d000
+  /big/entry-0249-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8e000
+  /big/entry-0250-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc8f000
+  /big/entry-0251-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc90000
+  /big/entry-0252-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc91000
+  /big/entry-0253-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc92000
+  /big/entry-0254-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc93000
+  /big/entry-0255-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc94000
+  /big/entry-0256-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc95000
+  /big/entry-0257-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc96000
+  /big/entry-0258-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc97000
+  /big/entry-0259-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc98000
+  /big/entry-0260-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc99000
+  /big/entry-0261-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9a000
+  /big/entry-0262-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9b000
+  /big/entry-0263-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9c000
+  /big/entry-0264-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9d000
+  /big/entry-0265-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9e000
+  /big/entry-0266-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xc9f000
+  /big/entry-0267-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca0000
+  /big/entry-0268-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca1000
+  /big/entry-0269-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca2000
+  /big/entry-0270-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca3000
+  /big/entry-0271-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca4000
+  /big/entry-0272-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca5000
+  /big/entry-0273-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca6000
+  /big/entry-0274-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca7000
+  /big/entry-0275-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca8000
+  /big/entry-0276-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xca9000
+  /big/entry-0277-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcaa000
+  /big/entry-0278-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcab000
+  /big/entry-0279-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcac000
+  /big/entry-0280-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcad000
+  /big/entry-0281-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcae000
+  /big/entry-0282-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcaf000
+  /big/entry-0283-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb0000
+  /big/entry-0284-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb1000
+  /big/entry-0285-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb2000
+  /big/entry-0286-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb3000
+  /big/entry-0287-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb4000
+  /big/entry-0288-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb5000
+  /big/entry-0289-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb6000
+  /big/entry-0290-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb7000
+  /big/entry-0291-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb8000
+  /big/entry-0292-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcb9000
+  /big/entry-0293-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcba000
+  /big/entry-0294-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcbb000
+  /big/entry-0295-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcbc000
+  /big/entry-0296-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcbd000
+  /big/entry-0297-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcbe000
+  /big/entry-0298-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcbf000
+  /big/entry-0299-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc0000
+  /big/entry-0300-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc1000
+  /big/entry-0301-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc2000
+  /big/entry-0302-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc3000
+  /big/entry-0303-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc4000
+  /big/entry-0304-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc5000
+  /big/entry-0305-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc6000
+  /big/entry-0306-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc7000
+  /big/entry-0307-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc8000
+  /big/entry-0308-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcc9000
+  /big/entry-0309-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcca000
+  /big/entry-0310-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xccb000
+  /big/entry-0311-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xccc000
+  /big/entry-0312-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xccd000
+  /big/entry-0313-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcce000
+  /big/entry-0314-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xccf000
+  /big/entry-0315-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd0000
+  /big/entry-0316-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd1000
+  /big/entry-0317-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd2000
+  /big/entry-0318-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd3000
+  /big/entry-0319-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd4000
+  /big/entry-0320-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd5000
+  /big/entry-0321-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd6000
+  /big/entry-0322-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd7000
+  /big/entry-0323-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd8000
+  /big/entry-0324-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcd9000
+  /big/entry-0325-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcda000
+  /big/entry-0326-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcdb000
+  /big/entry-0327-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcdc000
+  /big/entry-0328-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcdd000
+  /big/entry-0329-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcde000
+  /big/entry-0330-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcdf000
+  /big/entry-0331-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce0000
+  /big/entry-0332-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce1000
+  /big/entry-0333-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce2000
+  /big/entry-0334-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce3000
+  /big/entry-0335-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce4000
+  /big/entry-0336-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce5000
+  /big/entry-0337-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce6000
+  /big/entry-0338-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce7000
+  /big/entry-0339-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce8000
+  /big/entry-0340-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xce9000
+  /big/entry-0341-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcea000
+  /big/entry-0342-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xceb000
+  /big/entry-0343-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcec000
+  /big/entry-0344-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xced000
+  /big/entry-0345-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcee000
+  /big/entry-0346-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcef000
+  /big/entry-0347-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf0000
+  /big/entry-0348-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf1000
+  /big/entry-0349-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf2000
+  /big/entry-0350-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf3000
+  /big/entry-0351-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf4000
+  /big/entry-0352-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf5000
+  /big/entry-0353-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf6000
+  /big/entry-0354-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf7000
+  /big/entry-0355-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf8000
+  /big/entry-0356-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcf9000
+  /big/entry-0357-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcfa000
+  /big/entry-0358-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcfb000
+  /big/entry-0359-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcfc000
+  /big/entry-0360-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xac9000
+  /big/entry-0361-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xaca000
+  /big/entry-0362-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xacb000
+  /big/entry-0363-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xacc000
+  /big/entry-0364-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcfd000
+  /big/entry-0365-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcfe000
+  /big/entry-0366-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xcff000
+  /big/entry-0367-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xd00000
+  /big/entry-0368-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xacd000
+  /big/entry-0369-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xace000
+  /big/entry-0370-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xacf000
+  /big/entry-0371-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xad0000
+  /big/entry-0372-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xd01000
+  /big/entry-0373-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xd02000
+  /big/entry-0374-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xd03000
+  /big/entry-0375-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xd04000
+  /big/entry-0376-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xad1000
+  /big/entry-0377-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xad2000
+  /big/entry-0378-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xad3000
+  /big/entry-0379-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0xad4000
+  /big/entry-0380-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x70f000
+  /big/entry-0381-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x710000
+  /big/entry-0382-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x711000
+  /big/entry-0383-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x712000
+  /big/entry-0384-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x713000
+  /big/entry-0385-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x714000
+  /big/entry-0386-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x715000
+  /big/entry-0387-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x716000
+  /big/entry-0388-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x717000
+  /big/entry-0389-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x86f000
+  /big/entry-0390-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x870000
+  /big/entry-0391-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x871000
+  /big/entry-0392-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x872000
+  /big/entry-0393-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x873000
+  /big/entry-0394-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x874000
+  /big/entry-0395-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x875000
+  /big/entry-0396-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x876000
+  /big/entry-0397-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x718000
+  /big/entry-0398-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x719000
+  /big/entry-0399-with-a-longer-name.txt: File size 1 alloc Some(4096) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1@0x71a000
+  /dir/empty: File size 0 alloc Some(0) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 
+  /dir/frag.bin: File size 131072 alloc Some(135168) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x2000@0x857000 0x2000+0x2000@0x660000 0x4000+0x2000@0x664000 0x6000+0x2000@0x668000 0x8000+0x2000@0x85b000 0xa000+0x2000@0x85f000 0xc000+0x2000@0x863000 0xe000+0x2000@0x867000 0x10000+0x10000@0xa59000
+  /dir/other.bin: File size 131072 alloc Some(135168) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x2000@0x65e000 0x2000+0x2000@0x662000 0x4000+0x2000@0x666000 0x6000+0x2000@0x859000 0x8000+0x2000@0x85d000 0xa000+0x2000@0x861000 0xc000+0x2000@0x865000 0xe000+0x2000@0x869000 0x10000+0x10000@0xa69000
+  /dir/small.txt: File size 6 alloc Some(4096) nlink Some(2) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x6@0x67e000
+  /dir/sub: Dir size 4096 alloc Some(4096) nlink Some(2) flags NodeFlags(0)
+  /dir/sub/Ünïcödé name.bin: File size 5000 alloc Some(8192) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x1388@0x67c000
+  /var/swap: File size 65536 alloc Some(65536) nlink Some(1) flags NodeFlags(0)
+    stream StreamId(0): 0x0+0x10000@0x64e000

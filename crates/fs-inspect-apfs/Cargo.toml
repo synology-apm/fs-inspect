@@ -1,0 +1,41 @@
+[package]
+name = "fs-inspect-apfs"
+description = "APFS: on-disk format, allocation map and change tracking"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+authors.workspace = true
+publish = false
+
+[features]
+# Change tracking (`track`): the fs-inspect-change contract.
+change = ["dep:fs-inspect-change"]
+# The synthetic container and volume builders (`synth`), for tests elsewhere and test tools.
+synth = []
+
+[dependencies]
+fs-inspect-io.workspace = true
+fs-inspect-core.workspace = true
+fs-inspect-codec.workspace = true
+fs-inspect-change = { workspace = true, optional = true }
+tracing.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sha2.workspace = true
+
+[dev-dependencies]
+fs-inspect-change = { workspace = true, features = ["test-util"] }
+fs-inspect-io = { workspace = true, features = ["test-util"] }
+fs-inspect-testkit.workspace = true
+proptest.workspace = true
+flate2.workspace = true
+lzfse_rust.workspace = true
+
+[[test]]
+name = "track_fixtures"
+required-features = ["change"]
+
+[lints]
+workspace = true

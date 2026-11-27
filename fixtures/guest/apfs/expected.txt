@@ -1,0 +1,13 @@
+# Made by tools/fsi_tools/fixtures/guest_apfs.py: what diskutil reports of each volume.
+# container uuid FA2D3F7B-8057-4D51-B341-6935DB03AE56
+# volume <index> <name> roles=<roles> uuid=<volume UUID> group=<group UUID or -> encrypted=0|1
+# group <group UUID> <volume UUID>...; partition <offset> <length> <type> <partition GUID>
+volume 0 Macintosh%20HD%20-%20Data roles=Data uuid=19CDF6B5-BEB5-4EFA-9270-DBB4C8ABD0E1 group=19CDF6B5-BEB5-4EFA-9270-DBB4C8ABD0E1 encrypted=0
+volume 1 Macintosh%20HD roles=System uuid=F32A19B8-62B7-4A35-A74D-0484BE13662C group=19CDF6B5-BEB5-4EFA-9270-DBB4C8ABD0E1 encrypted=0
+volume 2 Preboot roles=Preboot uuid=B820C95C-9273-4024-9F20-FA204965DAB8 group=- encrypted=0
+volume 3 Recovery roles=Recovery uuid=9181EF70-FC1F-42C6-B117-84A6E0EF3B5C group=- encrypted=0
+volume 4 VM roles=VM uuid=32A40DAB-0E0F-43C3-84F4-B53C7AB59B2B group=- encrypted=0
+volume 5 Vault roles=- uuid=C0DF6F6B-F508-4741-993D-E3D29DEA67E5 group=- encrypted=1
+group 19CDF6B5-BEB5-4EFA-9270-DBB4C8ABD0E1 19CDF6B5-BEB5-4EFA-9270-DBB4C8ABD0E1 F32A19B8-62B7-4A35-A74D-0484BE13662C
+partition 20480 209715200 EFI 21537BA2-E98D-46EC-9B77-4F638BD764D9
+partition 209735680 3548340224 Apple_APFS F292C192-5DAD-4E2A-8539-685A15D1EA33
